@@ -60,3 +60,19 @@ thoughts/
 
 # Playwright MCP
 .playwright-mcp/
+
+# Specter knowledge graph cache
+.specter/
+.claude
+.playwright-mcp
+.history
+playwright-report
+playwright-report/
+__pycache__
+__pycache__/
+.codacy
+.codacy/
+coverage/
+test_run/
+supabase/.temp/
+dist/
