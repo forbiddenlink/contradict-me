@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  image     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  arguments    Argument[]
+  counterpoints Counterpoint[]
+}
+
+model Argument {
+  id          String   @id @default(cuid())
+  title       String
+  claim       String
+  evidence    String?
+  status      String   @default("open") // open, resolved, archived
+  category    String?
+  tags        String?  // comma-separated tags
+  viewCount   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  counterpoints Counterpoint[]
+
+  @@index([userId])
+  @@index([status])
+}
+
+model Counterpoint {
+  id         String   @id @default(cuid())
+  content    String
+  evidence   String?
+  stance     String   // agree, disagree, neutral
+  upvotes    Int      @default(0)
+  downvotes  Int      @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  argumentId String
+  argument   Argument @relation(fields: [argumentId], references: [id], onDelete: Cascade)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([argumentId])
+  @@index([userId])
+}

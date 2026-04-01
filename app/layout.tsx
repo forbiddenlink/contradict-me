@@ -9,6 +9,8 @@ import DynamicKeyboardShortcutsModal from '@/components/ui/DynamicKeyboardShortc
 import { DEFAULT_AUTHOR, SITE_NAME, SITE_URL } from '@/lib/site';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
+import { PostHogProvider } from '@/components/PostHogProvider';
 
 // Distinctive headline font - geometric, modern, memorable
 const spaceGrotesk = Space_Grotesk({
@@ -122,15 +124,19 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <ThemeProvider defaultTheme="system">
-          <MotionProvider>
-            <ErrorBoundary>
-              <DynamicKeyboardShortcutsModal />
-              {children}
-            </ErrorBoundary>
-            <ToastProvider />
-          </MotionProvider>
-        </ThemeProvider>
+        <PostHogProvider>
+          <NuqsAdapter>
+            <ThemeProvider defaultTheme="system">
+              <MotionProvider>
+                <ErrorBoundary>
+                  <DynamicKeyboardShortcutsModal />
+                  {children}
+                </ErrorBoundary>
+                <ToastProvider />
+              </MotionProvider>
+            </ThemeProvider>
+          </NuqsAdapter>
+        </PostHogProvider>
         {shouldLoadVercelInsights && <Analytics />}
         {shouldLoadVercelInsights && <SpeedInsights />}
       </body>

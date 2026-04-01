@@ -1,46 +1,19 @@
 import { NextRequest } from 'next/server';
+import { getLangfuse, flushLangfuse } from '@/lib/langfuse';
+import {
+  rateLimit,
+  getClientIdentifier,
+  getRateLimitHeaders,
+  type RateLimitResult,
+} from '@/lib/rate-limit';
 
 const MAX_MESSAGE_LENGTH = 8000;
-const RATE_LIMIT_WINDOW_MS = 60_000;
-const RATE_LIMIT_MAX_REQUESTS = 25;
 const AGENT_TIMEOUT_MS = 30_000;
-
-type RateLimitState = {
-  count: number;
-  resetAt: number;
-};
-
-const rateLimitStore = new Map<string, RateLimitState>();
 
 const jsonHeaders = { 'Content-Type': 'application/json' };
 
 function getClientId(req: NextRequest): string {
-  const forwardedFor = req.headers.get('x-forwarded-for');
-  if (forwardedFor) return forwardedFor.split(',')[0].trim();
-  return req.headers.get('x-real-ip') ?? 'anonymous';
-}
-
-function isRateLimited(clientId: string): boolean {
-  const now = Date.now();
-
-  // Opportunistically clean old buckets to keep memory bounded.
-  for (const [key, value] of rateLimitStore.entries()) {
-    if (value.resetAt <= now) rateLimitStore.delete(key);
-  }
-
-  const existing = rateLimitStore.get(clientId);
-  if (!existing || existing.resetAt <= now) {
-    rateLimitStore.set(clientId, {
-      count: 1,
-      resetAt: now + RATE_LIMIT_WINDOW_MS,
-    });
-    return false;
-  }
-
-  if (existing.count >= RATE_LIMIT_MAX_REQUESTS) return true;
-  existing.count += 1;
-  rateLimitStore.set(clientId, existing);
-  return false;
+  return getClientIdentifier(req.headers);
 }
 
 function errorResponse(status: number, error: string): Response {
@@ -105,12 +78,36 @@ function extractTextPayload(parsed: unknown): string {
   return '';
 }
 
-export async function POST(req: NextRequest) {
-  const clientId = getClientId(req);
-  if (isRateLimited(clientId)) {
-    const state = rateLimitStore.get(clientId);
-    const retryAfter = state ? Math.ceil((state.resetAt - Date.now()) / 1000) : 60;
+// Detect if message is from debate mode based on content patterns
+function detectDebateContext(message: string): {
+  isDebate: boolean;
+  speaker?: 'logical' | 'emotional';
+  round?: number;
+} {
+  const logicalMatch = message.match(/You are "Logical Larry"/i);
+  const emotionalMatch = message.match(/You are "Emotional Emma"/i);
+  const roundMatch = message.match(/Round (\d+)/i);
 
+  if (logicalMatch || emotionalMatch) {
+    return {
+      isDebate: true,
+      speaker: logicalMatch ? 'logical' : 'emotional',
+      round: roundMatch ? parseInt(roundMatch[1], 10) : undefined,
+    };
+  }
+
+  return { isDebate: false };
+}
+
+export async function POST(req: NextRequest) {
+  const langfuse = getLangfuse();
+  const clientId = getClientId(req);
+  let generation: ReturnType<NonNullable<ReturnType<typeof getLangfuse>>['generation']> | undefined;
+  let generationEnded = false;
+
+  // Rate limit check using Upstash Redis (falls back to in-memory in dev)
+  const rateLimitResult = await rateLimit(clientId, 'debate');
+  if (!rateLimitResult.success) {
     return new Response(
       JSON.stringify({
         error: 'Rate limit exceeded. Please wait a minute and try again.',
@@ -120,10 +117,11 @@ export async function POST(req: NextRequest) {
         status: 429,
         headers: {
           ...jsonHeaders,
-          'Retry-After': retryAfter.toString(),
-          'X-RateLimit-Limit': RATE_LIMIT_MAX_REQUESTS.toString(),
-          'X-RateLimit-Remaining': '0',
-          'X-RateLimit-Reset': state?.resetAt.toString() || Date.now().toString(),
+          ...getRateLimitHeaders(
+            rateLimitResult.limit,
+            rateLimitResult.remaining,
+            rateLimitResult.reset
+          ),
         },
       }
     );
@@ -136,27 +134,75 @@ export async function POST(req: NextRequest) {
     return errorResponse(400, 'Invalid JSON payload.');
   }
 
+  // Create Langfuse trace for this request
+  const trace = langfuse?.trace({
+    name: 'chat-request',
+    userId: clientId,
+    metadata: {
+      endpoint: '/api/chat',
+    },
+  });
+
   try {
-    const { message, stream = true } = (body ?? {}) as {
+    const {
+      message,
+      stream = true,
+      conversationId,
+      debateContext,
+    } = (body ?? {}) as {
       message?: unknown;
       stream?: unknown;
+      conversationId?: string;
+      debateContext?: {
+        topic?: string;
+        round?: number;
+        speaker?: 'logical' | 'emotional';
+      };
     };
 
     if (typeof message !== 'string' || !message.trim()) {
+      trace?.update({ output: { error: 'Message is required' } });
+      await flushLangfuse();
       return errorResponse(400, 'Message is required.');
     }
     if (message.length > MAX_MESSAGE_LENGTH) {
+      trace?.update({ output: { error: 'Message too long' } });
+      await flushLangfuse();
       return errorResponse(
         413,
         `Message exceeds ${MAX_MESSAGE_LENGTH} characters. Please shorten and try again.`
       );
     }
 
+    // Detect debate context from message content
+    const detectedContext = detectDebateContext(message);
+    const isDebateMode = detectedContext.isDebate || !!debateContext;
+
+    // Update trace with context
+    trace?.update({
+      sessionId: conversationId,
+      metadata: {
+        endpoint: '/api/chat',
+        isDebate: isDebateMode,
+        ...(isDebateMode && {
+          debateSpeaker: debateContext?.speaker || detectedContext.speaker,
+          debateRound: debateContext?.round || detectedContext.round,
+          debateTopic: debateContext?.topic,
+        }),
+      },
+      input: {
+        message: message.slice(0, 500), // Truncate for storage
+        messageLength: message.length,
+      },
+    });
+
     // Check if Agent Studio endpoint is configured
     const agentEndpoint =
       process.env.ALGOLIA_AGENT_ENDPOINT || process.env.NEXT_PUBLIC_ALGOLIA_AGENT_ENDPOINT;
 
     if (!agentEndpoint) {
+      trace?.update({ output: { error: 'Agent endpoint not configured' } });
+      await flushLangfuse();
       return errorResponse(500, "The Agent Studio endpoint isn't configured.");
     }
 
@@ -166,6 +212,8 @@ export async function POST(req: NextRequest) {
       process.env.ALGOLIA_SEARCH_API_KEY || process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY;
 
     if (!appId || !apiKey) {
+      trace?.update({ output: { error: 'Missing Algolia credentials' } });
+      await flushLangfuse();
       return errorResponse(500, 'Configuration error: Missing Algolia credentials.');
     }
 
@@ -174,6 +222,25 @@ export async function POST(req: NextRequest) {
     const url = new URL(agentEndpoint);
     url.searchParams.set('stream', wantsStream ? 'true' : 'false');
     url.searchParams.set('compatibilityMode', 'ai-sdk-5');
+
+    // Create generation span for the LLM call
+    const spanName = isDebateMode
+      ? `debate-turn-${detectedContext.speaker || debateContext?.speaker || 'unknown'}-round-${detectedContext.round || debateContext?.round || '?'}`
+      : 'agent-generation';
+
+    generation = trace?.generation({
+      name: spanName,
+      model: 'algolia-agent-studio',
+      input: {
+        messages: [{ role: 'user', content: message.trim() }],
+      },
+      metadata: {
+        streaming: wantsStream,
+        agentEndpoint: url.hostname,
+      },
+    });
+
+    const startTime = Date.now();
 
     // Call Algolia Agent Studio API (ai-sdk-5 format with parts)
     let response: Response;
@@ -196,6 +263,21 @@ export async function POST(req: NextRequest) {
         signal: AbortSignal.timeout(AGENT_TIMEOUT_MS),
       });
     } catch (fetchError) {
+      const latencyMs = Date.now() - startTime;
+      generation?.end({
+        output: { error: fetchError instanceof Error ? fetchError.message : 'Unknown fetch error' },
+        statusMessage: 'error',
+        metadata: { latencyMs },
+      });
+      generationEnded = true;
+      trace?.update({
+        output: {
+          error: fetchError instanceof Error ? fetchError.message : 'Unknown fetch error',
+          latencyMs,
+        },
+      });
+      await flushLangfuse();
+
       if (fetchError instanceof Error && fetchError.name === 'TimeoutError') {
         return errorResponse(504, 'Agent request timed out. Please retry.');
       }
@@ -205,6 +287,24 @@ export async function POST(req: NextRequest) {
     if (!response.ok) {
       const errorText = await response.text().catch(() => '');
       const detail = errorText ? ` ${errorText.slice(0, 300)}` : '';
+      const latencyMs = Date.now() - startTime;
+
+      generation?.end({
+        output: { error: `HTTP ${response.status}`, detail },
+        statusMessage: 'error',
+        metadata: { latencyMs, httpStatus: response.status },
+      });
+      generationEnded = true;
+      trace?.update({
+        output: {
+          error: `HTTP ${response.status}`,
+          detail,
+          latencyMs,
+          httpStatus: response.status,
+        },
+      });
+      await flushLangfuse();
+
       return errorResponse(502, `Agent API returned ${response.status}.${detail}`);
     }
 
@@ -214,6 +314,7 @@ export async function POST(req: NextRequest) {
       const encoder = new TextEncoder();
       const decoder = new TextDecoder();
       let buffer = '';
+      let fullResponse = '';
 
       const processLine = (line: string, controller: TransformStreamDefaultController) => {
         if (!line.startsWith('data:')) return;
@@ -230,6 +331,7 @@ export async function POST(req: NextRequest) {
           const parsed = JSON.parse(data);
           const content = extractTextPayload(parsed);
           if (content) {
+            fullResponse += content;
             controller.enqueue(encoder.encode(`data: ${JSON.stringify({ text: content })}\n\n`));
           }
         } catch {
@@ -249,12 +351,31 @@ export async function POST(req: NextRequest) {
             lineBreakIndex = buffer.indexOf('\n');
           }
         },
-        flush(controller) {
+        async flush(controller) {
           const finalText = decoder.decode();
           if (finalText) buffer += finalText;
           if (buffer.trim().length > 0) {
             processLine(buffer.replace(/\r$/, ''), controller);
           }
+
+          // End the generation span after streaming completes
+          const latencyMs = Date.now() - startTime;
+          generation?.end({
+            output: { content: fullResponse.slice(0, 1000), fullLength: fullResponse.length },
+            metadata: {
+              latencyMs,
+              streaming: true,
+              responseLength: fullResponse.length,
+            },
+          });
+          generationEnded = true;
+          trace?.update({
+            output: {
+              success: true,
+              responseLength: fullResponse.length,
+            },
+          });
+          await flushLangfuse();
         },
       });
 
@@ -271,6 +392,24 @@ export async function POST(req: NextRequest) {
     // Non-streaming fallback
     const data = await response.json().catch(() => ({}));
     const responseText = extractTextPayload(data) || 'No response from agent.';
+    const latencyMs = Date.now() - startTime;
+
+    generation?.end({
+      output: { content: responseText.slice(0, 1000), fullLength: responseText.length },
+      metadata: {
+        latencyMs,
+        streaming: false,
+        responseLength: responseText.length,
+      },
+    });
+    generationEnded = true;
+    trace?.update({
+      output: {
+        success: true,
+        responseLength: responseText.length,
+      },
+    });
+    await flushLangfuse();
 
     return new Response(
       JSON.stringify({
@@ -280,6 +419,17 @@ export async function POST(req: NextRequest) {
       { status: 200, headers: jsonHeaders }
     );
   } catch (error) {
+    if (generation && !generationEnded) {
+      generation.end({
+        output: { error: error instanceof Error ? error.message : 'Unknown error' },
+        statusMessage: 'error',
+      });
+    }
+    trace?.update({
+      output: { error: error instanceof Error ? error.message : 'Unknown error' },
+    });
+    await flushLangfuse();
+
     if (process.env.NODE_ENV === 'development') {
       console.error('Chat API error:', error);
     }
