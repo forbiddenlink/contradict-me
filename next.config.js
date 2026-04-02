@@ -72,12 +72,10 @@ export default withSentryConfig(withAxiom(withBundleAnalyzer(nextConfig)), {
   project: process.env.SENTRY_PROJECT,
   silent: !process.env.CI,
   widenClientFileUpload: true,
-  disableLogger: true,
-  automaticVercelMonitors: true,
-  disableServerWebpackPlugin: !process.env.SENTRY_AUTH_TOKEN,
-  disableClientWebpackPlugin: !process.env.SENTRY_AUTH_TOKEN,
-  disableSentryWebpackConfig: !process.env.SENTRY_AUTH_TOKEN,
+  sourcemaps: { disable: true },
+  useRunAfterProductionCompileHook: false,
   webpack: {
-    disableSentryConfig: !process.env.SENTRY_AUTH_TOKEN,
+    treeshake: { removeDebugLogging: true },
+    automaticVercelMonitors: true,
   },
 });
