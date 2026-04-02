@@ -74,4 +74,6 @@ export default withSentryConfig(withAxiom(withBundleAnalyzer(nextConfig)), {
   widenClientFileUpload: true,
   disableLogger: true,
   automaticVercelMonitors: true,
+  disableServerWebpackPlugin: !process.env.SENTRY_AUTH_TOKEN,
+  disableClientWebpackPlugin: !process.env.SENTRY_AUTH_TOKEN,
 });
