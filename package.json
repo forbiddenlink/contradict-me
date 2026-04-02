@@ -26,7 +26,7 @@
     "@assistant-ui/react-markdown": "^0.12.7",
     "@auth/prisma-adapter": "^2.11.1",
     "@prisma/client": "^7.6.0",
-    "@sentry/nextjs": "^9",
+    "@sentry/nextjs": "^10",
     "@t3-oss/env-nextjs": "^0.13.11",
     "@trigger.dev/sdk": "^4.4.3",
     "@upstash/ratelimit": "^2.0.8",
