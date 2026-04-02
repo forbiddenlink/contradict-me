@@ -76,4 +76,8 @@ export default withSentryConfig(withAxiom(withBundleAnalyzer(nextConfig)), {
   automaticVercelMonitors: true,
   disableServerWebpackPlugin: !process.env.SENTRY_AUTH_TOKEN,
   disableClientWebpackPlugin: !process.env.SENTRY_AUTH_TOKEN,
+  disableSentryWebpackConfig: !process.env.SENTRY_AUTH_TOKEN,
+  webpack: {
+    disableSentryConfig: !process.env.SENTRY_AUTH_TOKEN,
+  },
 });
