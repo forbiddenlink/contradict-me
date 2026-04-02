@@ -1,4 +1,4 @@
-import "./src/env.js";
+import "./src/env.ts";
 import bundleAnalyzer from '@next/bundle-analyzer';
 import { withAxiom } from 'next-axiom';
 import { withSentryConfig } from '@sentry/nextjs';
