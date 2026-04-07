@@ -4,7 +4,6 @@ import {
   rateLimit,
   getClientIdentifier,
   getRateLimitHeaders,
-  type RateLimitResult,
 } from '@/lib/rate-limit';
 
 const MAX_MESSAGE_LENGTH = 8000;
