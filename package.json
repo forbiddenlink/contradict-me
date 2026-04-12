@@ -45,7 +45,7 @@
     "langfuse": "^3.38.6",
     "lucide-react": "^0.563.0",
     "nanoid": "^5.1.6",
-    "next": "^16.1.6",
+    "next": "^16.2.3",
     "next-auth": "^4.24.13",
     "next-axiom": "^1.5.0",
     "next-safe-action": "^8.3.0",
@@ -101,5 +101,13 @@
   "engines": {
     "node": ">=20.0.0"
   },
-  "description": "AI-powered debate and argumentation practice app"
+  "description": "AI-powered debate and argumentation practice app",
+  "pnpm": {
+    "overrides": {
+      "cookie": ">=0.7.0",
+      "systeminformation": ">=5.31.0",
+      "@hono/node-server": ">=1.19.13",
+      "next": ">=16.2.3"
+    }
+  }
 }
