@@ -16,7 +16,8 @@
     "analyze": "ANALYZE=true npm run build",
     "biome:check": "biome check .",
     "biome:fix": "biome check . --write",
-    "biome:format": "biome format . --write"
+    "biome:format": "biome format . --write",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@ai-sdk/google": "^3.0.55",
@@ -58,6 +59,8 @@
     "react-dom": "^19.2.4",
     "react-hot-toast": "^2.6.0",
     "react-instantsearch": "^7.23.1",
+    "server-only": "^0.0.1",
+    "sharp": "^0.34.5",
     "tailwind-merge": "^3.4.0",
     "zod": "^4.3.6"
   },
@@ -89,6 +92,7 @@
     "jest-environment-jsdom": "^30.2.0",
     "jsdom": "^29.0.1",
     "msw": "^2.12.14",
+    "next-sitemap": "^4.2.3",
     "postcss": "^8.4.49",
     "prettier": "^3.8.1",
     "tailwindcss": "^3.4.17",
