@@ -116,6 +116,9 @@ importers:
       posthog-js:
         specifier: ^1
         version: 1.365.0
+      posthog-node:
+        specifier: ^5.33.4
+        version: 5.33.4(rxjs@7.8.2)
       prisma:
         specifier: ^7.6.0
         version: 7.6.0(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3)
@@ -1777,8 +1780,14 @@ packages:
   '@posthog/core@1.25.0':
     resolution: {integrity: sha512-XKaHvRFIIN7Dw84r1eKimV1rl9DS+9XMCPPZ7P3+l8fE+rDsmumebiTFsY+q40bVXflcGW9wB+57LH0lvcGmhw==}
 
+  '@posthog/core@1.28.4':
+    resolution: {integrity: sha512-wmtUYHYqA3zIAKDKvYWRNWAQsWOIBwxV08e+bWzVy0wQQzpaS/LzzRupXWRMRrLOk+1x3JKFxbqA3n0QGvpqsQ==}
+
   '@posthog/types@1.365.0':
     resolution: {integrity: sha512-zPFLBSjItO1Ob98V5xh1cCHF1yhLZfn5l65AxeLeMogQU9dZu6J+JGJFMF0msePqMQ/xKVaV2315GnzZy+7uCQ==}
+
+  '@posthog/types@1.372.10':
+    resolution: {integrity: sha512-KuT3vLu3LSFsNWCwasS4gqjH/ysAyIUcB/aJSmKyNhDd/85hAznHRz1eSSl0sMvtsDTYiQIq0I0ybduVbrpPew==}
 
   '@prisma/client-runtime-utils@7.6.0':
     resolution: {integrity: sha512-fD7jlqubsZvVODKvsp9lOpXVecx2aWGxC2l35Ioz2t+teUJ5CfR0SAMsi7UkU1VvaZmmm+DS6BdujF622nY7tQ==}
@@ -6247,6 +6256,15 @@ packages:
   posthog-js@1.365.0:
     resolution: {integrity: sha512-SHEOTNEvWA2RQdK02weyR9TKmxnebudhZ6lqeFQ/W4jZ9QzxGy3E8rWEyuwZzLZvf6ulo+j57RtMfEcs/JqAYg==}
 
+  posthog-node@5.33.4:
+    resolution: {integrity: sha512-kK6nepnkSStbbxWxB2ZFhKxE2nw9tSHLv/3tUKcypwzKfovp8e8icsndBVf9RTHxiXBiF1M3B13tWvjBT2UWBw==}
+    engines: {node: ^20.20.0 || >=22.22.0}
+    peerDependencies:
+      rxjs: ^7.0.0
+    peerDependenciesMeta:
+      rxjs:
+        optional: true
+
   preact-render-to-string@5.2.6:
     resolution: {integrity: sha512-JyhErpYOvBV1hEPwIxc/fHWXPfnEGdRKxc8gFdAZ7XV4tlzyzG847XAyEZqoDnynP88akM4eaHcSOzNcLWFguw==}
     peerDependencies:
@@ -9302,7 +9320,13 @@ snapshots:
 
   '@posthog/core@1.25.0': {}
 
+  '@posthog/core@1.28.4':
+    dependencies:
+      '@posthog/types': 1.372.10
+
   '@posthog/types@1.365.0': {}
+
+  '@posthog/types@1.372.10': {}
 
   '@prisma/client-runtime-utils@7.6.0': {}
 
@@ -14325,6 +14349,12 @@ snapshots:
       preact: 10.29.1
       query-selector-shadow-dom: 1.0.1
       web-vitals: 5.2.0
+
+  posthog-node@5.33.4(rxjs@7.8.2):
+    dependencies:
+      '@posthog/core': 1.28.4
+    optionalDependencies:
+      rxjs: 7.8.2
 
   preact-render-to-string@5.2.6(preact@10.29.1):
     dependencies:
