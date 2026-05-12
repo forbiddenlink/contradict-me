@@ -80,3 +80,7 @@ dist/
 *.db
 *.sqlite
 *.sqlite3
+
+# next-sitemap (postbuild generated)
+/public/robots.txt
+/public/sitemap*.xml
