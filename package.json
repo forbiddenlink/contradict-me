@@ -113,7 +113,8 @@
       "cookie": ">=0.7.0",
       "systeminformation": ">=5.31.0",
       "@hono/node-server": ">=1.19.13",
-      "next": ">=16.2.3"
+      "next": ">=16.2.3",
+      "shell-quote": ">=1.8.4"
     }
   }
 }
