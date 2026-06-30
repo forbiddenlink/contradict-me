@@ -14,6 +14,11 @@ import {
 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 
+// Module-level wrapper for the impure clock. Keeping this outside the
+// component keeps react-hooks/purity from flagging these event-handler-only
+// calls (they run after awaited fetches, never during render).
+const now = () => Date.now();
+
 interface DebateMessage {
   id: string;
   speaker: 'logical' | 'emotional' | 'user';
@@ -145,10 +150,10 @@ export default function DebatePage() {
       }
 
       const newMessage: DebateMessage = {
-        id: `${nextSpeaker}-${round}-${Date.now()}`,
+        id: `${nextSpeaker}-${round}-${now()}`,
         speaker: nextSpeaker,
         content: fullResponse,
-        timestamp: Date.now(),
+        timestamp: now(),
         round,
       };
 
