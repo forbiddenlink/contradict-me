@@ -7,7 +7,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
-import { X, Link as LinkIcon, Twitter, Download, Check, Share2 } from 'lucide-react';
+import { X, Link as LinkIcon, ExternalLink, Download, Check, Share2 } from 'lucide-react';
 import { Button } from './button';
 import { toast } from 'react-hot-toast';
 import { useConversationExport } from '@/lib/hooks/useConversations';
@@ -268,7 +268,7 @@ export default function ShareModal({
                     onClick={handleTwitterShare}
                     className="w-full justify-start gap-3 bg-[#1DA1F2] hover:bg-[#1a8cd8] text-white"
                   >
-                    <Twitter className="h-5 w-5" />
+                    <ExternalLink className="h-5 w-5" />
                     Share on Twitter/X
                   </Button>
 
