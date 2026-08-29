@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/forbiddenlink/contradict-me/compare/v1.0.0...v1.0.1) (2026-08-29)
+
+
+### Bug Fixes
+
+* **deps:** move resolution overrides to package.json and add missing patches ([#60](https://github.com/forbiddenlink/contradict-me/issues/60)) ([4d34368](https://github.com/forbiddenlink/contradict-me/commit/4d34368092e6b35344bf43995f9714c454e54495))
+
 ## 1.0.0 (2026-08-16)
 
 
