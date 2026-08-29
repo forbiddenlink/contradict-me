@@ -112,18 +112,19 @@
   "description": "AI-powered debate and argumentation practice app",
   "pnpm": {
     "overrides": {
-      "cookie": ">=0.7.0 <2.0.0",
-      "systeminformation": ">=5.31.0",
       "@hono/node-server": ">=1.19.13",
-      "next": ">=16.2.3",
-      "shell-quote": ">=1.8.4",
       "@opentelemetry/core": ">=2.8.0 <3",
       "brace-expansion": ">=5.0.7 <6",
+      "cookie": ">=0.7.0 <2.0.0",
+      "deepmerge-ts": ">=8.0.0",
       "engine.io": ">=6.6.7 <7",
       "js-yaml": ">=4.3.1 <5",
       "nanoid": ">=6.0.0",
+      "next": ">=16.2.3",
       "postcss": ">=8.5.23 <9",
       "sharp": ">=0.35.0 <1",
+      "shell-quote": ">=1.8.4",
+      "systeminformation": ">=5.31.0",
       "undici": ">=7.29.0 <8",
       "ws": ">=8.20.1 <9"
     }
