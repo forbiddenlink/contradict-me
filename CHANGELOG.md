@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/forbiddenlink/contradict-me/compare/v1.0.1...v1.0.2) (2026-09-01)
+
+
+### Bug Fixes
+
+* **security:** actually run rate limiting on /api ([#65](https://github.com/forbiddenlink/contradict-me/issues/65)) ([d501ac7](https://github.com/forbiddenlink/contradict-me/commit/d501ac743aaab442303a013fbf0c0ae4a63704ad))
+
 ## [1.0.1](https://github.com/forbiddenlink/contradict-me/compare/v1.0.0...v1.0.1) (2026-08-29)
 
 
