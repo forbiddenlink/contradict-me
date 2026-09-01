@@ -22,7 +22,6 @@
   "dependencies": {
     "@ai-sdk/google": "^4.0.56",
     "@ai-sdk/groq": "^4.0.33",
-    "@arcjet/next": "^1.10.0",
     "@assistant-ui/react": "^0.15.17",
     "@assistant-ui/react-markdown": "^0.14.13",
     "@auth/prisma-adapter": "^2.11.3",
