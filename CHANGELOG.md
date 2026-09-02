@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/forbiddenlink/contradict-me/compare/v1.0.2...v1.0.3) (2026-09-02)
+
+
+### Bug Fixes
+
+* **ci:** let pnpm/action-setup read the version from packageManager ([598c15b](https://github.com/forbiddenlink/contradict-me/commit/598c15bf937cfb0a711777250ecb5f9a11a16417))
+
 ## [1.0.2](https://github.com/forbiddenlink/contradict-me/compare/v1.0.1...v1.0.2) (2026-09-01)
 
 
