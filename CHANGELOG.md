@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.4](https://github.com/forbiddenlink/contradict-me/compare/v1.0.3...v1.0.4) (2026-09-06)
+
+
+### Bug Fixes
+
+* **security:** actually run rate limiting on /api ([#79](https://github.com/forbiddenlink/contradict-me/issues/79)) ([c8b5663](https://github.com/forbiddenlink/contradict-me/commit/c8b5663132f56e244896ecb30cb780c77e3ea6a5))
+* **security:** pin browserslist off the open HIGH advisories ([#82](https://github.com/forbiddenlink/contradict-me/issues/82)) ([f7ece4e](https://github.com/forbiddenlink/contradict-me/commit/f7ece4e8c9707701e0937aa50e9d3ee398771f49))
+* **security:** pin transitive dependencies off their open advisories ([#83](https://github.com/forbiddenlink/contradict-me/issues/83)) ([4d8a501](https://github.com/forbiddenlink/contradict-me/commit/4d8a501130de6f68f5e75cf943d442586b7b4f5a))
+
 ## [1.0.3](https://github.com/forbiddenlink/contradict-me/compare/v1.0.2...v1.0.3) (2026-09-02)
 
 
