@@ -2,13 +2,13 @@
  * Tests for Follow-up Question Suggestions Component
  */
 
-import { describe, it, beforeEach } from '@jest/globals';
+import { describe, it, beforeEach, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import FollowUpSuggestions from '@/components/chat/FollowUpSuggestions';
 
 describe('FollowUpSuggestions', () => {
-  const mockOnSelectQuestion = jest.fn();
+  const mockOnSelectQuestion = vi.fn();
 
   beforeEach(() => {
     mockOnSelectQuestion.mockClear();

@@ -2,7 +2,7 @@
  * Tests for IndexedDB Database Layer
  */
 
-import { describe, it, expect } from '@jest/globals';
+import { describe, it, expect } from 'vitest';
 import { conversationUtils } from '@/lib/db';
 import type { ConversationMessage } from '@/lib/db';
 
