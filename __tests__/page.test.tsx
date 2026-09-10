@@ -1,14 +1,15 @@
+import { vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import Home from '@/app/page';
 import { ThemeProvider } from '@/components/ThemeProvider';
 
 // Mock next/navigation
-jest.mock('next/navigation', () => ({
+vi.mock('next/navigation', () => ({
   useRouter() {
     return {
-      push: jest.fn(),
-      replace: jest.fn(),
-      prefetch: jest.fn(),
+      push: vi.fn(),
+      replace: vi.fn(),
+      prefetch: vi.fn(),
     };
   },
   useSearchParams() {

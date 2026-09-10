@@ -32,4 +32,9 @@ jobs:
         continue-on-error: true
 
       - name: Test
+        # pnpm test now runs vitest (package.json), not Jest. CI never ran
+        # vitest at all before this, which is how the suite collected 0 tests
+        # for two days with nothing failing loudly. passWithNoTests is false
+        # in vitest.config.ts, so a suite that collects 0 tests exits non-zero
+        # here instead of reading as "nothing to run, fine".
         run: pnpm test

@@ -8,6 +8,10 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./vitest-setup.ts'],
     globals: true,
+    // Explicit even though vitest already defaults to this: a suite that
+    // collects zero tests must exit non-zero, not read as "nothing to run,
+    // fine". This is what CI checks, in the "Vitest" step below.
+    passWithNoTests: false,
   },
   resolve: {
     alias: {
