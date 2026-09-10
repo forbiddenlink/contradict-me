@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.5](https://github.com/forbiddenlink/contradict-me/compare/v1.0.4...v1.0.5) (2026-09-10)
+
+
+### Bug Fixes
+
+* **test:** make the vitest suite actually pass and gate CI on it ([#87](https://github.com/forbiddenlink/contradict-me/issues/87)) ([f4e2551](https://github.com/forbiddenlink/contradict-me/commit/f4e2551048ebfc50e00112c2b197806ebfd01b56))
+
 ## [1.0.4](https://github.com/forbiddenlink/contradict-me/compare/v1.0.3...v1.0.4) (2026-09-09)
 
 
