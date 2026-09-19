@@ -5,14 +5,14 @@ Thanks for your interest in contributing!
 ## Getting Started
 
 1. Clone the repository.
-2. Install dependencies: `npm install`.
-3. Run the development server: `npm run dev`.
+2. Install dependencies: `pnpm install`.
+3. Run the development server: `pnpm dev`.
 
 ## Code Quality
 
-- **Linting**: Run `npm run lint` to check for issues.
-- **Formatting**: Run `npm run format` to format your code with Prettier.
-- **Testing**: Run `npm test` to run the test suite.
+- **Linting**: Run `pnpm lint` to check for issues.
+- **Formatting**: Run `pnpm format` to format your code with Prettier (or `pnpm format:check`).
+- **Testing**: Run `pnpm test` to run the test suite (Jest).
 
 ## Pull Requests
 

@@ -16,7 +16,7 @@ Live at https://contradict-me.vercel.app.
 - Upstash Redis for distributed rate limiting, with an in-memory fallback
   for local dev
 - Langfuse for LLM tracing, Sentry, Axiom, PostHog
-- Jest + Testing Library for tests (not Vitest; see Gotchas)
+- Vitest + Testing Library for tests (migrated off Jest; see Gotchas)
 - pnpm (`packageManager: pnpm@10.34.5`)
 
 ## Commands
@@ -27,7 +27,7 @@ Live at https://contradict-me.vercel.app.
 - `pnpm format` / `pnpm format:check` - Prettier
 - `pnpm biome:check` / `pnpm biome:fix` / `pnpm biome:format` - Biome, run
   separately from `pnpm lint`/`pnpm format`
-- `pnpm test` / `pnpm test:watch` / `pnpm test:coverage` - Jest
+- `pnpm test` / `pnpm test:watch` / `pnpm test:coverage` - Vitest
 
 ## Layout
 
@@ -59,19 +59,20 @@ Real usage (per `.env.example` and `app/api/chat/route.ts`,
 
 ## Gotchas
 
-- `ARCHITECTURE.md` and `README.md` describe an earlier/aspirational design
-  (Algolia InstantSearch chat widget, OpenAI, multiple search indices,
-  Prisma models). Current code proxies chat to an Algolia Agent Studio
-  agent and persists conversations client-side with Dexie; treat those docs
-  as historical, not current.
 - `lib/env.ts` (Algolia-only schema) and `src/env.ts` (a much larger schema
   including Stripe, N8N, and other vars unrelated to this app) are both
   unused: nothing imports either. Real env reads are inline `process.env.*`
   calls in the route handlers and `lib/` files listed above.
-- `vitest.config.ts` and `vitest-setup.ts` exist at the root, but no
-  package.json script runs Vitest; `pnpm test` runs Jest
-  (`jest.config.ts`). The MSW mocks in `src/mocks/` are wired to the unused
-  Vitest setup, not to Jest.
+- The test suite migrated from Jest to Vitest; `jest.config.ts` is gone and
+  `pnpm test` runs `vitest run`. Leftover Jest packages (`jest`,
+  `@jest/globals`, `jest-environment-jsdom`) are still in `package.json`
+  but nothing imports them. The `@` alias in `vitest.config.ts` must point
+  at the repo root (matching `tsconfig`'s `"@/*": ["./*"]`), not `./src` -
+  pointing it at `./src` makes every `@/...` import in `__tests__` fail to
+  resolve and the suite silently collects 0 tests.
+- The MSW mocks in `src/mocks/` are unused scaffolding; `vitest-setup.ts`
+  used to call `server.listen()` but that broke tests that mock
+  `global.fetch` directly, so it was removed rather than reconciled.
 - Path alias `@/*` maps to the repo root (`./*`), not `./src/*`. An import
   written as `@/lib/db` resolves to the root-level `lib/db.ts`, not
   anything under `src/lib/`.
