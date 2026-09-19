@@ -38,7 +38,7 @@ Live at https://contradict-me.vercel.app.
 - `lib/` - `db.ts` (Dexie schema), `rate-limit.ts`, `langfuse.ts`,
   `posthog.ts` / `posthog-server.ts`, `hooks.ts`, `site.ts`, `storage.ts`,
   `topicGuides.ts`, `utils.ts`
-- `__tests__/` - Jest test files
+- `__tests__/` - Vitest test files
 - `src/` - a separate, currently unused tree (`lib/debate-scoring.ts`,
   `lib/safe-action.ts`, `lib/logger.ts`, `lib/upstash.ts`, `mocks/` MSW
   handlers); nothing under `app/`, `components/`, or `lib/` imports it
