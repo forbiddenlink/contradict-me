@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import { Message } from '@/lib/types';
+import { trimHistory } from '@/lib/chat-history';
 import ChatMessage from './ChatMessage';
 import ChatInput from './ChatInput';
 import FollowUpSuggestions from './FollowUpSuggestions';
@@ -246,7 +247,11 @@ export default function ChatInterface({ initialMessage }: Readonly<ChatInterface
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const hasProcessedInitial = useRef(false);
   const abortControllerRef = useRef<AbortController | null>(null);
+  const messagesRef = useRef<Message[]>(messages);
   const loadingPhaseTimerRef = useRef<NodeJS.Timeout | null>(null);
+  useEffect(() => {
+    messagesRef.current = messages;
+  }, [messages]);
   const userMessages = useMemo(
     () => messages.filter((message) => message.role === 'user'),
     [messages]
@@ -422,6 +427,9 @@ export default function ChatInterface({ initialMessage }: Readonly<ChatInterface
       const controller = new AbortController();
       abortControllerRef.current = controller;
 
+      // Prior turns, captured before this turn's messages are added
+      const history = trimHistory(messagesRef.current);
+
       // Add user message
       const userMessage: Message = {
         id: generateId(),
@@ -451,6 +459,7 @@ export default function ChatInterface({ initialMessage }: Readonly<ChatInterface
           body: JSON.stringify({
             message: content,
             conversationId: generateId(),
+            history,
             stream: true,
           }),
           signal: signal || controller.signal,

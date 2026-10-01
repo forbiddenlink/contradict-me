@@ -5,6 +5,8 @@ import {
   getClientIdentifier,
   getRateLimitHeaders,
 } from '@/lib/rate-limit';
+import { validateHistory } from '@/lib/chat-history';
+import { createHmac } from 'node:crypto';
 
 const MAX_MESSAGE_LENGTH = 8000;
 const AGENT_TIMEOUT_MS = 30_000;
@@ -13,6 +15,15 @@ const jsonHeaders = { 'Content-Type': 'application/json' };
 
 function getClientId(req: NextRequest): string {
   return getClientIdentifier(req.headers);
+}
+
+/**
+ * Opaque, stable id for Langfuse. A keyed hash, so the raw client IP is not stored in
+ * traces and the small IPv4 space cannot be reversed without the key.
+ */
+function getTraceUserId(clientId: string): string {
+  const key = process.env.LANGFUSE_SECRET_KEY || 'contradict-me-trace-id';
+  return createHmac('sha256', key).update(clientId).digest('hex').slice(0, 16);
 }
 
 function errorResponse(status: number, error: string): Response {
@@ -136,7 +147,7 @@ export async function POST(req: NextRequest) {
   // Create Langfuse trace for this request
   const trace = langfuse?.trace({
     name: 'chat-request',
-    userId: clientId,
+    userId: getTraceUserId(clientId),
     metadata: {
       endpoint: '/api/chat',
     },
@@ -148,8 +159,10 @@ export async function POST(req: NextRequest) {
       stream = true,
       conversationId,
       debateContext,
+      history: rawHistory,
     } = (body ?? {}) as {
       message?: unknown;
+      history?: unknown;
       stream?: unknown;
       conversationId?: string;
       debateContext?: {
@@ -172,6 +185,14 @@ export async function POST(req: NextRequest) {
         `Message exceeds ${MAX_MESSAGE_LENGTH} characters. Please shorten and try again.`
       );
     }
+
+    const historyResult = validateHistory(rawHistory);
+    if (!historyResult.ok) {
+      trace?.update({ output: { error: historyResult.error } });
+      await flushLangfuse();
+      return errorResponse(historyResult.status, historyResult.error);
+    }
+    const history = historyResult.history;
 
     // Detect debate context from message content
     const detectedContext = detectDebateContext(message);
@@ -253,6 +274,7 @@ export async function POST(req: NextRequest) {
         },
         body: JSON.stringify({
           messages: [
+            ...history.map((turn) => ({ role: turn.role, parts: [{ text: turn.content }] })),
             {
               role: 'user',
               parts: [{ text: message.trim() }],

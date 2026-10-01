@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { DEFAULT_AUTHOR, SITE_NAME, SITE_URL } from '@/lib/site';
 
-const EFFECTIVE_DATE = '2026-02-08';
+const EFFECTIVE_DATE = '2026-10-01';
 const EFFECTIVE_ISO_DATE = `${EFFECTIVE_DATE}T00:00:00.000Z`;
 
 const privacySchema = {
@@ -66,6 +66,13 @@ export default function PrivacyPolicyPage() {
             needed to operate the service. We use this information to generate responses, monitor
             reliability, and improve quality. Please avoid sharing sensitive personal information in
             prompts unless it is necessary for your question.
+          </p>
+          <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed mt-4">
+            When you send a message, your browser sends it to our server together with up to the
+            last 12 earlier messages of the same conversation (capped at 8,000 characters in total),
+            so the AI can follow the discussion. Our server forwards that text to Algolia Agent
+            Studio to generate the reply. See Third-Party Services below for every provider that
+            receives data.
           </p>
         </section>
 
@@ -148,9 +155,12 @@ export default function PrivacyPolicyPage() {
             Cookies and Tracking
           </h2>
           <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
-            ContradictMe uses minimal analytics to understand usage patterns and improve service
-            quality. We use Vercel Analytics and Speed Insights to collect aggregate performance
-            metrics and page view data. These tools do not use third-party advertising cookies.
+            ContradictMe uses analytics and error monitoring to understand usage and fix problems.
+            Vercel Analytics and Speed Insights collect page views and performance metrics. PostHog
+            records page views and other browser events, including the page address you visit, which
+            can include the text of a shared <code>?message=</code> link. Sentry receives error
+            reports and performance traces from production. Each is listed with details below. We
+            do not run advertising trackers.
           </p>
           <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
             We store your theme preference (light/dark mode) in local browser storage to improve
@@ -158,11 +168,13 @@ export default function PrivacyPolicyPage() {
             servers.
           </p>
           <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
-            <strong>Conversation History:</strong> Your chat conversations, bookmarks, and analytics
-            data are stored locally in your browser using IndexedDB. This data remains on your
-            device only and is never sent to our servers. You can clear all stored data at any time
-            through your browser settings (Clear Browsing Data &gt; Indexed databases) or by using
-            the in-app conversation management features.
+            <strong>Conversation History:</strong> Your saved conversations and bookmarks are stored
+            locally in your browser using IndexedDB. We do not keep a copy of that archive on our
+            servers. Messages you send are the exception: each message, plus recent earlier
+            messages from the same conversation, is sent to our server and the providers listed
+            below so you get a reply. You can clear stored data at any time through your browser
+            settings (Clear Browsing Data &gt; Indexed databases) or by using the in-app
+            conversation management features.
           </p>
         </section>
 
@@ -177,26 +189,113 @@ export default function PrivacyPolicyPage() {
             <li className="flex gap-3">
               <span className="text-violet-600 dark:text-violet-400">•</span>
               <div>
-                <strong>Vercel</strong> - Hosting and edge delivery infrastructure
+                <strong>Vercel</strong> - Hosts the site and runs Vercel Analytics and Speed Insights. It receives your requests (including your IP address, as any web host does), page views, and web performance metrics. Analytics and Speed Insights load only on the Vercel deployment.{' '}
+                <a
+                  href="https://vercel.com/legal/privacy-policy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-violet-600 dark:text-violet-400 underline hover:no-underline"
+                >
+                  Vercel privacy policy
+                </a>
+                .
               </div>
             </li>
             <li className="flex gap-3">
               <span className="text-violet-600 dark:text-violet-400">•</span>
               <div>
-                <strong>Algolia Agent Studio</strong> - AI-powered search and response generation
+                <strong>Algolia Agent Studio</strong> - Generates the AI replies. Our server sends it your current message and up to 12 recent earlier messages from the conversation. It does not receive your IP address from us.{' '}
+                <a
+                  href="https://www.algolia.com/policies/privacy/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-violet-600 dark:text-violet-400 underline hover:no-underline"
+                >
+                  Algolia Agent Studio privacy policy
+                </a>
+                .
               </div>
             </li>
             <li className="flex gap-3">
               <span className="text-violet-600 dark:text-violet-400">•</span>
               <div>
-                <strong>Vercel Analytics</strong> - Privacy-focused analytics without cookies
+                <strong>Langfuse</strong> - Records traces of chat requests so we can debug quality and latency. Each trace holds your message text, the first 1,000 characters of the reply, debate settings if you use the debate mode, timing, and any error. Traces are tagged with a one-way hashed identifier derived from your IP address, not the address itself, and with a random per-message conversation id. Earlier history messages are not included in the trace. Active only when we have configured it.{' '}
+                <a
+                  href="https://langfuse.com/privacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-violet-600 dark:text-violet-400 underline hover:no-underline"
+                >
+                  Langfuse privacy policy
+                </a>
+                .
+              </div>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-violet-600 dark:text-violet-400">•</span>
+              <div>
+                <strong>PostHog</strong> - Product analytics in your browser. It receives page views and page-leave events with the page address, plus the browser details and automatic click events PostHog collects by default. It does not receive your chat messages unless they appear in the page address. Active only when configured, and turned off in development.{' '}
+                <a
+                  href="https://posthog.com/privacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-violet-600 dark:text-violet-400 underline hover:no-underline"
+                >
+                  PostHog privacy policy
+                </a>
+                .
+              </div>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-violet-600 dark:text-violet-400">•</span>
+              <div>
+                <strong>Sentry</strong> - Error monitoring and performance traces from production, sampled at 10% for traces. Error reports can include the page address, browser details, and stack traces. Cookie and authorization headers are stripped from browser-side reports.{' '}
+                <a
+                  href="https://sentry.io/privacy/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-violet-600 dark:text-violet-400 underline hover:no-underline"
+                >
+                  Sentry privacy policy
+                </a>
+                .
+              </div>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-violet-600 dark:text-violet-400">•</span>
+              <div>
+                <strong>Axiom</strong> - The site is wired to Axiom for logging and web vitals through the next-axiom package. It sends data only if Axiom credentials are configured, and the application code does not currently write its own log lines to it.{' '}
+                <a
+                  href="https://axiom.co/privacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-violet-600 dark:text-violet-400 underline hover:no-underline"
+                >
+                  Axiom privacy policy
+                </a>
+                .
+              </div>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-violet-600 dark:text-violet-400">•</span>
+              <div>
+                <strong>Upstash</strong> - Rate limiting. It receives your IP address as the key for counting requests per minute. Used only when configured; otherwise rate limiting runs in server memory.{' '}
+                <a
+                  href="https://upstash.com/trust/privacy.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-violet-600 dark:text-violet-400 underline hover:no-underline"
+                >
+                  Upstash privacy policy
+                </a>
+                .
               </div>
             </li>
           </ul>
           <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed mt-4">
-            Each provider operates under their own privacy policies and data processing agreements.
-            We select providers that maintain strong security standards and limit data use to
-            operational necessities.
+            Each provider handles data under its own privacy policy. We do not control how long
+            they keep it, so follow the links above for their retention terms. We do not publish
+            our own retention periods for data held by these providers.
           </p>
         </section>
 
