@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.6](https://github.com/forbiddenlink/contradict-me/compare/v1.0.5...v1.0.6) (2026-10-01)
+
+
+### Bug Fixes
+
+* align privacy policy with data flows and send chat history ([#96](https://github.com/forbiddenlink/contradict-me/issues/96)) ([b1f4af0](https://github.com/forbiddenlink/contradict-me/commit/b1f4af0f7f815d0fe16849cae93bcc1b467916a2))
+
 ## [1.0.5](https://github.com/forbiddenlink/contradict-me/compare/v1.0.4...v1.0.5) (2026-09-21)
 
 
