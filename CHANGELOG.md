@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.6](https://github.com/forbiddenlink/contradict-me/compare/v1.0.5...v1.0.6) (2026-10-09)
+
+
+### Bug Fixes
+
+* align privacy policy with data flows and send chat history ([#96](https://github.com/forbiddenlink/contradict-me/issues/96)) ([b1f4af0](https://github.com/forbiddenlink/contradict-me/commit/b1f4af0f7f815d0fe16849cae93bcc1b467916a2))
+* **deps:** raise brace-expansion and fast-uri override floors to patched versions ([#99](https://github.com/forbiddenlink/contradict-me/issues/99)) ([0020aa3](https://github.com/forbiddenlink/contradict-me/commit/0020aa3a0149b6a397d4f90d4ecc4a9f6dfc003a))
+
 ## [1.0.5](https://github.com/forbiddenlink/contradict-me/compare/v1.0.4...v1.0.5) (2026-09-21)
 
 
