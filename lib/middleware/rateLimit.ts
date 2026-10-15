@@ -27,6 +27,13 @@ export async function withRateLimit(
   const id = identifier ?? getClientIdentifier(request.headers);
   const result = await rateLimit(id, type);
 
+  if (result.unavailable) {
+    return NextResponse.json(
+      { error: "Service temporarily unavailable. Please retry shortly.", arguments: [] },
+      { status: 503, headers: { "Retry-After": "5" } }
+    );
+  }
+
   if (!result.success) {
     return NextResponse.json(
       {
