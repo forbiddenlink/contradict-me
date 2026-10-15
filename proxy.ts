@@ -13,6 +13,8 @@ const ratelimit =
         limiter: Ratelimit.slidingWindow(20, '10 s'),
         analytics: true,
         prefix: 'rl',
+        // Default 5s; a timeout resolves success:true, so keep it short and fail closed below.
+        timeout: 1500,
       })
     : null;
 
@@ -24,7 +26,14 @@ export async function proxy(request: NextRequest) {
   // API routes: rate limit only. No CSP work — these responses are not documents.
   if (request.nextUrl.pathname.startsWith('/api')) {
     if (ratelimit) {
-      const { success } = await ratelimit.limit(clientIp(request));
+      const { success, reason } = await ratelimit.limit(clientIp(request));
+      if (reason === 'timeout') {
+        // /api/chat spends model credits per call: a stalled Redis must not mean unlimited.
+        return NextResponse.json(
+          { error: 'Service temporarily unavailable' },
+          { status: 503, headers: { 'Retry-After': '5' } }
+        );
+      }
       if (!success) {
         return NextResponse.json({ error: 'Too Many Requests' }, { status: 429 });
       }

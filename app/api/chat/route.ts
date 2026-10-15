@@ -117,6 +117,12 @@ export async function POST(req: NextRequest) {
 
   // Rate limit check using Upstash Redis (falls back to in-memory in dev)
   const rateLimitResult = await rateLimit(clientId, 'debate');
+  if (rateLimitResult.unavailable) {
+    return new Response(
+      JSON.stringify({ error: 'Service temporarily unavailable. Please retry shortly.', arguments: [] }),
+      { status: 503, headers: { ...jsonHeaders, 'Retry-After': '5' } }
+    );
+  }
   if (!rateLimitResult.success) {
     return new Response(
       JSON.stringify({

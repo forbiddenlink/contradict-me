@@ -104,6 +104,9 @@ function getRateLimiter(type: RateLimitType): Ratelimit | null {
         limiter: Ratelimit.slidingWindow(config.requests, config.duration),
         analytics: true,
         prefix: config.prefix,
+        // Default is 5s and a timeout resolves { success: true, reason: "timeout" } instead of
+        // throwing, so a stalled Redis would allow every request. Keep it short; see rateLimit().
+        timeout: 1500,
       })
     );
   }
@@ -120,6 +123,8 @@ export interface RateLimitResult {
   limit: number;
   remaining: number;
   reset: number;
+  /** True when the limiter could not answer (Redis timeout). Callers should respond 503. */
+  unavailable?: boolean;
 }
 
 /**
@@ -144,6 +149,9 @@ export async function rateLimit(
   }
 
   const result = await limiter.limit(identifier);
+  if (result.reason === "timeout") {
+    return { success: false, limit: result.limit, remaining: 0, reset: Date.now() + 5000, unavailable: true };
+  }
   return {
     success: result.success,
     limit: result.limit,
@@ -217,6 +225,13 @@ export async function checkRateLimitOrRespond(
   type: RateLimitType = "api"
 ): Promise<Response | null> {
   const result = await rateLimit(identifier, type);
+
+  if (result.unavailable) {
+    return new Response(JSON.stringify({ error: "Service temporarily unavailable. Please retry shortly.", arguments: [] }), {
+      status: 503,
+      headers: { "Content-Type": "application/json", "Retry-After": "5" },
+    });
+  }
 
   if (!result.success) {
     return new Response(
