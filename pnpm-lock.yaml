@@ -24,6 +24,8 @@ overrides:
   systeminformation: '>=5.31.0'
   undici: '>=7.29.0 <8'
   ws: '>=8.20.1 <9'
+  source-map-js@1: '>=1.2.2 <2.0.0'
+  fast-copy@4: '>=4.1.0 <5.0.0'
 
 importers:
 
@@ -4740,8 +4742,8 @@ packages:
     resolution: {integrity: sha512-h5+1OzzfCC3Ef7VbtKdcv7zsstUQwUDlYpUTvjeUsJAssPgLn7QzbboPtL5ro04Mq0rPOsMzl7q5hIbRs2wD1A==}
     engines: {node: '>=8.0.0'}
 
-  fast-copy@4.0.3:
-    resolution: {integrity: sha512-58apWr0GUiDFM8+3afrO6eYwJBn9ZAhDOzG3L+/9llab/haCARS2UIfffmOurYLwbgDRs8n0rfr6qAAPEAuAQw==}
+  fast-copy@4.2.0:
+    resolution: {integrity: sha512-WSlnvPXaMdUjFdgxPkovE4e5aslybVod4TNKrEKKyoA8GoHZzbDLlhDXZOvqjtFgjtOHd9TYCstkUcGXy1+SEA==}
 
   fast-decode-uri-component@1.0.1:
     resolution: {integrity: sha512-WKgKWg5eUxvRZGwW8FvfbaH7AXSh2cL+3j5fMGzUMCxWBJ3dV3a7Wz8y2f/uQ0e3B6WmodD3oS54jTQ9HVTIIg==}
@@ -6831,10 +6833,6 @@ packages:
 
   sonic-boom@4.2.1:
     resolution: {integrity: sha512-w6AxtubXa2wTXAUsZMMWERrsIRAdrK0Sc+FUytWvYAhBJLyuI4llrMIC1DtlNSdI99EI86KZum2MMq3EAZlF9Q==}
-
-  source-map-js@1.2.1:
-    resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
-    engines: {node: '>=0.10.0'}
 
   source-map-js@1.2.2:
     resolution: {integrity: sha512-KGj/8Y43x35aZVDtt+J4mK1hoLGHULMYfSkODJNQjNDC3oW1PqPoxMwo0pLUsWM/UEGzON/NxeHywEfNXNP3Vw==}
@@ -10468,7 +10466,7 @@ snapshots:
       jiti: 2.7.0
       lightningcss: 1.32.0
       magic-string: 0.30.21
-      source-map-js: 1.2.1
+      source-map-js: 1.2.2
       tailwindcss: 4.3.3
 
   '@tailwindcss/oxide-android-arm64@4.3.3':
@@ -12393,7 +12391,7 @@ snapshots:
     dependencies:
       pure-rand: 6.1.0
 
-  fast-copy@4.0.3: {}
+  fast-copy@4.2.0: {}
 
   fast-decode-uri-component@1.0.1: {}
 
@@ -14293,7 +14291,7 @@ snapshots:
     dependencies:
       colorette: 2.0.20
       dateformat: 4.6.3
-      fast-copy: 4.0.3
+      fast-copy: 4.2.0
       fast-safe-stringify: 2.1.1
       help-me: 5.0.0
       joycon: 3.1.1
@@ -14347,7 +14345,7 @@ snapshots:
     dependencies:
       nanoid: 6.0.2
       picocolors: 1.1.1
-      source-map-js: 1.2.1
+      source-map-js: 1.2.2
 
   postcss@8.5.29:
     dependencies:
@@ -15014,8 +15012,6 @@ snapshots:
   sonic-boom@4.2.1:
     dependencies:
       atomic-sleep: 1.0.0
-
-  source-map-js@1.2.1: {}
 
   source-map-js@1.2.2: {}
 
