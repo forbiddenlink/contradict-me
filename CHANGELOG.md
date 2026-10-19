@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.7](https://github.com/forbiddenlink/contradict-me/compare/v1.0.6...v1.0.7) (2026-10-19)
+
+
+### Bug Fixes
+
+* **deps:** clear transitive CVEs with bounded overrides ([#107](https://github.com/forbiddenlink/contradict-me/issues/107)) ([fa0aee2](https://github.com/forbiddenlink/contradict-me/commit/fa0aee293a7932f18a9b5e11bfcc66fd7aa48cda))
+
 ## [1.0.6](https://github.com/forbiddenlink/contradict-me/compare/v1.0.5...v1.0.6) (2026-10-15)
 
 
