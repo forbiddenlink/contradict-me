@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.8](https://github.com/forbiddenlink/contradict-me/compare/v1.0.7...v1.0.8) (2026-10-19)
+
+
+### Bug Fixes
+
+* **chat:** bound Agent Studio spend and stop using browser-exposed keys ([#111](https://github.com/forbiddenlink/contradict-me/issues/111)) ([9a4c900](https://github.com/forbiddenlink/contradict-me/commit/9a4c9005535ef21c38fbe0312b4f990e82e9f744))
+
 ## [1.0.7](https://github.com/forbiddenlink/contradict-me/compare/v1.0.6...v1.0.7) (2026-10-19)
 
 
