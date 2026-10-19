@@ -143,18 +143,6 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // Site-wide daily ceiling, so total spend stays bounded however many clients there are.
-  const dailyResult = await rateLimit('global', 'debateDaily');
-  if (dailyResult.unavailable || !dailyResult.success) {
-    return new Response(
-      JSON.stringify({
-        error: 'The debate partner is resting for today. Please come back tomorrow.',
-        arguments: [],
-      }),
-      { status: 503, headers: { ...jsonHeaders, 'Retry-After': '3600' } }
-    );
-  }
-
   let body: unknown;
   try {
     body = await req.json();
@@ -263,6 +251,21 @@ export async function POST(req: NextRequest) {
     url.searchParams.set('compatibilityMode', 'ai-sdk-5');
 
     // Create generation span for the LLM call
+    // Site-wide daily ceiling, checked last so only real upstream calls count against it.
+    // One client can still use up the day's budget; a hard spend cap beats availability here.
+    const dailyResult = await rateLimit('global', 'debateDaily');
+    if (dailyResult.unavailable || !dailyResult.success) {
+      trace?.update({ output: { error: 'Daily ceiling reached' } });
+      await flushLangfuse();
+      return new Response(
+        JSON.stringify({
+          error: 'The debate partner is resting for today. Please come back tomorrow.',
+          arguments: [],
+        }),
+        { status: 503, headers: { ...jsonHeaders, 'Retry-After': '3600' } }
+      );
+    }
+
     const spanName = isDebateMode
       ? `debate-turn-${detectedContext.speaker || debateContext?.speaker || 'unknown'}-round-${detectedContext.round || debateContext?.round || '?'}`
       : 'agent-generation';

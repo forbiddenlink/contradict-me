@@ -9,9 +9,10 @@ import { Redis } from "@upstash/redis";
  * Check if Upstash Redis is configured.
  * Falls back to in-memory for local development.
  */
-const isUpstashConfigured = Boolean(
-  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
-);
+// The Vercel Upstash integration injects KV_REST_API_*; direct setups use UPSTASH_REDIS_REST_*.
+const upstashUrl = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
+const upstashToken = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
+const isUpstashConfigured = Boolean(upstashUrl && upstashToken);
 
 // Redis client (lazy initialized)
 let redis: Redis | null = null;
@@ -19,10 +20,7 @@ let redis: Redis | null = null;
 function getRedis(): Redis | null {
   if (!isUpstashConfigured) return null;
   if (!redis) {
-    redis = new Redis({
-      url: process.env.UPSTASH_REDIS_REST_URL!,
-      token: process.env.UPSTASH_REDIS_REST_TOKEN!,
-    });
+    redis = new Redis({ url: upstashUrl!, token: upstashToken! });
   }
   return redis;
 }
