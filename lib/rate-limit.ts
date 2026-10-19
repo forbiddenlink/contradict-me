@@ -40,6 +40,11 @@ export const RATE_LIMIT_CONFIGS = {
   auth: { requests: 5, duration: "1 m" as const, prefix: "contradict:auth" },
   /** Debate mode - slightly higher for back-and-forth: 25/minute */
   debate: { requests: 25, duration: "1 m" as const, prefix: "contradict:debate" },
+  /**
+   * Site-wide ceiling on Agent Studio calls, keyed on one shared identifier. Per-client limits
+   * do not bound total spend: in Oct 2026 public traffic ran the OpenAI bill past its budget.
+   */
+  debateDaily: { requests: 400, duration: "1 d" as const, prefix: "contradict:debate-daily" },
 } as const;
 
 export type RateLimitType = keyof typeof RATE_LIMIT_CONFIGS;
@@ -144,6 +149,11 @@ export async function rateLimit(
 
   // Use in-memory fallback for local development
   if (!limiter) {
+    // In production an in-memory map is per serverless instance, so it limits nothing.
+    // Fail closed rather than serve paid AI calls with no working limiter.
+    if (process.env.VERCEL_ENV === "production") {
+      return { success: false, limit: config.requests, remaining: 0, reset: Date.now() + 5000, unavailable: true };
+    }
     const windowMs = parseDuration(config.duration);
     return inMemoryRateLimit(identifier, config.requests, windowMs);
   }

@@ -79,6 +79,30 @@ describe('POST /api/chat', () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
+  it('never authenticates to the agent with a browser-exposed NEXT_PUBLIC_ key', async () => {
+    vi.stubEnv('ALGOLIA_SEARCH_API_KEY', '');
+    vi.stubEnv('NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY', 'public-key');
+    const res = await POST(makeReq({ message: 'hi', stream: false }));
+    expect(res.status).toBe(500);
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it('prefers the dedicated server-only agent key', async () => {
+    vi.stubEnv('ALGOLIA_AGENT_API_KEY', 'agent-key');
+    await POST(makeReq({ message: 'hi', stream: false }));
+    expect(fetchMock.mock.calls[0][1].headers['X-Algolia-API-Key']).toBe('agent-key');
+  });
+
+  it('stops at the site-wide daily ceiling without calling upstream', async () => {
+    const { rateLimit } = await import('@/lib/rate-limit');
+    vi.mocked(rateLimit)
+      .mockResolvedValueOnce({ success: true, limit: 25, remaining: 24, reset: 0 })
+      .mockResolvedValueOnce({ success: false, limit: 400, remaining: 0, reset: 0 });
+    const res = await POST(makeReq({ message: 'hi', stream: false }));
+    expect(res.status).toBe(503);
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
   it('does not send the raw client IP to Langfuse', async () => {
     await POST(makeReq({ message: 'hi', stream: false }));
     const arg = traceMock.mock.calls[0][0];

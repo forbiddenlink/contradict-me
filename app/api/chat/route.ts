@@ -143,6 +143,18 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  // Site-wide daily ceiling, so total spend stays bounded however many clients there are.
+  const dailyResult = await rateLimit('global', 'debateDaily');
+  if (dailyResult.unavailable || !dailyResult.success) {
+    return new Response(
+      JSON.stringify({
+        error: 'The debate partner is resting for today. Please come back tomorrow.',
+        arguments: [],
+      }),
+      { status: 503, headers: { ...jsonHeaders, 'Retry-After': '3600' } }
+    );
+  }
+
   let body: unknown;
   try {
     body = await req.json();
@@ -234,8 +246,9 @@ export async function POST(req: NextRequest) {
 
     // Validate required environment variables
     const appId = process.env.ALGOLIA_APP_ID || process.env.NEXT_PUBLIC_ALGOLIA_APP_ID;
-    const apiKey =
-      process.env.ALGOLIA_SEARCH_API_KEY || process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY;
+    // Server-only key. A NEXT_PUBLIC_ key ships to the browser, which lets anyone call the
+    // agent directly and skip both rate limits above.
+    const apiKey = process.env.ALGOLIA_AGENT_API_KEY || process.env.ALGOLIA_SEARCH_API_KEY;
 
     if (!appId || !apiKey) {
       trace?.update({ output: { error: 'Missing Algolia credentials' } });
