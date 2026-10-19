@@ -9,9 +9,10 @@ import { Redis } from "@upstash/redis";
  * Check if Upstash Redis is configured.
  * Falls back to in-memory for local development.
  */
-const isUpstashConfigured = Boolean(
-  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
-);
+// The Vercel Upstash integration injects KV_REST_API_*; direct setups use UPSTASH_REDIS_REST_*.
+const upstashUrl = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
+const upstashToken = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
+const isUpstashConfigured = Boolean(upstashUrl && upstashToken);
 
 // Redis client (lazy initialized)
 let redis: Redis | null = null;
@@ -19,10 +20,7 @@ let redis: Redis | null = null;
 function getRedis(): Redis | null {
   if (!isUpstashConfigured) return null;
   if (!redis) {
-    redis = new Redis({
-      url: process.env.UPSTASH_REDIS_REST_URL!,
-      token: process.env.UPSTASH_REDIS_REST_TOKEN!,
-    });
+    redis = new Redis({ url: upstashUrl!, token: upstashToken! });
   }
   return redis;
 }
@@ -40,6 +38,11 @@ export const RATE_LIMIT_CONFIGS = {
   auth: { requests: 5, duration: "1 m" as const, prefix: "contradict:auth" },
   /** Debate mode - slightly higher for back-and-forth: 25/minute */
   debate: { requests: 25, duration: "1 m" as const, prefix: "contradict:debate" },
+  /**
+   * Site-wide ceiling on Agent Studio calls, keyed on one shared identifier. Per-client limits
+   * do not bound total spend: in Oct 2026 public traffic ran the OpenAI bill past its budget.
+   */
+  debateDaily: { requests: 400, duration: "1 d" as const, prefix: "contradict:debate-daily" },
 } as const;
 
 export type RateLimitType = keyof typeof RATE_LIMIT_CONFIGS;
@@ -144,6 +147,11 @@ export async function rateLimit(
 
   // Use in-memory fallback for local development
   if (!limiter) {
+    // In production an in-memory map is per serverless instance, so it limits nothing.
+    // Fail closed rather than serve paid AI calls with no working limiter.
+    if (process.env.VERCEL_ENV === "production") {
+      return { success: false, limit: config.requests, remaining: 0, reset: Date.now() + 5000, unavailable: true };
+    }
     const windowMs = parseDuration(config.duration);
     return inMemoryRateLimit(identifier, config.requests, windowMs);
   }

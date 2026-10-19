@@ -234,8 +234,9 @@ export async function POST(req: NextRequest) {
 
     // Validate required environment variables
     const appId = process.env.ALGOLIA_APP_ID || process.env.NEXT_PUBLIC_ALGOLIA_APP_ID;
-    const apiKey =
-      process.env.ALGOLIA_SEARCH_API_KEY || process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY;
+    // Server-only key. A NEXT_PUBLIC_ key ships to the browser, which lets anyone call the
+    // agent directly and skip both rate limits above.
+    const apiKey = process.env.ALGOLIA_AGENT_API_KEY || process.env.ALGOLIA_SEARCH_API_KEY;
 
     if (!appId || !apiKey) {
       trace?.update({ output: { error: 'Missing Algolia credentials' } });
@@ -250,6 +251,21 @@ export async function POST(req: NextRequest) {
     url.searchParams.set('compatibilityMode', 'ai-sdk-5');
 
     // Create generation span for the LLM call
+    // Site-wide daily ceiling, checked last so only real upstream calls count against it.
+    // One client can still use up the day's budget; a hard spend cap beats availability here.
+    const dailyResult = await rateLimit('global', 'debateDaily');
+    if (dailyResult.unavailable || !dailyResult.success) {
+      trace?.update({ output: { error: 'Daily ceiling reached' } });
+      await flushLangfuse();
+      return new Response(
+        JSON.stringify({
+          error: 'The debate partner is resting for today. Please come back tomorrow.',
+          arguments: [],
+        }),
+        { status: 503, headers: { ...jsonHeaders, 'Retry-After': '3600' } }
+      );
+    }
+
     const spanName = isDebateMode
       ? `debate-turn-${detectedContext.speaker || debateContext?.speaker || 'unknown'}-round-${detectedContext.round || debateContext?.round || '?'}`
       : 'agent-generation';
