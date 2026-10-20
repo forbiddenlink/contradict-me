@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.9](https://github.com/forbiddenlink/contradict-me/compare/v1.0.8...v1.0.9) (2026-10-20)
+
+
+### Bug Fixes
+
+* **deps:** cap unbounded pnpm overrides at the next major ([#113](https://github.com/forbiddenlink/contradict-me/issues/113)) ([3ee052c](https://github.com/forbiddenlink/contradict-me/commit/3ee052c5f2cd21f85c7e429e8d7aba240d41ee60))
+
 ## [1.0.8](https://github.com/forbiddenlink/contradict-me/compare/v1.0.7...v1.0.8) (2026-10-19)
 
 
