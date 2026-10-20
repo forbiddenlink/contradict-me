@@ -1,6 +1,9 @@
 import { ImageResponse } from 'next/og';
 
-export const runtime = 'edge';
+// Static: rendered once at build time and served from the CDN. The edge runtime made
+// every request run ImageResponse live, so one slow render could hang until timeout.
+export const dynamic = 'force-static';
+export const revalidate = false;
 
 export const alt = 'ContradictMe - Challenge your beliefs with AI';
 export const size = {
