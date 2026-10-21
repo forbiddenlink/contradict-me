@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.10](https://github.com/forbiddenlink/contradict-me/compare/v1.0.9...v1.0.10) (2026-10-21)
+
+
+### Bug Fixes
+
+* **deps:** pin transitive vite to patched version ([#118](https://github.com/forbiddenlink/contradict-me/issues/118)) ([9329c27](https://github.com/forbiddenlink/contradict-me/commit/9329c27ca592ecd96adbf24bec0566b4d0c086f5))
+* **og:** prerender OG and Twitter images statically so they cannot hang ([#116](https://github.com/forbiddenlink/contradict-me/issues/116)) ([9d938b8](https://github.com/forbiddenlink/contradict-me/commit/9d938b8423529f204c903b47276ec5b28621d8bf))
+
 ## [1.0.9](https://github.com/forbiddenlink/contradict-me/compare/v1.0.8...v1.0.9) (2026-10-20)
 
 
