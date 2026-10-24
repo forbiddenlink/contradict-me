@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.11](https://github.com/forbiddenlink/contradict-me/compare/v1.0.10...v1.0.11) (2026-10-24)
+
+
+### Bug Fixes
+
+* **deps:** raise dompurify override floor to 3.4.17 ([#122](https://github.com/forbiddenlink/contradict-me/issues/122)) ([bf4ecca](https://github.com/forbiddenlink/contradict-me/commit/bf4ecca1339326e1645fd142cc679309fe69e2f8))
+
 ## [1.0.10](https://github.com/forbiddenlink/contradict-me/compare/v1.0.9...v1.0.10) (2026-10-21)
 
 
