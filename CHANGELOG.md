@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.12](https://github.com/forbiddenlink/contradict-me/compare/v1.0.11...v1.0.12) (2026-10-27)
+
+
+### Bug Fixes
+
+* **deps:** bump undici and fast-uri via bounded overrides ([#125](https://github.com/forbiddenlink/contradict-me/issues/125)) ([9622c56](https://github.com/forbiddenlink/contradict-me/commit/9622c566c9454cf75601052922a9bf3fd5cd2f11))
+
 ## [1.0.11](https://github.com/forbiddenlink/contradict-me/compare/v1.0.10...v1.0.11) (2026-10-24)
 
 
