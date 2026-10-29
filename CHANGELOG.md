@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.13](https://github.com/forbiddenlink/contradict-me/compare/v1.0.12...v1.0.13) (2026-10-29)
+
+
+### Bug Fixes
+
+* **deps:** raise systeminformation and @hono/node-server override floors ([#132](https://github.com/forbiddenlink/contradict-me/issues/132)) ([ed438bb](https://github.com/forbiddenlink/contradict-me/commit/ed438bb61f1da77da43ba80e8b9b9cccae807afb))
+
 ## [1.0.12](https://github.com/forbiddenlink/contradict-me/compare/v1.0.11...v1.0.12) (2026-10-27)
 
 
