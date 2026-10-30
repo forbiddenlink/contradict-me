@@ -32,7 +32,7 @@ Live at https://contradict-me.vercel.app.
 ## Layout
 
 - `app/` - routes: `chat/`, `debate/`, `demo/`, `learn/[slug]/`, `about/`,
-  `analytics/`, `contact/`, `privacy-policy/`, `test-chat/`,
+  `analytics/`, `contact/`, `privacy-policy/`,
   `api/chat/route.ts`, `api/health/route.ts`
 - `components/{chat,arguments,ui,demo}/`
 - `lib/` - `db.ts` (Dexie schema), `rate-limit.ts`, `langfuse.ts`,
