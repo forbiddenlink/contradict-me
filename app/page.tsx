@@ -257,17 +257,16 @@ export default function Home() {
 
             {/* Content */}
             <div className="text-body mb-4 sm:mb-6 text-sm sm:text-base">
-              Stanford study of 10,000 developers found 23% more patent filings from hybrid teams
-              compared to fully remote. The research suggests spontaneous &ldquo;water cooler&rdquo;
-              conversations lead to unexpected idea combinations that scheduled video calls miss.
+              [Placeholder claim] A study of [N] developers found [X]% more [outcome] from hybrid teams
+              compared to fully remote. [One sentence summarizing why, as the AI would argue it.]
             </div>
 
             {/* Source Card */}
             <div className="source-card">
               <div className="text-citation font-medium text-slate-800 dark:text-slate-200 mb-1 text-sm sm:text-base">
-                Dr. Sarah Chen
+                [Author name]
               </div>
-              <div className="text-citation text-xs sm:text-sm">Stanford Economics, 2024</div>
+              <div className="text-citation text-xs sm:text-sm">[Institution], [Year]</div>
               <ul
                 className="flex gap-3 sm:gap-4 mt-2 sm:mt-3 text-[10px] sm:text-xs text-slate-700 dark:text-slate-300 list-none"
                 aria-label="Research metrics"
@@ -325,7 +324,7 @@ export default function Home() {
                 Example Card
               </span>
               <span className="text-slate-600 dark:text-slate-300">
-                Real arguments include source links
+                Illustrative only: not a real study. Real arguments include source links
               </span>
             </div>
           </article>
