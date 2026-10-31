@@ -3,7 +3,7 @@
   "topic": "Standardized Testing",
   "position": "for",
   "mainClaim": "Removing standardized tests reduces equity and makes admissions more subjective and biased",
-  "evidence": "UC system study of 225,000 applicants found test-optional policies increased reliance on subjective factors that favor affluent students: recommendation letters (stronger from well-resourced schools), extracurriculars (require time/money), and GPA (varies dramatically by school quality). Test scores were the strongest predictor of first-year college success for low-income and minority students. Schools that went test-optional saw 12% decrease in low-income admits.",
+  "evidence": "No verified source is cited for this argument. The argument rests on reasoning: a common test gives admissions staff one measure that is comparable across schools, while recommendation letters, extracurriculars and grades vary with school resources.",
   "supportingPoints": [
     "Tests provide standardized measure across vastly different school districts",
     "Free test prep resources have improved dramatically (Khan Academy SAT prep)",
@@ -14,14 +14,12 @@
   "sourceCredibility": 90,
   "evidenceStrength": 85,
   "sourceMetadata": {
-    "authors": ["Dr. Zachary Bleemer", "UC Office of Institutional Research"],
-    "institution": "University of California System",
-    "yearPublished": 2024,
-    "publicationType": "Longitudinal Study",
-    "peerReviewed": true,
-    "citationCount": 342
+    "title": "Source not verified",
+    "authors": [],
+    "institution": "Not verified",
+    "publicationType": "unverified"
   },
-  "limitations": "Doesn't address fundamental issues with test design and access to prep. Cultural bias in tests remains a concern. Study limited to UC system - may not generalize nationwide. Suggests reform rather than elimination.",
+  "limitations": "The earlier University of California study and its figures could not be traced to a published source and were removed. Other figures in the supporting points have not been checked. Doesn't address fundamental issues with test design and access to prep. Cultural bias in tests remains a concern. Suggests reform rather than elimination.",
   "tags": ["Education", "Equity", "College Admissions", "Testing"],
   "lastUpdated": "2026-01-13T00:00:00Z"
 }

@@ -3,7 +3,7 @@
   "topic": "Lab-Grown Meat",
   "position": "for",
   "mainClaim": "Cultivated meat could dramatically reduce environmental impact of food production while meeting protein demands",
-  "evidence": "Oxford lifecycle analysis shows cultivated meat uses 95% less land, 78% less water, and produces 96% fewer greenhouse gas emissions than conventional beef. Current global livestock system uses 77% of agricultural land but provides only 18% of calories. Scaling cultivated meat could free 3 billion hectares for rewilding/carbon sequestration. Good Food Institute projects price parity with conventional meat by 2030 as production scales.",
+  "evidence": "Tuomisto and Teixeira de Mattos (Environmental Science & Technology, 2011) ran a life cycle assessment of large-scale cultured meat production. They estimate that producing 1000 kg of cultured meat requires 26-33 GJ of energy, 367-521 cubic meters of water and 190-230 square meters of land, and emits 1900-2240 kg of CO2-equivalent. Compared with conventionally produced European meat, they find about 7-45% lower energy use (only poultry has lower energy use), 78-96% lower greenhouse gas emissions, 99% lower land use and 82-96% lower water use, depending on the product compared.",
   "supportingPoints": [
     "Eliminates animal welfare concerns and zoonotic disease risks",
     "Precision nutrition - can optimize fatty acid profiles and reduce harmful compounds",
@@ -14,14 +14,17 @@
   "sourceCredibility": 90,
   "evidenceStrength": 85,
   "sourceMetadata": {
-    "authors": ["Dr. Hanna Tuomisto", "Good Food Institute", "Oxford University"],
-    "institution": "University of Oxford & GFI",
-    "yearPublished": 2024,
-    "publicationType": "Lifecycle Assessment Study",
-    "peerReviewed": true,
-    "citationCount": 412
+    "title": "Environmental Impacts of Cultured Meat Production",
+    "authors": ["Hanna L. Tuomisto", "M. Joost Teixeira de Mattos"],
+    "institution": "University of Oxford",
+    "publicationType": "peer-reviewed",
+    "journal": "Environmental Science & Technology",
+    "yearPublished": 2011,
+    "doi": "10.1021/es200130u",
+    "url": "https://doi.org/10.1021/es200130u",
+    "methodology": "Life cycle assessment (modeled; assumes cyanobacteria hydrolysate as nutrient source)"
   },
-  "limitations": "Current production energy-intensive and expensive. Consumer acceptance uncertain. Disruption to livestock farmers and rural economies. Nutritional profile and long-term health effects need more study. Scale-up challenges remain.",
+  "limitations": "The cited assessment is a 2011 model of a technology that did not yet exist at scale, and the authors note high uncertainty. It does not support price-parity or land-rewilding projections. Current production energy-intensive and expensive. Consumer acceptance uncertain. Disruption to livestock farmers and rural economies. Nutritional profile and long-term health effects need more study. Scale-up challenges remain.",
   "tags": ["Environment", "Food Technology", "Climate", "Agriculture"],
   "lastUpdated": "2026-01-13T00:00:00Z"
 }

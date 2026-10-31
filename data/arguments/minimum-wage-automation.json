@@ -8,39 +8,37 @@
     "Minimum wage doesn't affect employment"
   ],
   "mainClaim": "Raising minimum wage accelerates automation adoption and reduces entry-level employment opportunities for low-skilled workers",
-  "evidence": "A 2024 University of Washington study on Seattle's $15 minimum wage found hours worked for low-wage employees fell 9%, resulting in average monthly earnings declining by $125 despite higher hourly pay. MIT research tracking 35,000 fast-food restaurants showed stores in areas with minimum wage increases were 25% more likely to install self-service kiosks within 12 months. CBO analysis estimates federal $15 minimum would eliminate 1.4 million jobs while lifting 900,000 out of poverty - net negative for employment. McDonald's CEO stated automation became cost-effective only after minimum wage surpassed $12/hour. Restaurant industry data shows 73% of operators accelerated automation plans following local minimum wage hikes. Teenage unemployment (16-19) increased 4.6 percentage points in cities one year after implementing $15 minimum, while adult unemployment remained stable.",
+  "evidence": "Jardim and coauthors (American Economic Journal: Economic Policy, 2022) studied Seattle's minimum wage increases to as much as $11 in 2015 and $13 in 2016, using Washington State administrative data. Relative to outlying regions of the state, aggregate hours worked at wages under twice the original minimum declined, though part of that reflects jobs moving above the wage threshold. Tracking individual workers, they found no change in the probability of continued employment but significant reductions in hours, particularly for less experienced workers. They estimate aggregate employment elasticities in the range of -0.2 to -2.0.",
   "supportingPoints": [
     "One-time automation cost ($35k kiosk) becomes cheaper than ongoing higher wages over 2-3 years",
     "Small businesses with thin margins (3-5%) struggle more than large corporations",
     "Entry-level positions provide skills/experience ladder; fewer positions = fewer opportunities",
     "Automation displaces workers who then compete for even fewer remaining jobs",
-    "Historical pattern: every $1 increase correlates with 0.3-0.6% teen employment drop",
     "Benefits concentrate among workers who keep jobs; laid-off workers worse off"
   ],
-  "limitations": "Studies show mixed results across different cities and timeframes. Some research finds minimal employment effects. Doesn't account for benefits to workers who keep jobs and earn more. Correlation vs causation issues - automation trends exist independently. Small sample sizes in some studies. Short-term vs long-term effects differ.",
+  "limitations": "The cited paper studies employment and hours in Seattle. It does not study automation or kiosk adoption, so the link from minimum wage to automation is not established by this source. Studies show mixed results across different cities and timeframes. Some research finds minimal employment effects. Doesn't account for benefits to workers who keep jobs and earn more. Correlation vs causation issues - automation trends exist independently. Small sample sizes in some studies. Short-term vs long-term effects differ.",
   "counterCounterArguments": [
     "Gradual phase-ins can minimize shock and allow businesses to adjust",
     "Increased consumer spending from higher wages can offset costs",
     "Some automation would occur regardless of wage levels due to technology advancement"
   ],
   "sourceMetadata": {
-    "title": "Minimum Wage Increases, Wages, and Low-Wage Employment: Evidence from Seattle",
+    "title": "Minimum-Wage Increases and Low-Wage Employment: Evidence from Seattle",
     "authors": [
-      "Prof. Ekaterina Jardim",
-      "Prof. Mark Long",
-      "Prof. Robert Plotnick",
-      "Prof. Emma van Inwegen",
-      "Prof. Jacob Vigdor"
+      "Ekaterina Jardim",
+      "Mark C. Long",
+      "Robert Plotnick",
+      "Emma van Inwegen",
+      "Jacob Vigdor",
+      "Hilary Wething"
     ],
     "institution": "University of Washington",
-    "publicationType": "Peer-reviewed study",
+    "publicationType": "peer-reviewed",
     "journal": "American Economic Journal: Economic Policy",
-    "yearPublished": 2024,
-    "citationCount": 658,
-    "doi": "10.1257/pol.20170878",
-    "url": "https://evans.uw.edu/policy-impact/minimum-wage-study",
-    "sampleSize": 140000,
-    "methodology": "Difference-in-differences analysis of employment and earnings data"
+    "yearPublished": 2022,
+    "doi": "10.1257/pol.20180578",
+    "url": "https://doi.org/10.1257/pol.20180578",
+    "methodology": "Synthetic control on aggregate hours plus matched longitudinal analysis of individual workers"
   },
   "qualityScore": 85,
   "sourceCredibility": 94,
@@ -57,7 +55,7 @@
     "tags": ["wages", "automation", "employment", "policy"],
     "createdAt": "2026-01-13T00:00:00Z",
     "lastUpdated": "2026-01-13T00:00:00Z",
-    "reviewStatus": "verified",
+    "reviewStatus": "source-checked",
     "curator": "ContradictMe Team"
   }
 }

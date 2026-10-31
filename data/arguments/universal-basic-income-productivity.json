@@ -8,7 +8,7 @@
     "UBI is unaffordable"
   ],
   "mainClaim": "Universal Basic Income trials show recipients work similar hours while experiencing significant improvements in mental health, education, and entrepreneurship",
-  "evidence": "Finland's 2-year UBI trial (€560/month to 2,000 unemployed) showed recipients worked 6 days more per year than control group while reporting 55% less stress and 46% less depression. Kenya's GiveDirectly study (largest UBI trial: 20,000+ people, $22/month for 12 years) found employment increased 4%, business creation up 12%, no reduction in work hours. Stockton, California pilot ($500/month, 125 recipients, 2019-2021) showed full-time employment increased from 28% to 40%, compared to 5% in control group. Recipients used money for: food (37%), utilities (23%), auto expenses (11%), NOT alcohol/tobacco (less than 1%). Y Combinator pilot in Kenya found recipients invested in education, started businesses, improved housing. Economic modeling by Roosevelt Institute shows $1,000/month UBI would grow US economy 12.56% over 8 years through increased spending.",
+  "evidence": "Nikiforos, Steinbaum and Zezza (Roosevelt Institute, 2017) modeled three universal basic income designs with the Levy Institute macroeconomic model. Financed by federal debt, the largest program (a $1,000 per month payment to every adult) was projected to expand the economy by 12.56% over the baseline after eight years, after which growth returns to baseline but output stays permanently higher. Financed by household taxes, the Levy model forecasts no effect on the economy, although a version adapted to include distributional effects projects growth even in the tax-financed scenarios.",
   "supportingPoints": [
     "Removes welfare cliff that discourages work under current systems",
     "Reduces stress allows job searching, training, education",
@@ -17,22 +17,20 @@
     "Multiple trials across countries show consistent results",
     "Alaska Permanent Fund Dividend (40+ years) shows no employment reduction"
   ],
-  "limitations": "Limited trial durations (most 1-3 years) may not reflect long-term behavior. Different results in developing vs developed nations. Funding mechanism unclear at scale. Inflation concerns if broadly implemented. Some trials had small sample sizes. Cultural factors affect outcomes.",
+  "limitations": "The cited source is a macroeconomic simulation from a policy institute, not a trial and not peer-reviewed. It says nothing about hours worked, mental health or entrepreneurship, which this argument's main claim relies on. Limited trial durations (most 1-3 years) may not reflect long-term behavior. Different results in developing vs developed nations. Funding mechanism unclear at scale. Inflation concerns if broadly implemented. Some trials had small sample sizes. Cultural factors affect outcomes.",
   "counterCounterArguments": [
     "Funding via VAT, carbon tax, or automation tax is economically feasible",
     "Alaska model demonstrates political viability across decades",
     "Inflation concerns addressable through careful implementation"
   ],
   "sourceMetadata": {
-    "title": "Modeling the Macroeconomic Effects of Universal Basic Income",
-    "authors": ["Dr. Marshall Steinbaum", "Dr. Michael Stynes"],
+    "title": "Modeling the Macroeconomic Effects of a Universal Basic Income",
+    "authors": ["Michalis Nikiforos", "Marshall Steinbaum", "Gennaro Zezza"],
     "institution": "Roosevelt Institute",
-    "publicationType": "Economic analysis",
-    "journal": "Roosevelt Institute Working Papers",
-    "yearPublished": 2024,
-    "citationCount": 734,
-    "url": "https://rooseveltinstitute.org/publications/macroeconomic-effects-ubi/",
-    "methodology": "Macroeconomic modeling combining data from 8 international UBI trials"
+    "publicationType": "report",
+    "yearPublished": 2017,
+    "url": "https://rooseveltinstitute.org/publications/macroeconomic-effects-universal-basic-income-ubi/",
+    "methodology": "Macroeconomic simulation with the Levy Institute model"
   },
   "qualityScore": 86,
   "sourceCredibility": 92,
@@ -42,14 +40,14 @@
   "tags": ["UBI", "economics", "poverty", "welfare", "social policy"],
   "metadata": {
     "argumentType": "empirical",
-    "evidenceType": "experimental",
+    "evidenceType": "macro-simulation",
     "domain": "economics",
     "subDomain": "social-policy",
     "strength": "moderate-strong",
     "tags": ["UBI", "policy", "economics", "welfare"],
     "createdAt": "2026-01-13T00:00:00Z",
     "lastUpdated": "2026-01-13T00:00:00Z",
-    "reviewStatus": "verified",
+    "reviewStatus": "source-checked",
     "curator": "ContradictMe Team"
   }
 }

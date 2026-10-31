@@ -8,7 +8,7 @@
     "Traditional banking is sufficient"
   ],
   "mainClaim": "Cryptocurrency provides critical financial services to the 1.4 billion unbanked adults worldwide",
-  "evidence": "World Bank data shows that 1.4 billion adults globally lack access to basic banking services, disproportionately affecting women (56%) and people in developing nations. In countries like El Salvador, Nigeria, and Kenya, cryptocurrency adoption has enabled peer-to-peer transactions, remittances, and savings without traditional bank infrastructure. A 2024 MIT study of 50,000 users in Sub-Saharan Africa found that crypto wallets reduced remittance costs from an average of 9% to under 2%, saving families approximately $200 annually—equivalent to two weeks of income for the median household.",
+  "evidence": "The World Bank's Global Findex Database 2021 reports that 1.4 billion adults worldwide remain unbanked. The argument that cryptocurrency can reach them rests on reasoning: smartphone-based wallets need no branch, and cross-border transfers can avoid intermediary fees. No verified study of crypto adoption or remittance costs is cited for this argument.",
   "supportingPoints": [
     "Traditional banking requires government ID, proof of address, and minimum balances that exclude the poor",
     "Crypto enables smartphone-based financial services in areas without physical banks",
@@ -16,24 +16,17 @@
     "Provides hedge against hyperinflation in countries like Venezuela, Argentina, and Turkey",
     "Women in countries with restrictive banking laws can hold assets independently"
   ],
-  "limitations": "Study focused on adoption in developing nations; doesn't address volatility risks or cases of fraud in crypto exchanges. Energy consumption of proof-of-work blockchains remains a valid environmental concern. Regulatory uncertainty and technical complexity still present barriers for many users.",
+  "limitations": "The earlier Sub-Saharan Africa study and its remittance-cost figures could not be traced to a published source and were removed. Energy consumption of proof-of-work blockchains remains a valid environmental concern. Regulatory uncertainty and technical complexity still present barriers for many users.",
   "counterCounterArguments": [
     "Volatility risk can be mitigated with stablecoins pegged to fiat currencies",
     "Newer proof-of-stake blockchains use 99.9% less energy than Bitcoin",
     "User experience has dramatically improved with intuitive wallet apps and local fiat on/off ramps"
   ],
   "sourceMetadata": {
-    "title": "Cryptocurrency and Financial Inclusion in Sub-Saharan Africa: An Empirical Analysis",
-    "authors": ["Dr. James Okoro", "Dr. Sarah Martinez", "Prof. Wei Chen"],
-    "institution": "MIT Digital Currency Initiative",
-    "publicationType": "Peer-reviewed study",
-    "journal": "Journal of Development Economics",
-    "yearPublished": 2024,
-    "citationCount": 127,
-    "doi": "10.1016/j.jdeveco.2024.102891",
-    "url": "https://www.sciencedirect.com/science/article/pii/S0304387824000012",
-    "sampleSize": 50000,
-    "methodology": "Mixed-methods: quantitative transaction analysis + qualitative interviews across 12 countries"
+    "title": "Source not verified",
+    "authors": [],
+    "institution": "Not verified",
+    "publicationType": "unverified"
   },
   "qualityScore": 89,
   "sourceCredibility": 94,
@@ -50,14 +43,14 @@
   ],
   "metadata": {
     "argumentType": "empirical",
-    "evidenceType": "quantitative-study",
+    "evidenceType": "unverified",
     "domain": "economics",
     "subDomain": "development-finance",
     "strength": "strong",
     "tags": ["crypto", "finance", "banking", "global-development"],
     "createdAt": "2026-01-13T00:00:00Z",
     "lastUpdated": "2026-01-13T00:00:00Z",
-    "reviewStatus": "verified",
+    "reviewStatus": "unverified",
     "curator": "ContradictMe Team"
   }
 }

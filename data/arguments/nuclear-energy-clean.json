@@ -8,7 +8,7 @@
     "Nuclear power causes cancer"
   ],
   "mainClaim": "Nuclear energy is statistically the safest and cleanest energy source per unit of energy produced, with lower deaths and emissions than all alternatives including renewables",
-  "evidence": "A 2024 analysis by NASA climate scientist Dr. James Hansen found that nuclear energy has prevented 1.84 million air pollution deaths globally by displacing fossil fuels. Deaths per terawatt-hour: coal (24.6), oil (18.4), biomass (4.6), gas (2.8), hydro (1.3), solar (0.02), wind (0.04), nuclear (0.01). Nuclear produces zero operational CO2 emissions and uses 0.001% the land area of solar for equivalent output. A single uranium pellet (size of a pencil eraser) produces as much energy as 1 ton of coal, 17,000 cubic feet of natural gas, or 149 gallons of oil. France's 70% nuclear grid has Europe's lowest electricity costs (€0.18/kWh) and lowest carbon intensity (60g CO2/kWh vs EU average 295g).",
+  "evidence": "Kharecha and Hansen (Environmental Science & Technology, 2013) used historical production data to calculate that global nuclear power has prevented an average of 1.84 million air pollution-related deaths and 64 gigatonnes of CO2-equivalent greenhouse gas emissions that fossil fuel burning would have caused. They also project that nuclear power could prevent a further 420,000 to 7.04 million deaths and 80 to 240 GtCO2-eq by mid-century, depending on which fuel it replaces.",
   "supportingPoints": [
     "Chernobyl (56 direct deaths) and Fukushima (1 radiation death) are outliers; modern reactors have passive safety systems",
     "Nuclear waste volume is tiny: all US nuclear waste from 60 years fits in one football field 10 yards deep",
@@ -17,7 +17,7 @@
     "Lifecycle emissions including construction: nuclear 12g CO2/kWh vs solar 48g, wind 11g",
     "France and Sweden decarbonized grids in 15 years using nuclear"
   ],
-  "limitations": "High upfront capital costs ($6-9 billion per plant). Construction takes 5-10 years. Public perception remains negative. Waste requires 10,000+ year storage (though volume is small). Proliferation risks exist but are manageable. Not flexible for load following without expensive design.",
+  "limitations": "The cited paper compares nuclear power with fossil fuels. It does not rank nuclear against renewables, so the 'safer than all alternatives including renewables' framing is not established by this source. High upfront capital costs ($6-9 billion per plant). Construction takes 5-10 years. Public perception remains negative. Waste requires 10,000+ year storage (though volume is small). Proliferation risks exist but are manageable. Not flexible for load following without expensive design.",
   "counterCounterArguments": [
     "SMRs (Small Modular Reactors) reduce capital costs and construction time",
     "Waste can be recycled in Gen IV reactors, reducing storage needs 95%",
@@ -25,15 +25,14 @@
   ],
   "sourceMetadata": {
     "title": "Prevented Mortality and Greenhouse Gas Emissions from Historical and Projected Nuclear Power",
-    "authors": ["Dr. Pushker Kharecha", "Dr. James Hansen"],
-    "institution": "NASA Goddard Institute for Space Studies",
-    "publicationType": "Peer-reviewed study",
+    "authors": ["Pushker A. Kharecha", "James E. Hansen"],
+    "institution": "NASA Goddard Institute for Space Studies; Columbia University Earth Institute",
+    "publicationType": "peer-reviewed",
     "journal": "Environmental Science & Technology",
-    "yearPublished": 2024,
-    "citationCount": 892,
-    "doi": "10.1021/es4033374",
-    "url": "https://pubs.acs.org/doi/10.1021/es4033374",
-    "methodology": "Meta-analysis of 60 years of global energy mortality and emissions data"
+    "yearPublished": 2013,
+    "doi": "10.1021/es3051197",
+    "url": "https://doi.org/10.1021/es3051197",
+    "methodology": "Calculation from historical global energy production data; projections under scenarios"
   },
   "qualityScore": 93,
   "sourceCredibility": 98,
@@ -43,14 +42,14 @@
   "tags": ["nuclear energy", "climate change", "clean energy", "safety", "environment"],
   "metadata": {
     "argumentType": "empirical",
-    "evidenceType": "meta-analysis",
+    "evidenceType": "modeling-study",
     "domain": "energy",
     "subDomain": "nuclear-power",
     "strength": "strong",
     "tags": ["nuclear", "energy", "climate", "safety"],
     "createdAt": "2026-01-13T00:00:00Z",
     "lastUpdated": "2026-01-13T00:00:00Z",
-    "reviewStatus": "verified",
+    "reviewStatus": "source-checked",
     "curator": "ContradictMe Team"
   }
 }

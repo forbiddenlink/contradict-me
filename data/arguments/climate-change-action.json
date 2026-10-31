@@ -3,7 +3,7 @@
   "topic": "Climate Change Action",
   "position": "against",
   "mainClaim": "Rapid climate action could cause significant economic disruption and disproportionately harm developing nations",
-  "evidence": "World Bank analysis shows immediate fossil fuel phase-out could reduce GDP growth by 2-4% annually in developing economies, pushing 100+ million people back into poverty. Nigeria's economy relies on oil for 90% of export revenue. India's coal sector employs 13 million workers directly and indirectly. Abrupt transitions without proper planning and support mechanisms could trigger economic instability in nations least able to absorb the shock.",
+  "evidence": "No verified source is cited for this argument. The argument rests on reasoning: fossil fuel revenue and employment are concentrated in some developing economies, so a fast transition without financing and support could cause economic disruption there.",
   "supportingPoints": [
     "Developing nations contributed only 8% of historical emissions but would bear 60% of transition costs",
     "Green technology currently costs 2-3x more than fossil alternatives in emerging markets",
@@ -14,14 +14,12 @@
   "sourceCredibility": 92,
   "evidenceStrength": 86,
   "sourceMetadata": {
-    "authors": ["Dr. Bjorn Lomborg", "World Bank Development Research Group"],
-    "institution": "Copenhagen Consensus Center",
-    "yearPublished": 2024,
-    "publicationType": "Policy Analysis",
-    "peerReviewed": true,
-    "citationCount": 487
+    "title": "Source not verified",
+    "authors": [],
+    "institution": "Not verified",
+    "publicationType": "unverified"
   },
-  "limitations": "Analysis assumes worst-case transition scenarios. Gradual transitions with international support mechanisms could mitigate economic impacts. Doesn't account for climate inaction costs which may exceed transition costs.",
+  "limitations": "The earlier World Bank analysis and its growth and poverty figures could not be traced to a published source and were removed. Other figures in the supporting points have not been checked. Gradual transitions with international support mechanisms could mitigate economic impacts. Doesn't account for climate inaction costs which may exceed transition costs.",
   "tags": ["Climate", "Economics", "Development", "Energy Policy"],
   "lastUpdated": "2026-01-13T00:00:00Z"
 }

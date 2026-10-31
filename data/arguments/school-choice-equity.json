@@ -4,30 +4,19 @@
   "userPosition": "School choice programs improve education and help disadvantaged students",
   "counterPosition": "School vouchers drain public school funding and increase educational inequality",
   "qualityScore": 88,
-  "content": "Analysis of Louisiana's voucher program found participating students scored 0.4 standard deviations lower in math—equivalent to losing 2 years of learning. Milwaukee's 30-year voucher program shows no significant achievement gains compared to public schools, while per-pupil spending in remaining public schools declined 23%. Vouchers create 'cream skimming' where motivated families leave, concentrating disadvantage. Private schools accepting vouchers can reject students with disabilities (42% do) and lack transparency requirements. Arizona's universal voucher expansion cost $708M more than projected, with 75% going to families already in private schools. Research from Stanford's CREDO found that charters underperform traditional public schools in 31% of cases, perform equally in 46%, and outperform in only 23%.",
+  "content": "Mills and Wolf (2019) estimated the achievement effects of using a voucher from the Louisiana Scholarship Program over four years, from 2012-13 through 2015-16. In contrast to earlier research that found large initial negative effects that improved after two and three years, they found large negative effects of voucher use after four years, especially in math. Critics also argue that vouchers can concentrate disadvantage in remaining public schools, though this record cites no verified source for that.",
   "citations": [
     {
-      "author": "Dr. Jonathan Mills",
-      "title": "Effects of the Louisiana Scholarship Program on Student Achievement",
-      "publication": "Education Research Alliance",
+      "author": "Jonathan N. Mills, Patrick J. Wolf",
+      "title": "The Effects of the Louisiana Scholarship Program on Student Achievement after Four Years",
+      "publication": "SSRN working paper",
       "year": 2019,
-      "url": "https://example.com/louisiana-vouchers",
-      "evidenceStrength": 89,
-      "sampleSize": 2800,
-      "studyType": "Randomized control trial"
-    },
-    {
-      "author": "CREDO Stanford",
-      "title": "Urban Charter School Study Report on 41 Regions",
-      "publication": "Stanford CREDO",
-      "year": 2023,
-      "url": "https://example.com/credo-charter",
-      "evidenceStrength": 91,
-      "sampleSize": 1380000,
-      "studyType": "Multi-region longitudinal study"
+      "url": "https://doi.org/10.2139/ssrn.3376230",
+      "studyType": "Working paper"
     }
   ],
   "limitations": [
+    "The cited study is a working paper about one state's program. Milwaukee, Arizona and charter-school figures were removed because they could not be traced to published sources.",
     "Results vary significantly by program design and implementation",
     "Some studies show positive results in specific contexts",
     "Self-selection bias difficult to fully control",

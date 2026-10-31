@@ -104,7 +104,7 @@ export default function AuthorBioPage() {
             <p>
               {DEFAULT_AUTHOR}&apos;s approach emphasizes transparency in AI systems—every argument
               includes quality scores, source credibility ratings, documented limitations, and
-              peer-reviewed citations. This commitment to evidence-based reasoning helps users
+              source-checked citations. This commitment to evidence-based reasoning helps users
               distinguish between well-supported claims and speculative arguments.
             </p>
           </div>
@@ -151,7 +151,7 @@ export default function AuthorBioPage() {
               <h3 className="font-semibold text-lg mb-2">{SITE_NAME}</h3>
               <p className="text-slate-700 dark:text-slate-300 mb-3">
                 An AI system that challenges beliefs with research-backed counterarguments. Built
-                with Next.js, Algolia Agent Studio, and a curated database of peer-reviewed
+                with Next.js, Algolia Agent Studio, and a curated database of source-checked
                 arguments. Winner of the Algolia Agent Studio Challenge (2026).
               </p>
               <div className="flex flex-wrap gap-2">
@@ -181,8 +181,8 @@ export default function AuthorBioPage() {
               <li className="flex gap-3">
                 <span className="text-teal-600 dark:text-teal-400 font-bold">→</span>
                 <div>
-                  <strong>Evidence over opinion:</strong> Prioritize peer-reviewed research and
-                  transparent methodologies over anecdotal claims.
+                  <strong>Evidence over opinion:</strong> Prioritize checked sources and transparent
+                  methodologies over anecdotal claims.
                 </div>
               </li>
               <li className="flex gap-3">

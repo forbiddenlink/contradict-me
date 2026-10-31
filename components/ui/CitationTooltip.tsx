@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
 import { Argument } from '@/lib/types';
+import { isUnverifiedSource } from '@/lib/source-status';
 
 interface CitationTooltipProps {
   source: Argument['sourceMetadata'];
@@ -56,6 +57,7 @@ export default function CitationTooltip({ source, index, snippet }: CitationTool
               {/* Source Type Badge */}
               <div className="flex items-center justify-between mb-2">
                 <span className="citation-badge">
+                  {isUnverifiedSource(source) && <>Source not verified</>}
                   {source.publicationType === 'peer-reviewed' && (
                     <>
                       <span aria-hidden="true">📊</span> Peer-Reviewed
@@ -95,7 +97,9 @@ export default function CitationTooltip({ source, index, snippet }: CitationTool
                     {source.authors.length > 2 && ` +${source.authors.length - 2} more`}
                   </p>
                 )}
-                {source.institution && <p className="citation-institution">{source.institution}</p>}
+                {source.institution && !isUnverifiedSource(source) && (
+                  <p className="citation-institution">{source.institution}</p>
+                )}
               </div>
 
               {/* Snippet Preview */}

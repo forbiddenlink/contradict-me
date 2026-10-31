@@ -4,30 +4,19 @@
   "userPosition": "Abortion is a fundamental right to bodily autonomy",
   "counterPosition": "Abortion involves a second life with its own rights that deserve legal protection",
   "qualityScore": 86,
-  "content": "Modern embryology shows distinct human DNA at conception, with measurable brain activity beginning at 5-6 weeks and pain perception potentially as early as 12 weeks (though debated). A 2022 poll found 71% of Americans support some restrictions on abortion after the first trimester. Philosophically, the 'future-like-ours' argument (Marquis, 1989) posits that what makes killing wrong is depriving someone of their future experiences—which applies equally to fetuses. Countries like Germany, France, and Sweden restrict elective abortion after 12-14 weeks while still being considered progressive. The bodily autonomy argument has limits even in other contexts: parents can't refuse life-saving medical treatment for born children, suggesting society recognizes limits when another life is at stake.",
+  "content": "Marquis's 'future-like-ours' argument (1989) holds that what makes killing wrong is depriving someone of their future experiences, and argues that this applies equally to fetuses. The bodily autonomy argument is also tested by cases where society recognizes limits when another life is at stake: parents cannot refuse life-saving medical treatment for born children. These are philosophical arguments, not empirical findings.",
   "citations": [
     {
-      "author": "Dr. Stuart Derbyshire",
-      "title": "Fetal Pain: Do We Know Enough to Do the Right Thing?",
-      "publication": "Reproductive Health Matters",
-      "year": 2020,
-      "url": "https://example.com/fetal-pain",
-      "evidenceStrength": 78,
-      "sampleSize": 47,
-      "studyType": "Literature review"
-    },
-    {
-      "author": "Pew Research Center",
-      "title": "Americans' Views on Whether, and in What Circumstances, Abortion Should Be Legal",
-      "publication": "Pew Research",
-      "year": 2022,
-      "url": "https://example.com/pew-abortion",
-      "evidenceStrength": 92,
-      "sampleSize": 10441,
-      "studyType": "National survey"
+      "author": "Don Marquis",
+      "title": "Why Abortion Is Immoral",
+      "publication": "The Journal of Philosophy",
+      "year": 1989,
+      "url": "https://doi.org/10.2307/2026961",
+      "studyType": "Philosophical argument"
     }
   ],
   "limitations": [
+    "Unverified figures were removed from this record.",
     "Fetal pain science remains contentious and debated",
     "Philosophical arguments about personhood are not empirically resolvable",
     "Public opinion varies significantly by religious and political affiliation",

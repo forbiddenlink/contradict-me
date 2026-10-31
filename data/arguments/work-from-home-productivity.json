@@ -3,7 +3,7 @@
   "topic": "Remote Work Productivity",
   "position": "for",
   "mainClaim": "Remote work increases productivity for most knowledge workers while improving work-life balance",
-  "evidence": "Stanford 2-year controlled study of 16,000 workers showed remote employees completed 13% more calls with same quality scores. Microsoft's 182-country study found 87% of remote workers report equal or higher productivity. Commute elimination saves average worker 54 minutes daily, adding 220+ hours annually. Meta's internal data showed remote engineers shipped 15% more code with fewer bugs.",
+  "evidence": "Bloom, Liang, Roberts and Ying (Quarterly Journal of Economics, 2015) ran a nine-month experiment at Ctrip, a 16,000-employee Chinese travel agency. Call center employees who volunteered to work from home were randomly assigned to work from home or in the office. Home working led to a 13% performance increase, of which 9% came from working more minutes per shift (fewer breaks and sick days) and 4% from more calls per minute. Home workers also reported better work satisfaction and their attrition rate halved, but their promotion rate conditional on performance fell.",
   "supportingPoints": [
     "Reduced office distractions allow for longer periods of deep focus work",
     "Flexibility enables work during peak cognitive hours (varies by individual)",
@@ -14,14 +14,17 @@
   "sourceCredibility": 94,
   "evidenceStrength": 88,
   "sourceMetadata": {
-    "authors": ["Dr. Nicholas Bloom", "Dr. James Liang", "Microsoft Research"],
-    "institution": "Stanford University & Microsoft",
-    "yearPublished": 2024,
-    "publicationType": "Controlled Experiment & Large-scale Survey",
-    "peerReviewed": true,
-    "citationCount": 892
+    "title": "Does Working from Home Work? Evidence from a Chinese Experiment",
+    "authors": ["Nicholas Bloom", "James Liang", "John Roberts", "Zhichun Jenny Ying"],
+    "institution": "Stanford University; Ctrip",
+    "publicationType": "peer-reviewed",
+    "journal": "The Quarterly Journal of Economics",
+    "yearPublished": 2015,
+    "doi": "10.1093/qje/qju032",
+    "url": "https://doi.org/10.1093/qje/qju032",
+    "methodology": "Randomized experiment among volunteering call center employees at one firm"
   },
-  "limitations": "Results vary significantly by role type - creative collaboration may suffer. Junior employees benefit less without in-person mentorship. Requires discipline and proper home workspace. Hybrid models may capture best of both approaches.",
+  "limitations": "The cited experiment covers call center employees at one Chinese firm who volunteered. It does not establish that remote work raises productivity for most knowledge workers. Results vary significantly by role type - creative collaboration may suffer. Junior employees benefit less without in-person mentorship. Requires discipline and proper home workspace. Hybrid models may capture best of both approaches.",
   "tags": ["Remote Work", "Productivity", "Work-Life Balance", "Future of Work"],
   "lastUpdated": "2026-01-13T00:00:00Z"
 }

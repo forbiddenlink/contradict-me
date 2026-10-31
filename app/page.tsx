@@ -361,7 +361,8 @@ export default function Home() {
               Evidence-Based
             </h3>
             <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
-              Every argument backed by peer-reviewed research, not just plausible-sounding text.
+              Each argument shows whether its source has been checked, not just plausible-sounding
+              text.
             </p>
           </div>
 

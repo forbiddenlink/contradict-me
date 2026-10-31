@@ -118,13 +118,13 @@ export default function ChatPageClient({ initialMessage }: { initialMessage: str
               What to Expect
             </h2>
             <p className="text-sm">
-              Each response includes specific counterarguments backed by peer-reviewed research,
-              quality scores based on evidence strength, and honest limitations. You&rsquo;ll see
-              citations from credible institutions like Stanford, MIT, and Oxford, uncertainty notes
-              when evidence is mixed, and reflection questions to deepen thinking. The system
-              prioritizes empirical studies over opinion pieces and flags where conclusions are
-              contested. This isn&rsquo;t about winning debates—it&rsquo;s about making better
-              decisions by understanding the strongest case against the position you hold.
+              Each response includes specific counterarguments, quality scores based on evidence
+              strength, and honest limitations. Each source is marked as checked or &ldquo;not
+              verified&rdquo;, and you&rsquo;ll see uncertainty notes when evidence is mixed, and
+              reflection questions to deepen thinking. The system prioritizes empirical studies over
+              opinion pieces and flags where conclusions are contested. This isn&rsquo;t about
+              winning debates—it&rsquo;s about making better decisions by understanding the
+              strongest case against the position you hold.
             </p>
           </div>
 

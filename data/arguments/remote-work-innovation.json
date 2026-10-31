@@ -7,16 +7,15 @@
     "remote increases productivity"
   ],
   "mainClaim": "Remote work reduces innovation and breakthrough creativity",
-  "evidence": "Stanford study of 10,000 software developers found 23% fewer patent filings from fully remote teams compared to hybrid teams over 2 years. The research suggests spontaneous 'water cooler' conversations lead to unexpected idea combinations that scheduled video calls miss.",
+  "evidence": "No verified source is cited for this argument. The argument rests on reasoning: spontaneous in-person conversation and shared physical whiteboards may help teams combine ideas in ways scheduled video calls do not.",
   "supportingPoints": [
     "Spontaneous hallway conversations enable serendipitous knowledge combination",
     "Physical whiteboard collaboration allows rapid visual iteration",
-    "In-person brainstorming sessions generate 30% more novel ideas (MIT study)",
+    "In-person brainstorming can surface novel ideas that scheduled calls miss",
     "Proximity enables real-time problem-solving without scheduling overhead"
   ],
   "limitations": [
-    "Study focused on R&D roles in tech sector, may not generalize to all work types",
-    "Hybrid model (2-3 days in office) showed similar innovation to full in-office",
+    "The earlier patent-filing and brainstorming figures could not be traced to a published study and were removed.",
     "Results may reflect poor remote collaboration tools rather than remote work itself",
     "Cultural factors and management practices confound the results"
   ],
@@ -27,17 +26,10 @@
     "Remote work may increase diversity of ideas by enabling global hiring"
   ],
   "sourceMetadata": {
-    "title": "Innovation Patterns in Distributed Teams: A Large-Scale Analysis",
-    "authors": ["Dr. Sarah Chen", "Dr. Michael Park"],
-    "institution": "Stanford University",
-    "publicationType": "peer-reviewed journal",
-    "journal": "Journal of Organizational Behavior",
-    "yearPublished": 2024,
-    "citationCount": 47,
-    "doi": "10.1002/job.2024.001",
-    "url": "https://doi.org/10.1002/job.2024.001",
-    "sampleSize": 10000,
-    "methodology": "Longitudinal study tracking patent filings across work modalities"
+    "title": "Source not verified",
+    "authors": [],
+    "institution": "Not verified",
+    "publicationType": "unverified"
   },
   "qualityScore": 87,
   "sourceCredibility": 95,
@@ -46,14 +38,14 @@
   "relevanceScore": 90,
   "metadata": {
     "argumentType": "empirical",
-    "evidenceType": "quantitative_study",
+    "evidenceType": "unverified",
     "domain": "work",
     "subDomain": "remote_work",
     "strength": "strong",
     "tags": ["remote-work", "innovation", "collaboration", "productivity", "hybrid-work"],
     "createdAt": "2026-01-13",
     "lastUpdated": "2026-01-13",
-    "reviewStatus": "verified",
+    "reviewStatus": "unverified",
     "curator": "ContradictMe Team"
   }
 }

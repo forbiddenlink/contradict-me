@@ -3,25 +3,27 @@
   "topic": "Restrictive Zoning Laws",
   "position": "against",
   "mainClaim": "Restrictive single-family zoning creates housing shortages, increases inequality, and stifles economic growth",
-  "evidence": "Research across 200+ U.S. metro areas shows cities with strict zoning have 3.2x higher housing costs and 50% lower economic mobility. Minneapolis upzoning eliminated single-family-only zones in 2018, resulting in 18% increase in new housing construction and first rent decreases in a decade. Berkeley study estimates U.S. GDP is 9.5% lower ($2 trillion annually) due to zoning restrictions preventing workers from moving to high-productivity cities.",
+  "evidence": "Hsieh and Moretti (American Economic Journal: Macroeconomics, 2019) argue that high-productivity cities like New York and the San Francisco Bay Area have adopted stringent restrictions on new housing supply, limiting the number of workers who can access that productivity. Using a spatial equilibrium model and data from 220 metropolitan areas, they find that these constraints lowered aggregate US growth by 36 percent from 1964 to 2009.",
   "supportingPoints": [
     "Exclusionary zoning perpetuates racial and economic segregation",
     "Artificial scarcity transfers wealth from renters to existing homeowners",
-    "Environmental impact: sprawl increases car dependence and emissions",
-    "Shortage drives homelessness crisis - 580,000 homeless, 15M vacant homes"
+    "Environmental impact: sprawl increases car dependence and emissions"
   ],
   "qualityScore": 90,
   "sourceCredibility": 92,
   "evidenceStrength": 88,
   "sourceMetadata": {
-    "authors": ["Dr. Jenny Schuetz", "Dr. Chang-Tai Hsieh", "Dr. Enrico Moretti"],
-    "institution": "Brookings Institution & UC Berkeley",
-    "yearPublished": 2024,
-    "publicationType": "Economic Research & Policy Analysis",
-    "peerReviewed": true,
-    "citationCount": 734
+    "title": "Housing Constraints and Spatial Misallocation",
+    "authors": ["Chang-Tai Hsieh", "Enrico Moretti"],
+    "institution": "University of Chicago Booth School of Business; University of California, Berkeley",
+    "publicationType": "peer-reviewed",
+    "journal": "American Economic Journal: Macroeconomics",
+    "yearPublished": 2019,
+    "doi": "10.1257/mac.20170388",
+    "url": "https://doi.org/10.1257/mac.20170388",
+    "methodology": "Spatial equilibrium model calibrated on 220 US metropolitan areas"
   },
-  "limitations": "Rapid upzoning can cause displacement if not paired with tenant protections. Character preservation has some value. Infrastructure costs need planning. Political implementation extremely difficult due to homeowner opposition.",
+  "limitations": "The 36 percent figure is a model-based counterfactual for US growth from 1964 to 2009, not a measured outcome. Rapid upzoning can cause displacement if not paired with tenant protections. Character preservation has some value. Infrastructure costs need planning. Political implementation extremely difficult due to homeowner opposition.",
   "tags": ["Housing Policy", "Urban Planning", "Inequality", "Economics"],
   "lastUpdated": "2026-01-13T00:00:00Z"
 }

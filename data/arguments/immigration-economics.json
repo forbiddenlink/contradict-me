@@ -3,7 +3,7 @@
   "topic": "Immigration Economics",
   "position": "for",
   "mainClaim": "Immigration provides substantial net economic benefits and doesn't harm native workers' wages",
-  "evidence": "National Academy of Sciences comprehensive study analyzing 40+ years of data found immigration increased U.S. GDP by $2 trillion over 10 years. Native-born workers saw average wage increases of 0.6% due to complementary skills. Immigrants start businesses at twice the rate of native-born Americans, creating 25% more jobs per capita. Areas with higher immigration rates show faster economic growth and innovation.",
+  "evidence": "The National Academies of Sciences, Engineering, and Medicine's 2016 consensus report 'The Economic and Fiscal Consequences of Immigration' found that the long-term impact of immigration on the wages of native-born workers overall is very small, and that immigration has an overall positive impact on long-run economic growth in the US.",
   "supportingPoints": [
     "Immigrants fill critical labor gaps in healthcare, agriculture, and construction",
     "High-skilled immigration contributes to 30-50% of U.S. innovation and patents",
@@ -14,14 +14,16 @@
   "sourceCredibility": 95,
   "evidenceStrength": 89,
   "sourceMetadata": {
+    "title": "The Economic and Fiscal Consequences of Immigration",
     "authors": ["National Academies of Sciences, Engineering, and Medicine"],
-    "institution": "National Academy of Sciences",
-    "yearPublished": 2024,
-    "publicationType": "Comprehensive Research Report",
-    "peerReviewed": true,
-    "citationCount": 1247
+    "institution": "National Academies of Sciences, Engineering, and Medicine",
+    "publicationType": "report",
+    "yearPublished": 2016,
+    "doi": "10.17226/23550",
+    "url": "https://doi.org/10.17226/23550",
+    "methodology": "Consensus committee review of the research literature"
   },
-  "limitations": "Economic benefits take 10-15 years to fully materialize. Local impacts can vary significantly. Requires investment in integration infrastructure. Benefits strongest with balanced skill distribution among immigrants.",
+  "limitations": "The report describes the wage effect on native-born workers overall as very small, not positive, and notes that the hours worked by teenagers may fall. It does not report the GDP, wage or business-creation figures this record previously cited. Economic benefits take 10-15 years to fully materialize. Local impacts can vary significantly. Requires investment in integration infrastructure. Benefits strongest with balanced skill distribution among immigrants.",
   "tags": ["Immigration", "Economics", "Labor Markets", "Policy"],
   "lastUpdated": "2026-01-13T00:00:00Z"
 }

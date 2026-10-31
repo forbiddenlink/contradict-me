@@ -8,7 +8,7 @@
     "AI is a threat to workers"
   ],
   "mainClaim": "AI and automation historically create more jobs than they eliminate, with new job categories emerging that didn't exist before",
-  "evidence": "MIT and Boston University research tracking 60 years of automation found that 60% of jobs in 2024 didn't exist in 1940. The ATM paradoxically increased bank teller employment by 43% (1970-2010) by making branches cheaper to operate, enabling banks to open more locations. A 2024 World Economic Forum study predicts AI will eliminate 85 million jobs by 2030 while creating 97 million new roles - a net gain of 12 million jobs. Historical pattern: agricultural jobs fell from 40% (1900) to 2% (2024) of workforce, yet unemployment remained steady as service and technology sectors absorbed workers. Current AI-related job postings increased 450% since 2020 (LinkedIn data), including entirely new roles like AI ethicist, prompt engineer, and AI training specialist.",
+  "evidence": "Acemoglu and Restrepo (American Economic Review, 2018) build a model in which tasks once done by workers can be automated and new tasks, where labor has a comparative advantage, can be created. In the static version, automation reduces employment and the labor share while new tasks have the opposite effect. In the full model, if the long-run rental rate of capital relative to the wage is low enough, all tasks end up automated; otherwise a stable balanced growth path exists in which automation and the creation of new tasks go hand in hand.",
   "supportingPoints": [
     "Previous automation waves (Industrial Revolution, computers) increased total employment",
     "Technology creates jobs in maintenance, training, oversight, and new industries",
@@ -17,24 +17,22 @@
     "New industries emerge: AI development, data science, robotics, etc.",
     "Historical unemployment rates haven't increased despite massive automation"
   ],
-  "limitations": "Transition period can be painful for displaced workers. Not all workers can easily retrain. Geographic and demographic disparities in who benefits. Time lag between job destruction and creation. Doesn't address whether new jobs will pay as well.",
+  "limitations": "The cited paper is a theoretical model. It does not measure historical job counts, and it shows that automation alone reduces employment; the claim that automation has created more jobs than it eliminated is not established by this source. Transition period can be painful for displaced workers. Not all workers can easily retrain. Geographic and demographic disparities in who benefits. Time lag between job destruction and creation. Doesn't address whether new jobs will pay as well.",
   "counterCounterArguments": [
     "Government retraining programs can help workers transition",
     "New jobs often require higher skills, potentially increasing wages",
     "Historical patterns suggest adaptation is possible, though not painless"
   ],
   "sourceMetadata": {
-    "title": "The Race Between Man and Machine: Implications of Technology for Growth, Factor Shares, and Employment",
-    "authors": ["Prof. Daron Acemoglu", "Prof. Pascual Restrepo"],
-    "institution": "MIT Department of Economics",
-    "publicationType": "Peer-reviewed study",
+    "title": "The Race between Man and Machine: Implications of Technology for Growth, Factor Shares, and Employment",
+    "authors": ["Daron Acemoglu", "Pascual Restrepo"],
+    "institution": "MIT; Boston University",
+    "publicationType": "peer-reviewed",
     "journal": "American Economic Review",
-    "yearPublished": 2024,
-    "citationCount": 1205,
-    "doi": "10.1257/aer.20240315",
-    "url": "https://economics.mit.edu/research/publications",
-    "sampleSize": 150000,
-    "methodology": "60-year longitudinal analysis of labor market data across industries"
+    "yearPublished": 2018,
+    "doi": "10.1257/aer.20160696",
+    "url": "https://doi.org/10.1257/aer.20160696",
+    "methodology": "Theoretical model of automation and task creation"
   },
   "qualityScore": 91,
   "sourceCredibility": 97,
@@ -44,14 +42,14 @@
   "tags": ["AI", "automation", "employment", "technology", "economics", "future of work"],
   "metadata": {
     "argumentType": "empirical",
-    "evidenceType": "longitudinal-study",
+    "evidenceType": "theoretical-model",
     "domain": "economics",
     "subDomain": "labor-economics",
     "strength": "strong",
     "tags": ["AI", "jobs", "automation", "technology"],
     "createdAt": "2026-01-13T00:00:00Z",
     "lastUpdated": "2026-01-13T00:00:00Z",
-    "reviewStatus": "verified",
+    "reviewStatus": "source-checked",
     "curator": "ContradictMe Team"
   }
 }

@@ -4,30 +4,19 @@
   "userPosition": "Strict gun control reduces gun violence",
   "counterPosition": "Gun control laws don't effectively reduce gun violence and may increase vulnerability",
   "qualityScore": 89,
-  "content": "Analysis of 47 countries shows no consistent correlation between gun ownership rates and homicide rates. Switzerland has high gun ownership (45.7 per 100 people) but very low homicide rates (0.5 per 100k), while Brazil has strict gun laws but high violence. A 2018 RAND Corporation systematic review found insufficient evidence that most gun control policies reduce firearm homicides. Criminals acquire guns through illegal channels unaffected by legal restrictions—85% of imprisoned felons obtained guns through theft, black market, or illegal dealers. The CDC estimates 60,000-2.5 million defensive gun uses annually in the US, potentially saving more lives than are lost.",
+  "content": "Kleck and Gertz (1995) used a national survey to estimate how often Americans use guns in self-defense. Their estimates are far higher than those from other surveys, and the figure remains disputed. This record does not rely on any other quantitative claim.",
   "citations": [
     {
-      "author": "Dr. Gary Kleck",
+      "author": "Gary Kleck, Marc Gertz",
       "title": "Armed Resistance to Crime: The Prevalence and Nature of Self-Defense with a Gun",
       "publication": "Journal of Criminal Law and Criminology",
-      "year": 2018,
-      "url": "https://example.com/kleck-defensive-gun-use",
-      "evidenceStrength": 87,
-      "sampleSize": 4977,
+      "year": 1995,
+      "url": "https://doi.org/10.2307/1144004",
       "studyType": "National survey analysis"
-    },
-    {
-      "author": "RAND Corporation",
-      "title": "The Science of Gun Policy: A Critical Synthesis of Research Evidence",
-      "publication": "RAND",
-      "year": 2018,
-      "url": "https://example.com/rand-gun-policy",
-      "evidenceStrength": 91,
-      "sampleSize": 13000,
-      "studyType": "Systematic review"
     }
   ],
   "limitations": [
+    "The earlier cross-country, felon-survey and RAND claims were removed: they could not be traced to published sources, and the RAND report (2018) reports inconclusive evidence for most policies but moderate evidence that background checks reduce firearm homicides, which this record had not represented.",
     "Defensive gun use estimates vary widely (60k-2.5M)",
     "Cultural and socioeconomic factors differ across countries",
     "Black market data is inherently incomplete",

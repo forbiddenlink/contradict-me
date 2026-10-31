@@ -4,30 +4,20 @@
   "userPosition": "Legalizing drugs reduces harm and mass incarceration",
   "counterPosition": "Drug legalization increases usage, addiction rates, and societal costs despite reducing arrests",
   "qualityScore": 90,
-  "content": "Oregon's 2020 drug decriminalization saw a 23% increase in overdose deaths in the first year, compared to 9% nationally. Portugal's oft-cited success involved comprehensive treatment infrastructure, not just decriminalization—their model costs $75M annually for 10M people, which scaled to the US would be $2.5B yearly. A 2022 University of Washington study found marijuana legalization correlated with 15-20% increases in usage among adults and 8-12% among youth. Colorado saw traffic fatalities involving THC double from 2013-2018 post-legalization. While incarceration for simple possession is problematic, legalization creates commercial industries with profit motives to increase consumption—similar to alcohol and tobacco, which kill 140,000 and 480,000 Americans annually despite being legal and regulated.",
+  "content": "Cerdá and coauthors (JAMA Pediatrics, 2017) used Monitoring the Future survey data on 253,902 students in grades 8, 10 and 12 to compare Washington and Colorado before and after recreational marijuana legalization in 2012 with other states. In Washington, perceived harmfulness of marijuana declined 14.2% among eighth graders and 16.1% among tenth graders, while marijuana use increased 2.0% and 4.1%. In states that did not legalize, perceived harmfulness decreased 4.9% and 7.2%, and use decreased 1.3% and 0.9%. Legalization also creates commercial industries with a profit motive to increase consumption.",
   "citations": [
     {
-      "author": "Dr. Keith Humphreys",
-      "title": "Drug Decriminalization in Oregon: Early Outcomes",
-      "publication": "Stanford-Lancet Commission",
-      "year": 2022,
-      "url": "https://example.com/oregon-decrim",
-      "evidenceStrength": 85,
-      "sampleSize": 4200000,
-      "studyType": "State-level analysis"
-    },
-    {
-      "author": "Dr. Magdalena Cerdá",
+      "author": "Magdalena Cerdá, Melanie Wall, Tianshu Feng, Katherine M. Keyes, Aaron Sarvet, John Schulenberg, Patrick M. O'Malley, Rosalie Liccardo Pacula and others",
       "title": "Association of State Recreational Marijuana Laws With Adolescent Marijuana Use",
       "publication": "JAMA Pediatrics",
-      "year": 2022,
-      "url": "https://example.com/youth-marijuana",
-      "evidenceStrength": 88,
-      "sampleSize": 861082,
-      "studyType": "Longitudinal cohort study"
+      "year": 2017,
+      "url": "https://doi.org/10.1001/jamapediatrics.2016.3624",
+      "sampleSize": 253902,
+      "studyType": "Difference-in-differences analysis of repeated cross-sectional surveys"
     }
   ],
   "limitations": [
+    "The cited study covers adolescent use in Washington and Colorado. It does not cover overdose deaths, Portugal, adult use or traffic fatalities; those figures were removed.",
     "Oregon's implementation was rushed without adequate treatment infrastructure",
     "Early data may not reflect long-term trends",
     "Correlation with legalization doesn't prove causation",

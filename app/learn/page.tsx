@@ -105,9 +105,9 @@ export default function LearnHubPage() {
             </div>
 
             <p className="text-sm text-slate-700 dark:text-slate-300">
-              Each guide includes peer-reviewed sources, evidence quality assessments, limitation
-              notes, and practical reflection questions you can use in academic work, policy
-              analysis, and professional decision-making.
+              Each guide includes source notes, evidence quality assessments, limitation notes, and
+              practical reflection questions you can use in academic work, policy analysis, and
+              professional decision-making.
             </p>
           </div>
 

@@ -8,7 +8,7 @@
     "Meat is essential for strength and muscle"
   ],
   "mainClaim": "Well-planned plant-based diets reduce risk of heart disease, diabetes, and certain cancers more effectively than omnivorous diets",
-  "evidence": "The 96,000-participant Adventist Health Study-2 found vegetarians had 24% lower mortality from heart disease, 50% lower diabetes incidence, and lived 3-6 years longer than meat-eaters. A 2024 Harvard meta-analysis of 12 cohort studies (1.5 million participants) showed plant-based diets associated with 25% reduced cardiovascular mortality, 20% lower cancer risk, and 15% lower all-cause mortality. Red meat consumption increases colorectal cancer risk 18% per 50g daily (WHO classification as Group 2A carcinogen). Plant-based athletes (Venus Williams, Novak Djokovic, Lewis Hamilton) achieve elite performance. Game Changers documentary featured NFL players, Olympic cyclists showing equivalent or superior performance metrics. Protein adequacy: legumes, quinoa, tofu provide complete amino acid profiles; average American consumes 1.5x needed protein.",
+  "evidence": "The Adventist Health Study-2 (Orlich and coauthors, JAMA Internal Medicine, 2013) followed 73,308 participants and found that vegetarian dietary patterns were associated with lower all-cause mortality than non-vegetarian patterns (hazard ratio 0.88), with a significant association for cardiovascular mortality. No verified source is cited for the other claims about plant-based diets in this argument.",
   "supportingPoints": [
     "Position of Academy of Nutrition: plant-based diets appropriate for all life stages",
     "Lower LDL cholesterol, blood pressure, BMI in vegetarians vs omnivores",
@@ -17,24 +17,17 @@
     "Environmental benefits: 75% less land use, 66% less water, 49% less GHG emissions",
     "Ethical considerations: reduces animal suffering in factory farms"
   ],
-  "limitations": "Requires careful planning for B12, iron, omega-3s, vitamin D. Some people may have difficulty digesting high-fiber diets initially. Not all plant-based foods are healthy (Oreos are vegan). Individual responses vary. Supplementation may be needed. Social challenges in meat-centric cultures.",
+  "limitations": "The earlier Lancet meta-analysis could not be traced to a published source and was removed, as were the 24%, 50% and 3-6 years figures attributed to the Adventist study, which its paper does not report. Other figures in the supporting points have not been checked. Requires careful planning for B12, iron, omega-3s, vitamin D. Some people may have difficulty digesting high-fiber diets initially. Not all plant-based foods are healthy (Oreos are vegan). Individual responses vary. Supplementation may be needed. Social challenges in meat-centric cultures.",
   "counterCounterArguments": [
     "Supplements are widely available and inexpensive",
     "Meal planning apps make nutrition tracking easy",
     "Growing availability of fortified plant-based products"
   ],
   "sourceMetadata": {
-    "title": "Health Effects of Vegetarian and Vegan Diets",
-    "authors": ["Dr. Ambika Satija", "Dr. Frank Hu"],
-    "institution": "Harvard T.H. Chan School of Public Health",
-    "publicationType": "Meta-analysis",
-    "journal": "The Lancet",
-    "yearPublished": 2024,
-    "citationCount": 1567,
-    "doi": "10.1016/S0140-6736(24)01234-5",
-    "url": "https://www.thelancet.com/journals/lancet/article",
-    "sampleSize": 1500000,
-    "methodology": "Systematic review and meta-analysis of 12 prospective cohort studies"
+    "title": "Source not verified",
+    "authors": [],
+    "institution": "Not verified",
+    "publicationType": "unverified"
   },
   "qualityScore": 89,
   "sourceCredibility": 96,
@@ -44,14 +37,14 @@
   "tags": ["nutrition", "health", "diet", "plant-based", "vegan", "vegetarian"],
   "metadata": {
     "argumentType": "empirical",
-    "evidenceType": "meta-analysis",
+    "evidenceType": "unverified",
     "domain": "health",
     "subDomain": "nutrition",
     "strength": "strong",
     "tags": ["diet", "health", "nutrition", "vegan"],
     "createdAt": "2026-01-13T00:00:00Z",
     "lastUpdated": "2026-01-13T00:00:00Z",
-    "reviewStatus": "verified",
+    "reviewStatus": "unverified",
     "curator": "ContradictMe Team"
   }
 }
