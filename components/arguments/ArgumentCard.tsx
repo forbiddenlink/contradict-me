@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react';
 import { m, AnimatePresence, useInView } from 'framer-motion';
 import { Argument } from '@/lib/types';
+import { isUnverifiedSource } from '@/lib/source-status';
 
 interface ArgumentCardProps {
   argument: Argument;
@@ -15,7 +16,10 @@ export default function ArgumentCard({ argument }: ArgumentCardProps) {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const handleCopy = async () => {
-    const textToCopy = `${argument.mainClaim}\n\n${argument.evidence}\n\nSource: ${argument.sourceMetadata?.authors?.join(', ') || 'Unknown'}, ${argument.sourceMetadata?.institution || 'Unknown Institution'} (${argument.sourceMetadata?.yearPublished || 'N/A'})`;
+    const sourceLine = isUnverifiedSource(argument.sourceMetadata)
+      ? 'Source not verified'
+      : `${argument.sourceMetadata?.authors?.join(', ') || 'Unknown'}, ${argument.sourceMetadata?.institution || 'Unknown Institution'} (${argument.sourceMetadata?.yearPublished || 'N/A'})`;
+    const textToCopy = `${argument.mainClaim}\n\n${argument.evidence}\n\nSource: ${sourceLine}`;
 
     try {
       await navigator.clipboard.writeText(textToCopy);
@@ -195,16 +199,24 @@ export default function ArgumentCard({ argument }: ArgumentCardProps) {
             />
           </svg>
           <div>
-            <div className="font-medium text-slate-700 dark:text-slate-300">
-              {argument.sourceMetadata?.authors?.join(', ') || 'Multiple Authors'}
-            </div>
-            <div className="text-gray-600 dark:text-slate-400">
-              {argument.sourceMetadata?.institution || 'Unknown Institution'}
-              {argument.sourceMetadata?.yearPublished &&
-                ` • ${argument.sourceMetadata.yearPublished}`}
-              {argument.sourceMetadata?.publicationType &&
-                ` • ${argument.sourceMetadata.publicationType}`}
-            </div>
+            {isUnverifiedSource(argument.sourceMetadata) ? (
+              <div className="font-medium text-slate-700 dark:text-slate-300">
+                Source not verified
+              </div>
+            ) : (
+              <>
+                <div className="font-medium text-slate-700 dark:text-slate-300">
+                  {argument.sourceMetadata?.authors?.join(', ') || 'Multiple Authors'}
+                </div>
+                <div className="text-gray-600 dark:text-slate-400">
+                  {argument.sourceMetadata?.institution || 'Unknown Institution'}
+                  {argument.sourceMetadata?.yearPublished &&
+                    ` • ${argument.sourceMetadata.yearPublished}`}
+                  {argument.sourceMetadata?.publicationType &&
+                    ` • ${argument.sourceMetadata.publicationType}`}
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

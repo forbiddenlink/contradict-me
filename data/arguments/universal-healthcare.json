@@ -3,7 +3,7 @@
   "topic": "Universal Healthcare",
   "position": "for",
   "mainClaim": "Universal healthcare systems deliver better health outcomes at lower costs than market-based systems",
-  "evidence": "Comprehensive analysis of 30 OECD countries shows universal systems spend 40% less per capita ($5,697 vs $11,945 in U.S.) while achieving better outcomes: 4.2 years longer life expectancy, 50% lower infant mortality, 35% lower chronic disease burden. JAMA study found U.S. administrative costs consume 34% of healthcare spending vs 17% in universal systems. No medical bankruptcies in universal systems vs 530,000/year in U.S.",
+  "evidence": "Himmelstein, Campbell and Woolhandler (Annals of Internal Medicine, 2020) compared 2017 health administration spending in the United States and Canada, which has a single-payer system. They found that US insurers and providers spent $812 billion on administration, $2497 per capita or 34.2% of national health expenditures, versus $551 per capita or 17.0% in Canada. The gap in administrative spending was large and widening.",
   "supportingPoints": [
     "Preventive care access reduces expensive emergency treatments",
     "Single-payer eliminates insurance profit margins and complexity",
@@ -14,14 +14,17 @@
   "sourceCredibility": 96,
   "evidenceStrength": 91,
   "sourceMetadata": {
-    "authors": ["Commonwealth Fund", "Dr. David Himmelstein", "Dr. Steffie Woolhandler"],
-    "institution": "Harvard Medical School & Johns Hopkins",
-    "yearPublished": 2024,
-    "publicationType": "International Comparative Study",
-    "peerReviewed": true,
-    "citationCount": 1876
+    "title": "Health Care Administrative Costs in the United States and Canada, 2017",
+    "authors": ["David U. Himmelstein", "Terry Campbell", "Steffie Woolhandler"],
+    "institution": "City University of New York at Hunter College; Harvard Medical School; University of Ottawa",
+    "publicationType": "peer-reviewed",
+    "journal": "Annals of Internal Medicine",
+    "yearPublished": 2020,
+    "doi": "10.7326/M19-2818",
+    "url": "https://doi.org/10.7326/M19-2818",
+    "methodology": "Analysis of government reports, provider accounting data, physician surveys and census employment data"
   },
-  "limitations": "Transition costs and disruption significant. Wait times for non-urgent procedures can be longer. Taxation increases required. Cultural/political barriers in U.S. are substantial. Quality of implementation varies by country.",
+  "limitations": "The cited paper compares administrative costs in the US and Canada only. It does not cover other universal systems, life expectancy, infant mortality or medical bankruptcy. Transition costs and disruption significant. Wait times for non-urgent procedures can be longer. Taxation increases required. Cultural/political barriers in U.S. are substantial. Quality of implementation varies by country.",
   "tags": ["Healthcare", "Public Policy", "Economics", "Health Outcomes"],
   "lastUpdated": "2026-01-13T00:00:00Z"
 }

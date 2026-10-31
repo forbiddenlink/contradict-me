@@ -3,7 +3,7 @@
   "topic": "Social Media Regulation",
   "position": "against",
   "mainClaim": "Government regulation of social media content threatens free speech and innovation more than it protects users",
-  "evidence": "Analysis of EU's Digital Services Act implementation shows 34% increase in content removal, with 41% of removals later deemed incorrect. Smaller platforms face $2.1M average compliance costs, cementing Big Tech monopolies. India's IT Rules 2021 led to government-ordered takedowns of political criticism and journalism. Regulatory capture risk is high - large platforms can afford compliance, startups cannot.",
+  "evidence": "No verified source is cited for this argument. The argument rests on reasoning: compliance costs fall hardest on small platforms, and vague definitions of harmful content give governments room to suppress lawful speech.",
   "supportingPoints": [
     "Content moderation at scale with 100% accuracy is technically impossible",
     "Regulatory definitions of 'harmful content' are vague and politically manipulable",
@@ -14,14 +14,12 @@
   "sourceCredibility": 87,
   "evidenceStrength": 83,
   "sourceMetadata": {
-    "authors": ["Electronic Frontier Foundation", "Dr. Daphne Keller"],
-    "institution": "Stanford Cyber Policy Center",
-    "yearPublished": 2025,
-    "publicationType": "Policy Analysis & Case Studies",
-    "peerReviewed": false,
-    "citationCount": 156
+    "title": "Source not verified",
+    "authors": [],
+    "institution": "Not verified",
+    "publicationType": "unverified"
   },
-  "limitations": "Acknowledges harms exist but questions regulatory solutions. Doesn't fully address child safety concerns. May underweight coordination problems requiring collective action. Alternative solutions not fully developed.",
+  "limitations": "The earlier Digital Services Act removal and compliance-cost figures could not be traced to a published source and were removed. Other figures in the supporting points have not been checked. Acknowledges harms exist but questions regulatory solutions. Doesn't fully address child safety concerns. May underweight coordination problems requiring collective action. Alternative solutions not fully developed.",
   "tags": ["Social Media", "Regulation", "Free Speech", "Technology Policy"],
   "lastUpdated": "2026-01-13T00:00:00Z"
 }

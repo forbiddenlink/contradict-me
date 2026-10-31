@@ -3,7 +3,7 @@
   "topic": "Space Exploration Funding",
   "position": "for",
   "mainClaim": "Space exploration generates massive economic returns and drives critical technological innovation",
-  "evidence": "NASA economic analysis shows every $1 invested returns $7-14 in economic activity through technology transfer. GPS (space tech) generates $1.4 trillion annually in economic value. Space program spinoffs include: memory foam, cordless tools, water filtration, satellite communications, weather forecasting (saves $31 billion/year in disaster prevention). Current space economy is $469 billion, projected to reach $1.8 trillion by 2035, creating 1.5 million high-skill jobs.",
+  "evidence": "No verified source is cited for this argument. The argument rests on reasoning: space programs fund research and engineering whose spinoffs, such as satellite communications and weather forecasting, have wider economic uses.",
   "supportingPoints": [
     "Asteroid mining could unlock quadrillions in rare earth minerals",
     "Space manufacturing enables materials impossible to create in gravity",
@@ -14,14 +14,12 @@
   "sourceCredibility": 93,
   "evidenceStrength": 86,
   "sourceMetadata": {
-    "authors": ["NASA Office of Technology Transfer", "Space Foundation"],
-    "institution": "NASA & Morgan Stanley Research",
-    "yearPublished": 2025,
-    "publicationType": "Economic Impact Analysis",
-    "peerReviewed": false,
-    "citationCount": 531
+    "title": "Source not verified",
+    "authors": [],
+    "institution": "Not verified",
+    "publicationType": "unverified"
   },
-  "limitations": "Returns are long-term and uncertain. Opportunity cost compared to direct Earth-focused research. Private sector now capable of many space activities. Equitable distribution of space economy benefits not guaranteed.",
+  "limitations": "The earlier NASA return-on-investment, GPS and space-economy figures could not be traced to a published source and were removed. Other figures in the supporting points have not been checked. Returns are long-term and uncertain. Opportunity cost compared to direct Earth-focused research. Private sector now capable of many space activities. Equitable distribution of space economy benefits not guaranteed.",
   "tags": ["Space Exploration", "Innovation", "Economic Development", "Technology"],
   "lastUpdated": "2026-01-13T00:00:00Z"
 }

@@ -4,30 +4,10 @@
   "userPosition": "Heavy cryptocurrency regulation protects consumers and prevents fraud",
   "counterPosition": "Strict crypto regulation stifles innovation and pushes development to other countries",
   "qualityScore": 87,
-  "content": "Countries with clear crypto frameworks saw 340% more blockchain developer growth than those with restrictive policies (2019-2023). Singapore, Switzerland, and UAE gained 156,000 blockchain jobs while the US lost market share. A16z reports that 56% of US crypto developers are considering leaving due to regulatory uncertainty. Over-regulation creates unintended consequences: Tornado Cash sanctions affected legitimate privacy uses; Operation Chokepoint 2.0 forced legal businesses to lose banking. Traditional finance has far more fraud—credit card fraud alone is $28B annually vs. $14B in all crypto scams. Innovation often requires experimentation that doesn't fit existing regulatory boxes. The internet's explosive growth happened partly because the US took a light-touch approach in the 1990s rather than applying telephone-era regulations.",
-  "citations": [
-    {
-      "author": "Electric Capital",
-      "title": "Developer Report 2023: Global Crypto Developer Distribution",
-      "publication": "Electric Capital",
-      "year": 2023,
-      "url": "https://example.com/crypto-dev-report",
-      "evidenceStrength": 84,
-      "sampleSize": 23000,
-      "studyType": "GitHub activity analysis"
-    },
-    {
-      "author": "Andreessen Horowitz",
-      "title": "State of Crypto Report: Regulation and Innovation",
-      "publication": "a16z",
-      "year": 2024,
-      "url": "https://example.com/a16z-crypto",
-      "evidenceStrength": 81,
-      "sampleSize": 520,
-      "studyType": "Developer survey"
-    }
-  ],
+  "content": "The argument rests on reasoning: innovation often needs experimentation that does not fit existing regulatory categories, and the early internet grew under light-touch rules. Over-broad rules can also catch legitimate uses, as sanctions on privacy tools may. No verified source is cited for this argument.",
+  "citations": [],
   "limitations": [
+    "The earlier developer-growth, job and fraud figures and their citations could not be traced to published sources and were removed.",
     "Developer exodus may be temporary or reversible",
     "Other factors beyond regulation affect crypto adoption",
     "Comparing fraud across different financial systems is complex",

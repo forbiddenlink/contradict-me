@@ -8,7 +8,7 @@
     "Everyone should go to college"
   ],
   "mainClaim": "The financial return on investment for traditional 4-year college degrees has significantly declined for most majors",
-  "evidence": "A 2024 Georgetown University study analyzing 30 years of earnings data found that 40% of college graduates would have earned more over their lifetime by entering skilled trades immediately after high school. The average student debt of $37,000 now takes 14-20 years to pay off, with interest adding $15,000-25,000 to the total cost. For humanities and social science majors, median lifetime earnings gains versus high school graduates dropped from $900,000 (1990s) to $400,000 (2024), while college costs increased 180% after inflation. Meanwhile, electricians, plumbers, and software developers without degrees often earn $70,000-$120,000 within 5 years, with zero debt.",
+  "evidence": "No verified source is cited for this argument. The argument rests on cost-benefit reasoning: tuition, debt interest and four years of foregone earnings are weighed against an earnings premium that varies by major and institution.",
   "supportingPoints": [
     "Student loan crisis: $1.7 trillion in outstanding debt affecting 45 million Americans",
     "Skilled trades facing worker shortage, driving wages up 40% in past decade",
@@ -17,23 +17,17 @@
     "Many degrees lead to jobs that don't require college education",
     "Online learning and certifications provide cheaper alternatives"
   ],
-  "limitations": "Study focused on median outcomes; individual results vary widely. STEM degrees still show strong ROI. Doesn't account for non-financial benefits like critical thinking, network, personal growth. Geographic factors matter significantly.",
+  "limitations": "The earlier Georgetown study and its figures could not be traced to a published source and were removed. Other figures in the supporting points have not been checked. STEM degrees still show strong ROI. Doesn't account for non-financial benefits like critical thinking, network, personal growth. Geographic factors matter significantly.",
   "counterCounterArguments": [
     "Even for lower-ROI majors, graduates report higher job satisfaction and career flexibility",
     "College degree still required for many professional fields (medicine, law, engineering)",
     "Network effects and social capital from college can be valuable long-term"
   ],
   "sourceMetadata": {
-    "title": "The College Payoff: More Education Doesn't Always Mean More Earnings",
-    "authors": ["Dr. Anthony Carnevale", "Dr. Ban Cheah", "Dr. Martin Van Der Werf"],
-    "institution": "Georgetown University Center on Education and the Workforce",
-    "publicationType": "Longitudinal research study",
-    "journal": "Georgetown CEW Reports",
-    "yearPublished": 2024,
-    "citationCount": 445,
-    "url": "https://cew.georgetown.edu/cew-reports/the-college-payoff-2024/",
-    "sampleSize": 4200000,
-    "methodology": "30-year longitudinal analysis of earnings data across all degree types"
+    "title": "Source not verified",
+    "authors": [],
+    "institution": "Not verified",
+    "publicationType": "unverified"
   },
   "qualityScore": 88,
   "sourceCredibility": 95,
@@ -43,14 +37,14 @@
   "tags": ["education", "college", "student debt", "career", "economics", "ROI"],
   "metadata": {
     "argumentType": "empirical",
-    "evidenceType": "longitudinal-study",
+    "evidenceType": "unverified",
     "domain": "education",
     "subDomain": "higher-education-economics",
     "strength": "strong",
     "tags": ["college", "education", "debt", "career"],
     "createdAt": "2026-01-13T00:00:00Z",
     "lastUpdated": "2026-01-13T00:00:00Z",
-    "reviewStatus": "verified",
+    "reviewStatus": "unverified",
     "curator": "ContradictMe Team"
   }
 }

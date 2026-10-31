@@ -8,7 +8,7 @@
     "Gas cars are always worse than EVs"
   ],
   "mainClaim": "Electric vehicles' environmental benefits depend heavily on electricity grid composition and battery production methods, with lifecycle emissions sometimes comparable to efficient gas vehicles in coal-heavy regions",
-  "evidence": "2024 MIT lifecycle analysis found EVs in coal-dominated regions (West Virginia: 95% fossil fuel grid) produce 87g CO2/km versus 92g for efficient hybrid vehicles over 200,000 km lifetime - only 5% improvement. Battery production contributes 35-50% of total EV lifecycle emissions, with lithium mining requiring 500,000 gallons of water per ton, causing severe environmental damage in Chile and Argentina. However, EVs in renewable-heavy grids (Norway: 98% renewable) emit just 15g CO2/km - 83% lower than gas vehicles. Union of Concerned Scientists research shows EV environmental breakeven point ranges from 18,000 miles (clean grid) to 85,000 miles (dirty grid). Rare earth mining for batteries involves toxic chemical processing, generating 75 tons of toxic waste per ton of rare earths. Grid composition matters: same EV in California (60% clean energy) has 60% lower lifetime emissions than identical model in Indiana (90% fossil fuels).",
+  "evidence": "No verified source is cited for this argument. The argument rests on reasoning: an electric vehicle's lifecycle emissions depend on the carbon intensity of the grid that charges it, and battery manufacturing adds emissions before the vehicle is driven.",
   "supportingPoints": [
     "Battery recycling currently at only 5% rate globally; most end up in landfills",
     "Cobalt mining linked to child labor in Democratic Republic of Congo",
@@ -17,23 +17,17 @@
     "Plug-in hybrids may be optimal transition: better than gas, less material intensive than full EV",
     "As grids get cleaner, existing EVs automatically become cleaner"
   ],
-  "limitations": "Study assumptions about vehicle lifetime (200,000 km) affect calculations. Battery recycling technology improving rapidly. Doesn't account for local air quality improvements from zero tailpipe emissions. Grid mix constantly evolving toward renewables. Some studies find more favorable EV outcomes.",
+  "limitations": "The earlier lifecycle study and its per-kilometer and per-region figures could not be traced to a published source and were removed. Other figures in the supporting points have not been checked. Battery recycling technology improving rapidly. Doesn't account for local air quality improvements from zero tailpipe emissions. Grid mix constantly evolving toward renewables. Some studies find more favorable EV outcomes.",
   "counterCounterArguments": [
     "EV benefits improve over time as grid gets cleaner; gas cars don't",
     "Local air quality improvements in cities provide health benefits beyond climate",
     "Battery technology advancing rapidly with lower-impact materials"
   ],
   "sourceMetadata": {
-    "title": "On the Road to Clean: Electric Vehicle Lifecycle Emissions in Grid Context",
-    "authors": ["Prof. Randall Field", "Dr. Sergey Paltsev", "Prof. Jessica Trancik"],
-    "institution": "MIT Energy Initiative",
-    "publicationType": "Peer-reviewed study",
-    "journal": "Nature Climate Change",
-    "yearPublished": 2024,
-    "citationCount": 1089,
-    "doi": "10.1038/s41558-024-01567-2",
-    "url": "https://climate.mit.edu/posts/electric-vehicle-lifecycle-emissions",
-    "methodology": "Lifecycle assessment across 59 global regions with varying grid compositions"
+    "title": "Source not verified",
+    "authors": [],
+    "institution": "Not verified",
+    "publicationType": "unverified"
   },
   "qualityScore": 90,
   "sourceCredibility": 97,
@@ -43,14 +37,14 @@
   "tags": ["electric vehicles", "climate change", "environment", "sustainability", "energy"],
   "metadata": {
     "argumentType": "empirical",
-    "evidenceType": "lifecycle-assessment",
+    "evidenceType": "unverified",
     "domain": "environment",
     "subDomain": "transportation",
     "strength": "strong",
     "tags": ["EVs", "climate", "environment", "energy"],
     "createdAt": "2026-01-13T00:00:00Z",
     "lastUpdated": "2026-01-13T00:00:00Z",
-    "reviewStatus": "verified",
+    "reviewStatus": "unverified",
     "curator": "ContradictMe Team"
   }
 }

@@ -8,7 +8,7 @@
     "Social media benefits outweigh the harms"
   ],
   "mainClaim": "Heavy social media use is causally linked to increased depression and anxiety, particularly in adolescents",
-  "evidence": "A 2024 longitudinal study by Johns Hopkins University tracked 40,000 teenagers over 4 years, finding that those who used social media more than 3 hours daily showed a 37% higher rate of clinical depression and 42% higher anxiety disorders compared to minimal users (under 30 minutes daily). The study controlled for pre-existing mental health conditions, socioeconomic status, and family dynamics. Experimental data from a separate 2023 Yale study showed that when college students reduced Instagram and TikTok use by 50% for 4 weeks, depression scores dropped by 23% on average, and self-reported loneliness decreased by 18%.",
+  "evidence": "No verified source is cited for this argument. The argument rests on reasoning: heavy social media use may displace sleep and face-to-face time and increase social comparison, which are plausible pathways to depression and anxiety.",
   "supportingPoints": [
     "Social comparison and 'highlight reel' effect creates unrealistic standards",
     "Algorithmic content optimization prioritizes engagement over wellbeing, promoting controversial content",
@@ -17,24 +17,17 @@
     "Sleep disruption from blue light and late-night scrolling affects mood regulation",
     "Cyberbullying and harassment more prevalent on social platforms"
   ],
-  "limitations": "Correlation doesn't prove causation in all cases; some individuals with pre-existing depression may use social media more. Study primarily focused on Instagram, TikTok, and Snapchat (visual platforms); effects may differ for text-based platforms like Twitter/X. Positive uses (support groups, education, activism) weren't the focus of this research.",
+  "limitations": "The earlier longitudinal and experimental studies and their percentage figures could not be traced to published sources and were removed. Correlation doesn't prove causation in all cases; some individuals with pre-existing depression may use social media more.",
   "counterCounterArguments": [
     "Effect sizes larger than many other lifestyle factors (similar to exercise impact)",
     "Experimental studies show improvement when usage decreases, suggesting causation",
     "Meta-analyses of 50+ studies show consistent pattern across cultures and platforms"
   ],
   "sourceMetadata": {
-    "title": "Social Media Use and Adolescent Mental Health: A Four-Year Longitudinal Study",
-    "authors": ["Dr. Lisa Berkman", "Dr. Michael Chen", "Dr. Amanda Rodriguez"],
-    "institution": "Johns Hopkins Bloomberg School of Public Health",
-    "publicationType": "Longitudinal study",
-    "journal": "JAMA Psychiatry",
-    "yearPublished": 2024,
-    "citationCount": 892,
-    "doi": "10.1001/jamapsychiatry.2024.0234",
-    "url": "https://jamanetwork.com/journals/jamapsychiatry/fullarticle/2813456",
-    "sampleSize": 40000,
-    "methodology": "4-year longitudinal cohort study with annual mental health assessments"
+    "title": "Source not verified",
+    "authors": [],
+    "institution": "Not verified",
+    "publicationType": "unverified"
   },
   "qualityScore": 92,
   "sourceCredibility": 96,
@@ -51,14 +44,14 @@
   ],
   "metadata": {
     "argumentType": "empirical",
-    "evidenceType": "longitudinal-study",
+    "evidenceType": "unverified",
     "domain": "health",
     "subDomain": "mental-health",
     "strength": "strong",
     "tags": ["social-media", "mental-health", "teens", "wellbeing"],
     "createdAt": "2026-01-13T00:00:00Z",
     "lastUpdated": "2026-01-13T00:00:00Z",
-    "reviewStatus": "verified",
+    "reviewStatus": "unverified",
     "curator": "ContradictMe Team"
   }
 }

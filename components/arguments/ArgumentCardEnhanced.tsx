@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
 import { Argument } from '@/lib/types';
+import { isUnverifiedSource } from '@/lib/source-status';
 import ConfidenceBar from '../ui/ConfidenceBar';
 import EvidenceBadge from '../ui/EvidenceBadge';
 import SourceCredibilityBadge from '../ui/SourceCredibilityBadge';
@@ -184,14 +185,20 @@ export default function ArgumentCardEnhanced({ argument, index = 0 }: ArgumentCa
               compact={true}
             />
             <p className="source-preview-text">
-              {argument.sourceMetadata.authors?.slice(0, 2).join(', ')}
-              {argument.sourceMetadata.authors &&
-                argument.sourceMetadata.authors.length > 2 &&
-                ' et al.'}
-              {' • '}
-              {argument.sourceMetadata.institution}
-              {' • '}
-              {argument.sourceMetadata.yearPublished}
+              {isUnverifiedSource(argument.sourceMetadata) ? (
+                'Source not verified'
+              ) : (
+                <>
+                  {argument.sourceMetadata.authors?.slice(0, 2).join(', ')}
+                  {argument.sourceMetadata.authors &&
+                    argument.sourceMetadata.authors.length > 2 &&
+                    ' et al.'}
+                  {' • '}
+                  {argument.sourceMetadata.institution}
+                  {argument.sourceMetadata.yearPublished &&
+                    ` • ${argument.sourceMetadata.yearPublished}`}
+                </>
+              )}
             </p>
           </div>
         )}

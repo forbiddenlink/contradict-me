@@ -268,10 +268,11 @@ export default function AboutPage() {
             Evidence Standards
           </h2>
           <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
-            ContradictMe prioritizes arguments backed by peer-reviewed research, transparent
-            methodologies, and verifiable sources. Each argument includes quality scores based on
-            evidence strength, sample size, and study design. We explicitly flag limitations,
-            conflicts of interest, and areas where scientific consensus is absent or evolving.
+            ContradictMe prioritizes arguments with verifiable sources and transparent
+            methodologies, and marks any source it has not been able to verify. Each argument
+            includes quality scores based on evidence strength, sample size, and study design. We
+            explicitly flag limitations, conflicts of interest, and areas where scientific consensus
+            is absent or evolving.
           </p>
           <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
             Unlike generative AI models that produce plausible-sounding text, our system is designed
@@ -292,7 +293,7 @@ export default function AboutPage() {
           </p>
           <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
             The project is built using Next.js, Algolia Agent Studio, and curated argument databases
-            with peer-reviewed sources. All arguments are evaluated for quality, credibility, and
+            with source-checked records. All arguments are evaluated for quality, credibility, and
             evidence strength before being included in the system. For questions or feedback, please
             visit the{' '}
             <Link

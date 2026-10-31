@@ -14,7 +14,7 @@ export interface Argument {
     institution: string;
     publicationType: string;
     journal?: string;
-    yearPublished: number;
+    yearPublished?: number;
     citationCount?: number;
     doi?: string;
     url?: string;

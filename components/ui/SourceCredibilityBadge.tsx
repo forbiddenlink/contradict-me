@@ -2,6 +2,7 @@
 
 import { m } from 'framer-motion';
 import { Argument } from '@/lib/types';
+import { isUnverifiedSource } from '@/lib/source-status';
 
 interface SourceCredibilityBadgeProps {
   source: Argument['sourceMetadata'];
@@ -14,6 +15,10 @@ export default function SourceCredibilityBadge({
   score,
   compact = false,
 }: SourceCredibilityBadgeProps) {
+  if (isUnverifiedSource(source)) {
+    return <span className="credibility-micro-badge">Source not verified</span>;
+  }
+
   const isPeerReviewed = source.publicationType === 'peer-reviewed';
   const hasCitations = source.citationCount && source.citationCount > 0;
   const isRecent = source.yearPublished && source.yearPublished >= new Date().getFullYear() - 3;

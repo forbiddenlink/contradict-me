@@ -3,7 +3,7 @@
   "topic": "Four-Day Workweek",
   "position": "for",
   "mainClaim": "Four-day workweeks maintain or increase productivity while dramatically improving employee wellbeing",
-  "evidence": "Largest trial ever - 61 UK companies, 2,900 employees, 6 months - showed revenue increased 35% on average, staff turnover dropped 57%, and 92% of companies continued the policy after trial ended. Iceland's trials with 2,500 workers showed productivity remained constant or improved in majority of workplaces. Employee stress and burnout decreased 71%, work-life balance ratings increased by 45 points.",
+  "evidence": "The UK four-day week pilot (Autonomy report, February 2023) covered 61 companies and about 2,900 workers from June to December 2022. Of those companies, 56 (92%) were continuing with a four-day week afterward and 18 had made it permanent. Revenue stayed broadly the same, rising 1.4% on average over the trial across the 23 organisations that reported it (weighted by company size); against a comparable earlier six-month period, 24 organisations averaged a 35% increase. The number of staff leaving participating companies fell by 57%. Among employees, 71% reported reduced burnout and 39% reported being less stressed.",
   "supportingPoints": [
     "Reduced hours force efficiency gains and elimination of time-wasting meetings",
     "Three-day weekends allow full mental recovery and prevent burnout",
@@ -14,14 +14,15 @@
   "sourceCredibility": 91,
   "evidenceStrength": 87,
   "sourceMetadata": {
-    "authors": ["4 Day Week Global", "Cambridge University", "Boston College"],
-    "institution": "University of Cambridge & Boston College",
-    "yearPublished": 2024,
-    "publicationType": "Large-scale Controlled Trial",
-    "peerReviewed": true,
-    "citationCount": 423
+    "title": "The results are in: the UK's four-day week pilot",
+    "authors": ["Kyle Lewis", "Will Stronge", "Jack Kellam", "Lukas Kikuchi"],
+    "institution": "Autonomy, with researchers at Boston College and University College Dublin",
+    "publicationType": "report",
+    "yearPublished": 2023,
+    "url": "https://autonomy.work/portfolio/uk4dwpilotresults/",
+    "methodology": "Pilot of self-selected UK employers with company metrics and employee surveys"
   },
-  "limitations": "Results vary by industry - difficult for 24/7 operations or customer-facing roles. May not work for hourly workers paid for time. Requires significant organizational restructuring. Long-term effects beyond 12 months less studied.",
+  "limitations": "The cited source is a pilot report, not a peer-reviewed paper, and the participating companies chose to take part. The report does not support the Iceland or '45 points' figures this record previously cited. Results vary by industry - difficult for 24/7 operations or customer-facing roles. May not work for hourly workers paid for time. Requires significant organizational restructuring. Long-term effects beyond 12 months less studied.",
   "tags": ["Work Culture", "Productivity", "Employee Wellbeing", "Labor Policy"],
   "lastUpdated": "2026-01-13T00:00:00Z"
 }
