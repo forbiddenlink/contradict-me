@@ -2,6 +2,7 @@ import { algoliasearch } from 'algoliasearch';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as dotenv from 'dotenv';
+import { toIndexRecord } from '../lib/argument-index';
 
 // Load environment variables
 dotenv.config({ path: path.join(process.cwd(), '.env.local') });
@@ -64,7 +65,7 @@ async function indexArguments(client: ReturnType<typeof algoliasearch>) {
         continue;
       }
       const argument = JSON.parse(content);
-      argumentsToIndex.push(argument);
+      argumentsToIndex.push(toIndexRecord(file, argument));
       console.log(`📄 Loaded: ${file}`);
       console.log(`   Claim: ${argument.mainClaim}`);
       console.log(`   Quality: ${argument.qualityScore}/100\n`);
@@ -76,7 +77,8 @@ async function indexArguments(client: ReturnType<typeof algoliasearch>) {
 
   try {
     console.log('⬆️  Indexing to Algolia...');
-    await client.saveObjects({
+    // Replace, not save: a record whose file changed or left data/arguments must not stay live.
+    await client.replaceAllObjects({
       indexName: INDEX_NAME,
       objects: argumentsToIndex,
     });
