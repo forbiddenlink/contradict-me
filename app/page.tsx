@@ -361,8 +361,7 @@ export default function Home() {
               Evidence-Based
             </h3>
             <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
-              Each argument shows whether its source has been checked, not just plausible-sounding
-              text.
+              Each argument names a checked source or is marked &ldquo;Source not verified&rdquo;.
             </p>
           </div>
 

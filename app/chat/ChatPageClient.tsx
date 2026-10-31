@@ -119,9 +119,9 @@ export default function ChatPageClient({ initialMessage }: { initialMessage: str
             </h2>
             <p className="text-sm">
               Each response includes specific counterarguments, quality scores based on evidence
-              strength, and honest limitations. Each source is marked as checked or &ldquo;not
-              verified&rdquo;, and you&rsquo;ll see uncertainty notes when evidence is mixed, and
-              reflection questions to deepen thinking. The system prioritizes empirical studies over
+              strength, and honest limitations. A source we could not trace is marked &ldquo;Source
+              not verified&rdquo;. You&rsquo;ll also see uncertainty notes when evidence is mixed,
+              and reflection questions to deepen thinking. The system prioritizes empirical studies over
               opinion pieces and flags where conclusions are contested. This isn&rsquo;t about
               winning debates—it&rsquo;s about making better decisions by understanding the
               strongest case against the position you hold.
