@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.14](https://github.com/forbiddenlink/contradict-me/compare/v1.0.13...v1.0.14) (2026-10-31)
+
+
+### Bug Fixes
+
+* **copy:** mark landing example card as illustrative, drop invented study ([#135](https://github.com/forbiddenlink/contradict-me/issues/135)) ([38ffa94](https://github.com/forbiddenlink/contradict-me/commit/38ffa9418b5bce8e8384ae76255eb79e18316474))
+* **data:** make argument source records match real publications ([#137](https://github.com/forbiddenlink/contradict-me/issues/137)) ([a196e92](https://github.com/forbiddenlink/contradict-me/commit/a196e9247a762ace927b677b6ffed68c79b5a6e1))
+* **data:** stop reindex duplicating records and keeping removed citations ([#138](https://github.com/forbiddenlink/contradict-me/issues/138)) ([a65b3e5](https://github.com/forbiddenlink/contradict-me/commit/a65b3e5e717c872f63966b91f52976b846b17525))
+
 ## [1.0.13](https://github.com/forbiddenlink/contradict-me/compare/v1.0.12...v1.0.13) (2026-10-29)
 
 
