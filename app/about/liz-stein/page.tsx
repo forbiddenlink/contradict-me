@@ -65,7 +65,7 @@ export default function AuthorBioPage() {
 
         <header className="mb-12">
           <div className="flex flex-col sm:flex-row gap-8 items-start mb-6">
-            <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-to-br from-violet-500 to-teal-500 flex items-center justify-center text-white text-5xl font-bold shadow-lg">
+            <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-slate-950 dark:bg-slate-700 flex items-center justify-center text-white text-5xl font-bold shadow-lg">
               {DEFAULT_AUTHOR.split(' ')
                 .map((n) => n[0])
                 .join('')}

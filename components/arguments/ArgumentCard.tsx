@@ -42,8 +42,8 @@ export default function ArgumentCard({ argument }: ArgumentCardProps) {
   };
 
   const getQualityRingColor = (score: number) => {
-    if (score >= 80) return '#7C3AED'; // violet-600 - premium counterarguments
-    if (score >= 60) return '#8B5CF6'; // violet-500
+    if (score >= 80) return '#C93509'; // violet-600 - premium counterarguments
+    if (score >= 60) return '#E8410F'; // violet-500
     return '#64748B'; // slate-500
   };
 

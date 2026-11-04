@@ -110,7 +110,7 @@ export default function ThinkingIndicator({
 
         .thinking-blob {
           @apply absolute inset-0;
-          background: linear-gradient(135deg, #a78bfa 0%, #4dd4cf 50%, #8b5cf6 100%);
+          background: linear-gradient(135deg, #ff5a2d 0%, #a3a3a3 50%, #e8410f 100%);
           background-size: 200% 200%;
           border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
           animation:

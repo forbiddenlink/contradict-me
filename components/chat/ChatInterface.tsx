@@ -410,7 +410,7 @@ export default function ChatInterface({ initialMessage }: Readonly<ChatInterface
           particleCount: 100,
           spread: 70,
           origin: { y: 0.6 },
-          colors: ['#7C3AED', '#0D9A9B', '#4DD4CF', '#A78BFA'],
+          colors: ['#FF4A1C', '#FFFFFF', '#0B0B0C', '#A3A3A3'],
         });
       }, 500); // Small delay so confetti appears after message is visible
 

@@ -341,7 +341,7 @@ export default async function TopicGuidePage({ params }: TopicPageProps) {
           </p>
           <Link
             href={`/chat?message=${encodeURIComponent(guide.starterPrompt)}`}
-            className="inline-flex rounded-xl px-5 py-3 bg-gradient-to-r from-teal-600 to-cyan-600 text-white font-semibold hover:opacity-95 transition-opacity"
+            className="inline-flex rounded-xl px-5 py-3 bg-slate-950 dark:bg-slate-700 text-white font-semibold hover:opacity-95 transition-opacity"
           >
             Start Guided Challenge
           </Link>

@@ -1,5 +1,19 @@
 import type { Config } from 'tailwindcss';
 
+const neutral = () => ({
+  50: '#FAFAFA',
+  100: '#F0F0F0',
+  200: '#E2E2E2',
+  300: '#C9C9C9',
+  400: '#A3A3A3',
+  500: '#6B6B6B',
+  600: '#4A4A4A',
+  700: '#333333',
+  800: '#1F1F1F',
+  900: '#141414',
+  950: '#0B0B0C',
+});
+
 const config: Config = {
   darkMode: 'class',
   content: [
@@ -11,38 +25,29 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // 2026 Deep Ocean Professional Palette
-        slate: {
-          950: '#0A1628',
-          900: '#0F2137',
-          800: '#1A2F47',
-          700: '#2D4057',
-          600: '#455A74',
-        },
-        teal: {
-          600: '#0D7C7D',
-          500: '#0D9A9B',
-          400: '#1DBAB4',
-          300: '#4DD4CF',
-          200: '#8CE8E4',
-          100: '#D1F5F3',
-        },
-        amber: {
-          600: '#D97706',
-          500: '#F59E0B',
-          400: '#FBBF24',
-          300: '#FCD34D',
-        },
-        // Violet for counterarguments - intellectual stimulation
+        // Two-tone system: white and near-black halves, neutral ramp for every
+        // former hue. The only chroma is `claim` (red-orange), reserved for the
+        // point of disagreement. Former violet usage (counterarguments) maps to it.
+        slate: neutral(),
+        gray: neutral(),
+        teal: neutral(),
+        cyan: neutral(),
+        purple: neutral(),
+        pink: neutral(),
+        indigo: neutral(),
+        amber: neutral(),
         violet: {
-          700: '#6D28D9',
-          600: '#7C3AED',
-          500: '#8B5CF6',
-          400: '#A78BFA',
-          300: '#C4B5FD',
-          200: '#DDD6FE',
-          100: '#EDE9FE',
-          50: '#F5F3FF',
+          950: '#2B0D05',
+          900: '#5A1A08',
+          800: '#7A2308',
+          700: '#A82B05',
+          600: '#C93509',
+          500: '#E8410F',
+          400: '#FF5A2D',
+          300: '#FF8A66',
+          200: '#FFCDBD',
+          100: '#FFE6DE',
+          50: '#FFF3EE',
         },
         success: {
           500: '#10B981',
