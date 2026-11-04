@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/forbiddenlink/contradict-me/compare/v1.0.14...v1.1.0) (2026-11-04)
+
+
+### Features
+
+* **ui:** two-tone claim/counter hero and red-orange disagreement palette ([#141](https://github.com/forbiddenlink/contradict-me/issues/141)) ([19a01dc](https://github.com/forbiddenlink/contradict-me/commit/19a01dcaa874d8d444f0dbc2375964c6ac04fc8e))
+
+
+### Bug Fixes
+
+* **home:** drop hard-coded test count from stats banner ([#143](https://github.com/forbiddenlink/contradict-me/issues/143)) ([8665392](https://github.com/forbiddenlink/contradict-me/commit/86653929034328ffb7a58713b1d7e4b935453d1e))
+
 ## [1.0.14](https://github.com/forbiddenlink/contradict-me/compare/v1.0.13...v1.0.14) (2026-10-31)
 
 
