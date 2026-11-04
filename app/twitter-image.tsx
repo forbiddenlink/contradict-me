@@ -1,4 +1,6 @@
 import { ImageResponse } from 'next/og';
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
 
 // Static: rendered once at build time and served from the CDN. The edge runtime made
 // every request run ImageResponse live, so one slow render could hang until timeout.
@@ -14,6 +16,8 @@ export const size = {
 export const contentType = 'image/png';
 
 export default async function Image() {
+  const syne = await readFile(path.join(process.cwd(), 'assets', 'Syne-ExtraBold.ttf'));
+
   return new ImageResponse(
     <div
       style={{
@@ -21,98 +25,70 @@ export default async function Image() {
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#0f172a',
-        backgroundImage: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+        fontFamily: 'Syne',
         position: 'relative',
       }}
     >
-      {/* Gradient accent at top */}
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: '8px',
-          background: 'linear-gradient(90deg, #0d9488 0%, #06b6d4 100%)',
-        }}
-      />
-
-      {/* Main content */}
+      {/* Claim half */}
       <div
         style={{
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center',
           justifyContent: 'center',
-          padding: '80px 100px',
-          textAlign: 'center',
+          height: '300px',
+          padding: '0 80px',
+          backgroundColor: '#ffffff',
         }}
       >
-        <h1
+        <div style={{ fontSize: '22px', color: '#4a4a4a', letterSpacing: '0.12em' }}>YOU SAY</div>
+        <div
           style={{
-            fontSize: '80px',
-            fontWeight: 700,
-            background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
-            backgroundClip: 'text',
-            color: 'transparent',
-            lineHeight: 1.1,
+            fontSize: '64px',
+            fontWeight: 800,
+            color: '#0b0b0c',
             letterSpacing: '-0.03em',
-            marginBottom: '32px',
-            maxWidth: '1000px',
+            lineHeight: 1.1,
+            marginTop: '12px',
           }}
         >
           An AI that disagrees with you
-        </h1>
-
-        <p
-          style={{
-            fontSize: '36px',
-            color: '#cbd5e1',
-            lineHeight: 1.5,
-            maxWidth: '800px',
-            marginBottom: '48px',
-          }}
-        >
-          Challenge your beliefs with research-backed counterarguments
-        </p>
-
-        {/* Badge/CTA */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            padding: '20px 40px',
-            background: 'linear-gradient(90deg, #0d9488 0%, #06b6d4 100%)',
-            borderRadius: '16px',
-            fontSize: '28px',
-            fontWeight: 600,
-            color: '#ffffff',
-            boxShadow: '0 20px 40px rgba(13, 148, 136, 0.3)',
-          }}
-        >
-          Start Challenging →
         </div>
       </div>
 
-      {/* Bottom branding */}
+      {/* Disagreement seam */}
+      <div style={{ height: '10px', width: '100%', backgroundColor: '#ff4a1c' }} />
+
+      {/* Counter half */}
       <div
         style={{
-          position: 'absolute',
-          bottom: '40px',
           display: 'flex',
-          alignItems: 'center',
-          fontSize: '24px',
-          color: '#64748b',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          flex: 1,
+          padding: '0 80px',
+          backgroundColor: '#0b0b0c',
         }}
       >
-        ContradictMe
+        <div style={{ fontSize: '22px', color: '#ff4a1c', letterSpacing: '0.12em' }}>COUNTER</div>
+        <div
+          style={{
+            fontSize: '40px',
+            fontWeight: 800,
+            color: '#ffffff',
+            letterSpacing: '-0.02em',
+            lineHeight: 1.2,
+            marginTop: '12px',
+            maxWidth: '980px',
+          }}
+        >
+          Challenge your beliefs with research-backed counterarguments
+        </div>
+        <div style={{ fontSize: '24px', color: '#a3a3a3', marginTop: '20px' }}>ContradictMe</div>
       </div>
     </div>,
     {
       ...size,
+      fonts: [{ name: 'Syne', data: syne, weight: 800, style: 'normal' }],
     }
   );
 }
