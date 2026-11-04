@@ -8,11 +8,9 @@ const popularTopics = [
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-teal-50/30 to-cyan-50/20 dark:from-slate-950 dark:via-slate-900 dark:to-slate-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-white dark:bg-slate-950 flex items-center justify-center p-4">
       <div className="max-w-2xl w-full text-center">
-        <div className="text-8xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 dark:from-teal-400 dark:to-cyan-400 bg-clip-text text-transparent mb-4">
-          404
-        </div>
+        <div className="text-8xl font-bold text-slate-950 dark:text-white mb-4">404</div>
         <h1 className="text-3xl font-bold text-slate-800 dark:text-slate-100 mb-3">
           Page Not Found
         </h1>
@@ -23,7 +21,7 @@ export default function NotFound() {
         <div className="flex flex-wrap gap-3 justify-center mb-8">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-teal-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg hover:-translate-y-0.5 transition-all"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-slate-950 dark:bg-slate-700 text-white rounded-xl font-semibold hover:shadow-lg hover:-translate-y-0.5 transition-all"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path

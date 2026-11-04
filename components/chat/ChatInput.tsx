@@ -115,14 +115,14 @@ export default function ChatInput({ onSend, isLoading, error }: ChatInputProps) 
             buttonState === 'success'
               ? '#10B981'
               : buttonState === 'sending'
-                ? '#0D7C7D'
+                ? '#1F1F1F'
                 : undefined,
         }}
         transition={{
           scale: { duration: 0.4, times: [0, 0.5, 1] },
           backgroundColor: { duration: 0.3 },
         }}
-        className="relative overflow-hidden px-6 sm:px-8 py-4 sm:py-5 bg-gradient-to-r from-teal-600 to-cyan-600 dark:from-teal-500 dark:to-cyan-500 text-white rounded-2xl font-semibold text-sm sm:text-base transition-all hover:shadow-lg hover:shadow-teal-500/25 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+        className="relative overflow-hidden px-6 sm:px-8 py-4 sm:py-5 bg-slate-950 dark:bg-slate-700 text-white rounded-2xl font-semibold text-sm sm:text-base transition-all hover:shadow-lg hover:shadow-teal-500/25 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
         aria-label={
           buttonState === 'success'
             ? 'Message sent!'

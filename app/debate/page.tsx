@@ -296,13 +296,13 @@ export default function DebatePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 via-white to-teal-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="min-h-screen bg-white dark:bg-slate-950">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="relative p-2.5 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 shadow-lg shadow-violet-500/30">
+              <div className="relative p-2.5 rounded-xl bg-slate-950 dark:bg-slate-700 shadow-lg shadow-violet-500/30">
                 <svg
                   className="w-7 h-7 text-white"
                   fill="none"
@@ -323,7 +323,7 @@ export default function DebatePage() {
                 </svg>
               </div>
               <div>
-                <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-teal-600">
+                <h1 className="text-2xl font-bold text-slate-950 dark:text-white">
                   AI Debate Arena
                 </h1>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -375,7 +375,7 @@ export default function DebatePage() {
               <button
                 onClick={startDebate}
                 disabled={!topicInput.trim()}
-                className="mt-4 w-full py-3 rounded-xl bg-gradient-to-r from-violet-600 to-teal-600 text-white font-semibold hover:from-violet-700 hover:to-teal-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                className="mt-4 w-full py-3 rounded-xl bg-slate-950 dark:bg-slate-700 text-white font-semibold hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
               >
                 <svg
                   className="w-5 h-5"
@@ -565,7 +565,7 @@ export default function DebatePage() {
               <m.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-gradient-to-r from-violet-50 to-teal-50 dark:from-gray-800 dark:to-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700"
+                className="bg-slate-50 dark:bg-slate-900 rounded-2xl p-8 border border-gray-200 dark:border-gray-700"
               >
                 <div className="flex items-center justify-center gap-2 mb-6">
                   <Trophy className="w-6 h-6 text-yellow-600" />

@@ -275,7 +275,7 @@ export function ConversationHistorySidebar({
                 onClick={() => {
                   window.location.href = '/debate';
                 }}
-                className="w-full bg-gradient-to-r from-violet-600 to-teal-600 hover:from-violet-700 hover:to-teal-700"
+                className="w-full bg-slate-950 dark:bg-slate-700 hover:bg-slate-700"
                 variant="default"
               >
                 <Sparkles className="w-4 h-4 mr-2" />

@@ -55,7 +55,7 @@ interface TagCloudItem {
 function TagCloud({ tags }: { tags: TagCloudItem[] }) {
   if (tags.length === 0) {
     return (
-      <div className="flex items-center justify-center py-12 text-slate-400 dark:text-slate-500">
+      <div className="flex items-center justify-center py-12 text-slate-600 dark:text-slate-400">
         <p className="text-sm">No topics discussed yet. Start a conversation!</p>
       </div>
     );
@@ -73,7 +73,7 @@ function TagCloud({ tags }: { tags: TagCloudItem[] }) {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.2, delay: index * 0.03 }}
-            className="px-3 py-1.5 bg-gradient-to-br from-violet-100 to-teal-100 dark:from-violet-950/30 dark:to-teal-950/30 border border-violet-200 dark:border-violet-800/50 rounded-lg text-violet-700 dark:text-violet-300 font-medium"
+            className="px-3 py-1.5 bg-violet-50 dark:bg-violet-950/30 border border-violet-200 dark:border-violet-800/50 rounded-lg text-violet-700 dark:text-violet-300 font-medium"
             style={{ fontSize: `${size}rem` }}
           >
             {item.tag}
@@ -103,7 +103,7 @@ function AchievementBadge({ achievement }: { achievement: Achievement }) {
       transition={{ duration: 0.3 }}
       className={`relative p-4 rounded-xl border ${
         achievement.unlocked
-          ? 'bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 border-amber-300 dark:border-amber-700/50'
+          ? 'bg-slate-50 dark:bg-slate-900 border-amber-300 dark:border-amber-700/50'
           : 'bg-slate-100/50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 opacity-60'
       }`}
     >
@@ -132,7 +132,7 @@ function AchievementBadge({ achievement }: { achievement: Achievement }) {
               </div>
               <div className="h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
                 <m.div
-                  className="h-full bg-gradient-to-r from-violet-500 to-teal-500"
+                  className="h-full bg-slate-950 dark:bg-slate-700"
                   initial={{ width: 0 }}
                   animate={{ width: `${(achievement.progress / achievement.target) * 100}%` }}
                   transition={{ duration: 0.6, delay: 0.2 }}
@@ -242,7 +242,7 @@ export default function AnalyticsDashboard() {
           </div>
           <Link
             href="/chat"
-            className="px-4 py-2 bg-gradient-to-r from-violet-500 to-teal-500 text-white rounded-lg font-medium hover:shadow-lg transition-shadow"
+            className="px-4 py-2 bg-slate-950 dark:bg-slate-700 text-white rounded-lg font-medium hover:shadow-lg transition-shadow"
           >
             Back to Chat
           </Link>
@@ -344,7 +344,7 @@ export default function AnalyticsDashboard() {
             </p>
             <Link
               href="/chat"
-              className="inline-block px-6 py-3 bg-gradient-to-r from-violet-500 to-teal-500 text-white rounded-lg font-medium hover:shadow-lg transition-shadow"
+              className="inline-block px-6 py-3 bg-slate-950 dark:bg-slate-700 text-white rounded-lg font-medium hover:shadow-lg transition-shadow"
             >
               Start Chatting →
             </Link>
