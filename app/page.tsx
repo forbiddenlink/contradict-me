@@ -68,12 +68,6 @@ export default function Home() {
           <div>
             <span className="font-semibold">88.1</span> Avg Quality Score
           </div>
-          <span className="hidden sm:inline text-white/60" aria-hidden="true">
-            /
-          </span>
-          <div>
-            <span className="font-semibold">73/73</span> Tests Passing
-          </div>
         </div>
       </div>
 
