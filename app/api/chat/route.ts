@@ -1,5 +1,6 @@
 import { NextRequest } from 'next/server';
-import { getLangfuse, flushLangfuse } from '@/lib/langfuse';
+import { LangfuseOtelSpanAttributes, type LangfuseGeneration } from '@langfuse/tracing';
+import { flushLangfuse, startTrace } from '@/lib/langfuse';
 import {
   rateLimit,
   getClientIdentifier,
@@ -110,10 +111,10 @@ function detectDebateContext(message: string): {
 }
 
 export async function POST(req: NextRequest) {
-  const langfuse = getLangfuse();
   const clientId = getClientId(req);
-  let generation: ReturnType<NonNullable<ReturnType<typeof getLangfuse>>['generation']> | undefined;
+  let generation: LangfuseGeneration | undefined;
   let generationEnded = false;
+  let traceEnded = false;
 
   // Rate limit check using Upstash Redis (falls back to in-memory in dev)
   const rateLimitResult = await rateLimit(clientId, 'debate');
@@ -151,13 +152,22 @@ export async function POST(req: NextRequest) {
   }
 
   // Create Langfuse trace for this request
-  const trace = langfuse?.trace({
+  const trace = startTrace({
     name: 'chat-request',
     userId: getTraceUserId(clientId),
     metadata: {
       endpoint: '/api/chat',
     },
   });
+  // Langfuse exports a span only once it ends, so every exit path ends the trace
+  // (exactly once) before flushing.
+  const endTrace = async (): Promise<void> => {
+    if (!traceEnded) {
+      traceEnded = true;
+      trace?.end();
+    }
+    await flushLangfuse();
+  };
 
   try {
     const {
@@ -180,12 +190,12 @@ export async function POST(req: NextRequest) {
 
     if (typeof message !== 'string' || !message.trim()) {
       trace?.update({ output: { error: 'Message is required' } });
-      await flushLangfuse();
+      await endTrace();
       return errorResponse(400, 'Message is required.');
     }
     if (message.length > MAX_MESSAGE_LENGTH) {
       trace?.update({ output: { error: 'Message too long' } });
-      await flushLangfuse();
+      await endTrace();
       return errorResponse(
         413,
         `Message exceeds ${MAX_MESSAGE_LENGTH} characters. Please shorten and try again.`
@@ -195,7 +205,7 @@ export async function POST(req: NextRequest) {
     const historyResult = validateHistory(rawHistory);
     if (!historyResult.ok) {
       trace?.update({ output: { error: historyResult.error } });
-      await flushLangfuse();
+      await endTrace();
       return errorResponse(historyResult.status, historyResult.error);
     }
     const history = historyResult.history;
@@ -205,8 +215,10 @@ export async function POST(req: NextRequest) {
     const isDebateMode = detectedContext.isDebate || !!debateContext;
 
     // Update trace with context
+    if (trace && typeof conversationId === 'string' && conversationId) {
+      trace.otelSpan.setAttribute(LangfuseOtelSpanAttributes.TRACE_SESSION_ID, conversationId);
+    }
     trace?.update({
-      sessionId: conversationId,
       metadata: {
         endpoint: '/api/chat',
         isDebate: isDebateMode,
@@ -228,7 +240,7 @@ export async function POST(req: NextRequest) {
 
     if (!agentEndpoint) {
       trace?.update({ output: { error: 'Agent endpoint not configured' } });
-      await flushLangfuse();
+      await endTrace();
       return errorResponse(500, "The Agent Studio endpoint isn't configured.");
     }
 
@@ -240,7 +252,7 @@ export async function POST(req: NextRequest) {
 
     if (!appId || !apiKey) {
       trace?.update({ output: { error: 'Missing Algolia credentials' } });
-      await flushLangfuse();
+      await endTrace();
       return errorResponse(500, 'Configuration error: Missing Algolia credentials.');
     }
 
@@ -256,7 +268,7 @@ export async function POST(req: NextRequest) {
     const dailyResult = await rateLimit('global', 'debateDaily');
     if (dailyResult.unavailable || !dailyResult.success) {
       trace?.update({ output: { error: 'Daily ceiling reached' } });
-      await flushLangfuse();
+      await endTrace();
       return new Response(
         JSON.stringify({
           error: 'The debate partner is resting for today. Please come back tomorrow.',
@@ -270,17 +282,20 @@ export async function POST(req: NextRequest) {
       ? `debate-turn-${detectedContext.speaker || debateContext?.speaker || 'unknown'}-round-${detectedContext.round || debateContext?.round || '?'}`
       : 'agent-generation';
 
-    generation = trace?.generation({
-      name: spanName,
-      model: 'algolia-agent-studio',
-      input: {
-        messages: [{ role: 'user', content: message.trim() }],
+    generation = trace?.startObservation(
+      spanName,
+      {
+        model: 'algolia-agent-studio',
+        input: {
+          messages: [{ role: 'user', content: message.trim() }],
+        },
+        metadata: {
+          streaming: wantsStream,
+          agentEndpoint: url.hostname,
+        },
       },
-      metadata: {
-        streaming: wantsStream,
-        agentEndpoint: url.hostname,
-      },
-    });
+      { asType: 'generation' }
+    );
 
     const startTime = Date.now();
 
@@ -307,11 +322,11 @@ export async function POST(req: NextRequest) {
       });
     } catch (fetchError) {
       const latencyMs = Date.now() - startTime;
-      generation?.end({
+      generation?.update({
         output: { error: fetchError instanceof Error ? fetchError.message : 'Unknown fetch error' },
         statusMessage: 'error',
         metadata: { latencyMs },
-      });
+      }).end();
       generationEnded = true;
       trace?.update({
         output: {
@@ -319,7 +334,7 @@ export async function POST(req: NextRequest) {
           latencyMs,
         },
       });
-      await flushLangfuse();
+      await endTrace();
 
       if (fetchError instanceof Error && fetchError.name === 'TimeoutError') {
         return errorResponse(504, 'Agent request timed out. Please retry.');
@@ -332,11 +347,11 @@ export async function POST(req: NextRequest) {
       const detail = errorText ? ` ${errorText.slice(0, 300)}` : '';
       const latencyMs = Date.now() - startTime;
 
-      generation?.end({
+      generation?.update({
         output: { error: `HTTP ${response.status}`, detail },
         statusMessage: 'error',
         metadata: { latencyMs, httpStatus: response.status },
-      });
+      }).end();
       generationEnded = true;
       trace?.update({
         output: {
@@ -346,7 +361,7 @@ export async function POST(req: NextRequest) {
           httpStatus: response.status,
         },
       });
-      await flushLangfuse();
+      await endTrace();
 
       return errorResponse(502, `Agent API returned ${response.status}.${detail}`);
     }
@@ -403,14 +418,14 @@ export async function POST(req: NextRequest) {
 
           // End the generation span after streaming completes
           const latencyMs = Date.now() - startTime;
-          generation?.end({
+          generation?.update({
             output: { content: fullResponse.slice(0, 1000), fullLength: fullResponse.length },
             metadata: {
               latencyMs,
               streaming: true,
               responseLength: fullResponse.length,
             },
-          });
+          }).end();
           generationEnded = true;
           trace?.update({
             output: {
@@ -418,7 +433,7 @@ export async function POST(req: NextRequest) {
               responseLength: fullResponse.length,
             },
           });
-          await flushLangfuse();
+          await endTrace();
         },
       });
 
@@ -437,14 +452,14 @@ export async function POST(req: NextRequest) {
     const responseText = extractTextPayload(data) || 'No response from agent.';
     const latencyMs = Date.now() - startTime;
 
-    generation?.end({
+    generation?.update({
       output: { content: responseText.slice(0, 1000), fullLength: responseText.length },
       metadata: {
         latencyMs,
         streaming: false,
         responseLength: responseText.length,
       },
-    });
+    }).end();
     generationEnded = true;
     trace?.update({
       output: {
@@ -452,7 +467,7 @@ export async function POST(req: NextRequest) {
         responseLength: responseText.length,
       },
     });
-    await flushLangfuse();
+    await endTrace();
 
     return new Response(
       JSON.stringify({
@@ -463,15 +478,15 @@ export async function POST(req: NextRequest) {
     );
   } catch (error) {
     if (generation && !generationEnded) {
-      generation.end({
+      generation.update({
         output: { error: error instanceof Error ? error.message : 'Unknown error' },
         statusMessage: 'error',
-      });
+      }).end();
     }
     trace?.update({
       output: { error: error instanceof Error ? error.message : 'Unknown error' },
     });
-    await flushLangfuse();
+    await endTrace();
 
     if (process.env.NODE_ENV === 'development') {
       console.error('Chat API error:', error);
