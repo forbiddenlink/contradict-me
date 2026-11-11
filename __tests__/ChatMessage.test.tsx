@@ -160,6 +160,13 @@ describe('ChatMessage', () => {
   });
 
   describe('ArgumentCard Integration', () => {
+    // ArgumentCardEnhanced loads through next/dynamic. A cold import can take
+    // longer than findByText's 1s default under load, so the first test in this
+    // block failed while later ones (warm module) passed. Warm it up front.
+    beforeAll(async () => {
+      await import('@/components/arguments/ArgumentCardEnhanced');
+    });
+
     it('renders ArgumentCard when arguments are provided', async () => {
       const message: Message = {
         id: 'assistant-6',
