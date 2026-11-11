@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/forbiddenlink/contradict-me/compare/v1.1.0...v1.1.1) (2026-11-11)
+
+
+### Bug Fixes
+
+* **observability:** move Langfuse tracing to SDK v6 before v4 cutover ([#144](https://github.com/forbiddenlink/contradict-me/issues/144)) ([454a9f3](https://github.com/forbiddenlink/contradict-me/commit/454a9f3b0c18ae976b3146bb7c0736478827e2dd))
+
 ## [1.1.0](https://github.com/forbiddenlink/contradict-me/compare/v1.0.14...v1.1.0) (2026-11-04)
 
 
