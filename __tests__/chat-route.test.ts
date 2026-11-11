@@ -1,10 +1,18 @@
 import { vi } from 'vitest';
 import { NextRequest } from 'next/server';
 
-const traceMock = vi.fn((_args: { userId: string }) => ({ update: vi.fn(), generation: vi.fn(() => ({ end: vi.fn() })) }));
+const traceMock = vi.fn((_args: { userId: string }) => ({
+  update: vi.fn(),
+  end: vi.fn(),
+  otelSpan: { setAttribute: vi.fn() },
+  startObservation: vi.fn(() => {
+    const generation = { update: vi.fn(() => generation), end: vi.fn() };
+    return generation;
+  }),
+}));
 
 vi.mock('@/lib/langfuse', () => ({
-  getLangfuse: () => ({ trace: traceMock }),
+  startTrace: (args: { userId: string }) => traceMock(args),
   flushLangfuse: vi.fn(async () => {}),
 }));
 vi.mock('@/lib/rate-limit', () => ({
