@@ -229,7 +229,6 @@ export async function POST(req: NextRequest) {
         }),
       },
       input: {
-        message: message.slice(0, 500), // Truncate for storage
         messageLength: message.length,
       },
     });
@@ -287,7 +286,7 @@ export async function POST(req: NextRequest) {
       {
         model: 'algolia-agent-studio',
         input: {
-          messages: [{ role: 'user', content: message.trim() }],
+          messageLength: message.trim().length,
         },
         metadata: {
           streaming: wantsStream,
@@ -419,7 +418,7 @@ export async function POST(req: NextRequest) {
           // End the generation span after streaming completes
           const latencyMs = Date.now() - startTime;
           generation?.update({
-            output: { content: fullResponse.slice(0, 1000), fullLength: fullResponse.length },
+            output: { fullLength: fullResponse.length },
             metadata: {
               latencyMs,
               streaming: true,
@@ -453,7 +452,7 @@ export async function POST(req: NextRequest) {
     const latencyMs = Date.now() - startTime;
 
     generation?.update({
-      output: { content: responseText.slice(0, 1000), fullLength: responseText.length },
+      output: { fullLength: responseText.length },
       metadata: {
         latencyMs,
         streaming: false,
