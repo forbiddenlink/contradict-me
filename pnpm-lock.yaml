@@ -17,7 +17,7 @@ overrides:
   js-yaml: '>=4.3.1 <5'
   mysql2: '>=3.23.1 <4'
   nanoid: '>=6.0.0 <7.0.0'
-  next: '>=16.3.3 <17.0.0'
+  next: '>=16.4.5 <17'
   postcss: '>=8.5.23 <9'
   sharp: '>=0.35.0 <1'
   shell-quote: '>=1.11.0 <2'
@@ -120,7 +120,7 @@ importers:
         specifier: '>=6.0.0 <7.0.0'
         version: 6.0.2
       next:
-        specifier: '>=16.3.3 <17.0.0'
+        specifier: '>=16.4.5 <17'
         version: 16.4.5(@babel/core@7.29.7)(@opentelemetry/api@1.9.1)(@types/node@26.6.5)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       next-auth:
         specifier: ^4.24.15
@@ -2853,7 +2853,7 @@ packages:
     resolution: {integrity: sha512-vedglq2uOGfb29sv5K8k/xbcCZzGgMVVuZju1jslQafNYxmjyUVky1TAYr5Hc1YgMyweLP8ZCYlI/bp5bivNEw==}
     engines: {node: '>=18'}
     peerDependencies:
-      next: '>=16.3.3 <17.0.0'
+      next: '>=16.4.5 <17'
 
   '@sentry/node-core@10.76.2':
     resolution: {integrity: sha512-TrgAc/SvU5kQfjw8pz6I8LLIUiblOSf9BPPNkTbS0Dzcqa4yQLVbmsbS3rvGT7ot64m9Vjzn327ZRy63MlI6/w==}
@@ -3504,7 +3504,7 @@ packages:
     peerDependencies:
       '@remix-run/react': ^2
       '@sveltejs/kit': ^1 || ^2
-      next: '>=16.3.3 <17.0.0'
+      next: '>=16.4.5 <17'
       nuxt: '>= 3'
       react: ^18 || ^19 || ^19.0.0-rc
       svelte: '>= 4'
@@ -3549,7 +3549,7 @@ packages:
     resolution: {integrity: sha512-jwkNcrTeafWxjmWq4AHBaptSqZiJkYU5adLC9QBSqeim0GcqDMgN5Ievh8OG1rJ6W3A4l1oiP7qr9CWxGuzu3w==}
     peerDependencies:
       '@sveltejs/kit': ^1 || ^2
-      next: '>=16.3.3 <17.0.0'
+      next: '>=16.4.5 <17'
       nuxt: '>= 3'
       react: ^18 || ^19 || ^19.0.0-rc
       svelte: '>= 4'
@@ -5948,7 +5948,7 @@ packages:
     resolution: {integrity: sha512-NnjYtjrSOAx/TIVFGTX4IfI/9yHnNpi4B7FuLUwuV20v2Zxgr2OGP/YN0ynJuI7y8QOnTBPitfOdEXZrVvhIuA==}
     peerDependencies:
       '@auth/core': 0.34.3
-      next: '>=16.3.3 <17.0.0'
+      next: '>=16.4.5 <17'
       nodemailer: ^7.0.7
       react: ^17.0.2 || ^18 || ^19
       react-dom: ^17.0.2 || ^18 || ^19
@@ -5962,14 +5962,14 @@ packages:
     resolution: {integrity: sha512-PpwmfOqoa2xWKcGmYb3d5t3R4+/J8C2D00IhJsI3Qk0xxv9tNvGzS/hKKOPNOuUwqM4b/etqu6iGW7tkKvltgA==}
     engines: {node: '>=18'}
     peerDependencies:
-      next: '>=16.3.3 <17.0.0'
+      next: '>=16.4.5 <17'
       react: '>=18.0.0'
 
   next-safe-action@8.7.3:
     resolution: {integrity: sha512-tz6wMMBOSGyEclSDChpj5izLLErUbwqcufXN4a6lyD83pgPni9GWVniLH0zEzPWcKIkkyEiQyrjOhWcqxBKy6A==}
     engines: {node: '>=18.17'}
     peerDependencies:
-      next: '>=16.3.3 <17.0.0'
+      next: '>=16.4.5 <17'
       react: '>= 18.2.0'
       react-dom: '>= 18.2.0'
 
@@ -5978,7 +5978,7 @@ packages:
     engines: {node: '>=14.18'}
     hasBin: true
     peerDependencies:
-      next: '>=16.3.3 <17.0.0'
+      next: '>=16.4.5 <17'
 
   next@16.4.5:
     resolution: {integrity: sha512-rmdfsWosjTUO+6R0S3KokoIk6Kj0sWDRTe86tZHdqaWH/oXq/udX3/4xb+YQi7aWbyEFoglDU54kaifLCdXbBw==}
@@ -6044,7 +6044,7 @@ packages:
     peerDependencies:
       '@remix-run/react': '>=2'
       '@tanstack/react-router': ^1
-      next: '>=16.3.3 <17.0.0'
+      next: '>=16.4.5 <17'
       react: '>=18.2.0 || ^19.0.0-0'
       react-router: ^5 || ^6 || ^7 || ^8
       react-router-dom: ^5 || ^6 || ^7
