@@ -12,7 +12,7 @@ Thanks for your interest in contributing!
 
 - **Linting**: Run `pnpm lint` to check for issues.
 - **Formatting**: Run `pnpm format` to format your code with Prettier (or `pnpm format:check`).
-- **Testing**: Run `pnpm test` to run the test suite (Jest).
+- **Testing**: Run `pnpm test` to run the test suite (Vitest).
 
 ## Pull Requests
 
