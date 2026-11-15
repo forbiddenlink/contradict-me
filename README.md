@@ -12,7 +12,7 @@ with steelman counter-arguments, evidence, and rebuttals.
 
 State your opinion on any topic. The chat backend proxies to an Algolia Agent Studio agent,
 which challenges your position with counter-arguments, evidence, and logical rebuttals to
-sharpen your critical thinking and debate skills. Conversations persist client-side in
+sharpen your critical thinking and debate skills. A curated set of 26 argument files in `data/arguments/` backs the Learn pages and the optional Algolia index. Conversations persist client-side in
 IndexedDB (Dexie), so there's no account or server-side storage of your debates.
 
 ## Getting started
@@ -24,10 +24,12 @@ pnpm install
 cp .env.example .env.local
 ```
 
+Requires Node 20 or newer (`engines` in `package.json`).
+
 Fill in `.env.local`: `NEXT_PUBLIC_ALGOLIA_APP_ID`, `NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY`, and
 `ALGOLIA_AGENT_ENDPOINT` are required for the chat backend to work. Everything else (Langfuse,
 Upstash Redis rate limiting, Sentry, Axiom, PostHog) is optional and degrades gracefully when
-unset - rate limiting falls back to in-memory locally.
+unset - rate limiting falls back to in-memory locally. `GROQ_API_KEY`, `OPENAI_API_KEY` and `ANTHROPIC_API_KEY` appear in `.env.example` but the chat route does not call those providers (it proxies to Algolia); only `src/env.ts`, which nothing imports, lists them as required.
 
 ```bash
 pnpm dev
@@ -42,7 +44,10 @@ pnpm lint            # eslint --max-warnings=0
 pnpm format / pnpm format:check   # prettier
 pnpm biome:check / pnpm biome:fix / pnpm biome:format
 pnpm test / pnpm test:watch / pnpm test:coverage   # vitest
+pnpm start           # serve the production build
 ```
+
+To push the argument files to your Algolia index, run `scripts/index-arguments.ts` (it reads `.env.local`; it needs `NEXT_PUBLIC_ALGOLIA_APP_ID` and `ALGOLIA_ADMIN_API_KEY`). It is not wired to a package script.
 
 ## Tech stack
 
