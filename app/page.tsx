@@ -6,16 +6,11 @@ import { useState } from 'react';
 import ThemeToggle from '@/components/ThemeToggle';
 import { DEFAULT_AUTHOR, SITE_NAME, SITE_URL } from '@/lib/site';
 
-const HOME_UPDATED_DATE = '2026-02-08';
-const HOME_UPDATED_ISO_DATE = `${HOME_UPDATED_DATE}T00:00:00.000Z`;
-
 const homePageSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
   name: `${SITE_NAME} Home`,
   url: `${SITE_URL}/`,
-  datePublished: HOME_UPDATED_ISO_DATE,
-  dateModified: HOME_UPDATED_ISO_DATE,
   author: {
     '@type': 'Organization',
     name: DEFAULT_AUTHOR,
@@ -62,12 +57,6 @@ export default function Home() {
             </span>
             <span className="font-semibold">26 Arguments Indexed</span>
           </div>
-          <span className="hidden sm:inline text-white/60" aria-hidden="true">
-            /
-          </span>
-          <div>
-            <span className="font-semibold">88.1</span> Avg Quality Score
-          </div>
         </div>
       </div>
 
@@ -94,10 +83,6 @@ export default function Home() {
               >
                 <span itemProp="name">{DEFAULT_AUTHOR}</span>
               </a>{' '}
-              • Last updated{' '}
-              <time dateTime={HOME_UPDATED_ISO_DATE} itemProp="dateModified">
-                {HOME_UPDATED_DATE}
-              </time>
             </p>
           </header>
 
@@ -386,7 +371,7 @@ export default function Home() {
             <span className="flex h-2 w-2 relative" aria-hidden="true">
               <span className="relative inline-flex h-2 w-2 bg-[#0b0b0c]"></span>
             </span>
-            <span>26 arguments indexed • GPT-4 powered</span>
+            <span>26 arguments indexed</span>
           </div>
         </div>
       </div>
