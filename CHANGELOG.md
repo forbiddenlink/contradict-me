@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.2](https://github.com/forbiddenlink/contradict-me/compare/v1.1.1...v1.1.2) (2026-11-14)
+
+
+### Bug Fixes
+
+* **deps:** bump next to 16.4.5 (security) ([#147](https://github.com/forbiddenlink/contradict-me/issues/147)) ([06e7d51](https://github.com/forbiddenlink/contradict-me/commit/06e7d51cb1fe019d28c10e38472a61e58b0a5c6f))
+* **deps:** lift glob/minimatch to patched majors ([#149](https://github.com/forbiddenlink/contradict-me/issues/149)) ([145da9b](https://github.com/forbiddenlink/contradict-me/commit/145da9badfbcdffc85e6e8ea40a378a937922d3d))
+
 ## [1.1.1](https://github.com/forbiddenlink/contradict-me/compare/v1.1.0...v1.1.1) (2026-11-11)
 
 
