@@ -152,7 +152,7 @@ export default function AuthorBioPage() {
               <p className="text-slate-700 dark:text-slate-300 mb-3">
                 An AI system that challenges beliefs with research-backed counterarguments. Built
                 with Next.js, Algolia Agent Studio, and a curated database of source-checked
-                arguments. Winner of the Algolia Agent Studio Challenge (2026).
+                arguments. Built as an entry to the Algolia Agent Studio Challenge (2026).
               </p>
               <div className="flex flex-wrap gap-2">
                 <span className="text-xs px-3 py-1 rounded-full bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300">
