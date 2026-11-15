@@ -162,9 +162,6 @@ export default function AuthorBioPage() {
                   Algolia
                 </span>
                 <span className="text-xs px-3 py-1 rounded-full bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300">
-                  GPT-4
-                </span>
-                <span className="text-xs px-3 py-1 rounded-full bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300">
                   TypeScript
                 </span>
               </div>
