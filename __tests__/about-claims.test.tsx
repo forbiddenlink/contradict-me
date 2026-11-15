@@ -7,4 +7,9 @@ describe('About the author page', () => {
     expect(screen.queryByText(/GPT-?4/i)).not.toBeInTheDocument();
     expect(screen.getAllByText(/Algolia/i).length).toBeGreaterThan(0);
   });
+
+  it('does not call this project a challenge winner, since the winning entry was TimeSlipSearch', () => {
+    render(<AboutAuthorPage />);
+    expect(screen.queryByText(/Winner of the Algolia/i)).not.toBeInTheDocument();
+  });
 });
