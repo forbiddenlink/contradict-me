@@ -26,6 +26,13 @@ const renderWithTheme = (component: React.ReactElement) => {
 };
 
 describe('Home Page', () => {
+  it('does not show claims the code does not back', () => {
+    renderWithTheme(<Home />);
+    expect(screen.queryByText(/GPT-4/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Avg Quality Score/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Last updated/i)).not.toBeInTheDocument();
+  });
+
   it('renders the main heading', () => {
     renderWithTheme(<Home />);
     const heading = screen.getByRole('heading', { name: /An AI that disagrees with you/i });
