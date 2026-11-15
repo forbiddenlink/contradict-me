@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.4](https://github.com/forbiddenlink/contradict-me/compare/v1.1.3...v1.1.4) (2026-11-15)
+
+
+### Bug Fixes
+
+* **about:** remove the GPT-4 chip the chat does not use ([#152](https://github.com/forbiddenlink/contradict-me/issues/152)) ([c7a2b8f](https://github.com/forbiddenlink/contradict-me/commit/c7a2b8f98ca5435f3dae7b73d23ab45a64b70ee8))
+
 ## [1.1.3](https://github.com/forbiddenlink/contradict-me/compare/v1.1.2...v1.1.3) (2026-11-15)
 
 
