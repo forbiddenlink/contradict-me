@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/forbiddenlink/contradict-me/compare/v1.1.2...v1.1.3) (2026-11-15)
+
+
+### Bug Fixes
+
+* **home:** remove unbacked GPT-4, fake quality score, and stale date ([#150](https://github.com/forbiddenlink/contradict-me/issues/150)) ([94e359b](https://github.com/forbiddenlink/contradict-me/commit/94e359b1eab8577ca7b4c3dcc13399fe431f61c7))
+
 ## [1.1.2](https://github.com/forbiddenlink/contradict-me/compare/v1.1.1...v1.1.2) (2026-11-14)
 
 
