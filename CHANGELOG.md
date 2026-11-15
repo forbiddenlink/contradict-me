@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.5](https://github.com/forbiddenlink/contradict-me/compare/v1.1.4...v1.1.5) (2026-11-15)
+
+
+### Bug Fixes
+
+* **about:** stop calling Contradict Me a challenge winner ([#154](https://github.com/forbiddenlink/contradict-me/issues/154)) ([2057931](https://github.com/forbiddenlink/contradict-me/commit/2057931e02edaf773fdcce96447f1a90a656315d))
+
 ## [1.1.4](https://github.com/forbiddenlink/contradict-me/compare/v1.1.3...v1.1.4) (2026-11-15)
 
 
