@@ -149,4 +149,11 @@ describe('POST /api/coach', () => {
     const sent = JSON.stringify(JSON.parse(fetchMock.mock.calls[0][1].body as string));
     expect(sent).toMatch(/explain directly/i);
   });
+
+  it('strips personal data from the material before the model sees it', async () => {
+    await POST(makeReq({ ...valid, material: 'Contact a.b@example.com about photosynthesis.' }));
+    const sent = fetchMock.mock.calls[0][1].body as string;
+    expect(sent).not.toContain('a.b@example.com');
+    expect(sent).toContain('photosynthesis');
+  });
 });

@@ -110,7 +110,7 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const prompt = buildCoachPrompt({ material, state, explain: b.explain === true });
+  const prompt = buildCoachPrompt({ material: redactPii(material), state, explain: b.explain === true });
   const url = new URL(agentEndpoint);
   url.searchParams.set('stream', 'false');
   url.searchParams.set('compatibilityMode', 'ai-sdk-5');

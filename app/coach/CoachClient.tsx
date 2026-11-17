@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { trimHistory } from '@/lib/chat-history';
 import {
   LEVELS,
   MAX_ANSWER_CHARS,
@@ -34,7 +35,16 @@ export default function CoachClient() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  async function send(message: string, history: Turn[], explain = false) {
+  // Bumped on reset so a response from an ended session is ignored.
+  const sessionRef = useRef(0);
+
+  async function send(
+    message: string,
+    history: Turn[],
+    sessionState: CoachState,
+    explain = false
+  ) {
+    const session = sessionRef.current;
     setLoading(true);
     setError('');
     try {
@@ -43,13 +53,14 @@ export default function CoachClient() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           material,
-          state: state ?? initialState(level),
-          history,
+          state: sessionState,
+          history: trimHistory(history),
           message,
           explain,
         }),
       });
       const data = await res.json().catch(() => ({}));
+      if (session !== sessionRef.current) return false;
       if (!res.ok) {
         setError(typeof data.error === 'string' ? data.error : 'Something went wrong. Try again.');
         return false;
@@ -60,17 +71,19 @@ export default function CoachClient() {
       setDone(data.done === true);
       return true;
     } catch {
+      if (session !== sessionRef.current) return false;
       setError('Could not reach the coach. Check your connection and try again.');
       return false;
     } finally {
-      setLoading(false);
+      if (session === sessionRef.current) setLoading(false);
     }
   }
 
   async function start() {
-    setState(initialState(level));
+    const fresh = initialState(level);
+    setState(fresh);
     setStarted(true);
-    const ok = await send('Begin.', []);
+    const ok = await send('Begin.', [], fresh);
     if (!ok) setStarted(false);
   }
 
@@ -78,11 +91,16 @@ export default function CoachClient() {
     e.preventDefault();
     const text = answer.trim();
     if (!text || loading) return;
-    setAnswer('');
-    await send(text, turns);
+    if (!state) return;
+    // Keep the draft until the request succeeds so a failure does not lose it.
+    const ok = await send(text, turns, state);
+    if (ok) setAnswer((current) => (current === answer ? '' : current));
   }
 
   function reset() {
+    sessionRef.current += 1;
+    setLoading(false);
+    setAnswer('');
     setStarted(false);
     setState(null);
     setTurns([]);
@@ -207,7 +225,7 @@ export default function CoachClient() {
               type="button"
               className={secondaryButton}
               disabled={loading}
-              onClick={() => send('Please explain this directly.', turns, true)}
+              onClick={() => state && send('Please explain this directly.', turns, state, true)}
             >
               Explain it directly
             </button>
