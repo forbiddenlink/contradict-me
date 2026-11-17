@@ -90,3 +90,6 @@ dist/
 /dev.db-journal
 /*.png
 !/public/*.png
+
+# Per-machine Claude Code permissions; never commit
+.claude/settings.local.json
