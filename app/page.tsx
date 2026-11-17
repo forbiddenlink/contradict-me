@@ -386,6 +386,7 @@ export default function Home() {
               ['/analytics', 'Analytics'],
               ['/debate', 'Debate Arena'],
               ['/learn', 'Learn'],
+              ['/question-lab', 'Question Lab'],
               ['/contact', 'Contact'],
               ['/privacy-policy', 'Privacy'],
             ].map(([href, label]) => (
