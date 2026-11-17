@@ -108,7 +108,7 @@ export function masteryPercent(state: CoachState): number {
 /** Strip emails and phone numbers so they never reach the model or the history. */
 export function redactPii(text: string): string {
   return text
-    .replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, '[removed]')
+    .replace(/(?<![A-Z0-9._%+-])[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, '[removed]')
     .replace(/\+?\d[\d\s().-]{7,}\d/g, (m) => (m.replace(/\D/g, '').length >= 9 ? '[removed]' : m));
 }
 

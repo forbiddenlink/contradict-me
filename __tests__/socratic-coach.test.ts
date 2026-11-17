@@ -97,6 +97,12 @@ describe('redactPii', () => {
     expect(out).not.toMatch(/555/);
     expect(out).toContain('[removed]');
   });
+
+  it('redacts emails at boundaries without skipping adjacent punctuation', () => {
+    expect(redactPii('Contact alice@example.com, then bob@example.org.')).toBe(
+      'Contact [removed], then [removed].',
+    );
+  });
 });
 
 describe('buildCoachPrompt', () => {
