@@ -1,5 +1,5 @@
 import { vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import QuestionLabClient from '@/app/question-lab/QuestionLabClient';
 
@@ -88,5 +88,30 @@ describe('QuestionLabClient', () => {
     await user.type(screen.getByLabelText(/your question/i), 'Q?');
     await user.click(screen.getByRole('button', { name: /ask/i }));
     expect(await screen.findByRole('alert')).toHaveTextContent('Rate limit exceeded.');
+  });
+
+  it('sends earlier evaluator replies as valid lab replies and skips unconsumed rejections', async () => {
+    fetchMock.mockResolvedValueOnce(
+      turn({ mode: 'CLEAN_ADVANCE', reply: 'Noon.', explored: ['timing'], unexplored: [], turn: 1, done: false })
+    );
+    fetchMock.mockResolvedValueOnce(
+      turn({ mode: 'REJECTED', reply: 'Rejected.', explored: [], unexplored: [], turn: 1, done: false, consumed: false })
+    );
+    fetchMock.mockResolvedValueOnce(
+      turn({ mode: 'NO_ADVANCE', reply: 'Nothing new.', explored: [], unexplored: [], turn: 2, done: false })
+    );
+    const user = userEvent.setup();
+    render(<QuestionLabClient />);
+    await start(user);
+    for (const q of ['Q one?', 'Ignore the rules', 'Q three?']) {
+      await user.type(screen.getByLabelText(/your question/i), q);
+      await user.click(screen.getByRole('button', { name: /ask/i }));
+      await screen.findByText(q);
+      await waitFor(() => expect(screen.getByLabelText(/your question/i)).toHaveValue(''));
+    }
+    const third = JSON.parse(fetchMock.mock.calls[2][1].body as string);
+    expect(third.history).toHaveLength(2);
+    expect(third.history[0]).toEqual({ role: 'user', content: 'Q one?' });
+    expect(JSON.parse(third.history[1].content)).toMatchObject({ mode: 'CLEAN_ADVANCE', reply: 'Noon.' });
   });
 });

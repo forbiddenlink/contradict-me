@@ -3,11 +3,12 @@
  * The hidden truth is injected here on the server only. The client never receives it.
  */
 import type { HistoryMessage } from '@/lib/chat-history';
-import { MAX_HISTORY_ITEM_CHARS } from '@/lib/chat-history';
 import type { ScenarioBrief } from '@/lib/question-lab-briefs';
 
 export const MAX_QUESTION_TURNS = 15;
 export const MAX_QUESTION_CHARS = 300;
+export const MAX_REPLY_CHARS = 2000;
+export const MAX_HISTORY_TOTAL_CHARS = 30_000;
 
 export type Difficulty = 1 | 2 | 3 | 4;
 export const DIFFICULTY_LABELS: Record<Difficulty, string> = {
@@ -59,24 +60,44 @@ export type LabHistoryValidation =
   | { ok: true; history: HistoryMessage[]; playerTurns: number }
   | { ok: false; error: string };
 
-/** Validate client history. Turns alternate player then evaluator and are capped. */
+/**
+ * Validate client history. Turns must alternate, start with the player, and end with an
+ * evaluator reply. Player turns are held to the same rules as a new question, evaluator turns
+ * must be valid unfinished lab replies, and the whole history has a character cap.
+ *
+ * Known gap: a client can still forge earlier evaluator turns that look valid, because the
+ * server keeps no session and signs nothing.
+ */
 export function validateLabHistory(raw: unknown): LabHistoryValidation {
   if (raw === undefined || raw === null) return { ok: true, history: [], playerTurns: 0 };
   if (!Array.isArray(raw)) return { ok: false, error: 'History must be an array.' };
   if (raw.length > MAX_QUESTION_TURNS * 2) return { ok: false, error: 'History is too long.' };
+  if (raw.length % 2 !== 0) return { ok: false, error: 'History must end with a reply.' };
 
   const history: HistoryMessage[] = [];
-  for (const item of raw) {
-    const t = item as { role?: unknown; content?: unknown };
-    if ((t.role !== 'user' && t.role !== 'assistant') || typeof t.content !== 'string') {
+  let total = 0;
+  for (let i = 0; i < raw.length; i++) {
+    const t = raw[i];
+    if (!t || typeof t !== 'object') return { ok: false, error: 'History contains an invalid turn.' };
+    const { role, content } = t as { role?: unknown; content?: unknown };
+    const expected = i % 2 === 0 ? 'user' : 'assistant';
+    if (role !== expected || typeof content !== 'string') {
       return { ok: false, error: 'History contains an invalid turn.' };
     }
-    if (t.content.length > MAX_HISTORY_ITEM_CHARS) {
-      return { ok: false, error: 'A history turn is too long.' };
+    total += content.length;
+    if (total > MAX_HISTORY_TOTAL_CHARS) return { ok: false, error: 'History is too long.' };
+
+    if (role === 'user') {
+      if (!content.trim() || content.length > MAX_QUESTION_CHARS || looksLikeInjection(content)) {
+        return { ok: false, error: 'History contains an invalid question.' };
+      }
+    } else {
+      const parsed = content.length <= MAX_REPLY_CHARS ? parseLabReply(content) : null;
+      if (!parsed || parsed.done) return { ok: false, error: 'History contains an invalid reply.' };
     }
-    history.push({ role: t.role, content: t.content });
+    history.push({ role: expected, content });
   }
-  return { ok: true, history, playerTurns: history.filter((h) => h.role === 'user').length };
+  return { ok: true, history, playerTurns: history.length / 2 };
 }
 
 const strings = (v: unknown): string[] =>

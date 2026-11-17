@@ -14,6 +14,10 @@ interface Exchange {
   question: string;
   mode: LabMode;
   reply: string;
+  /** Serialized evaluator reply, sent back as history so the server can validate it. */
+  raw: string;
+  /** False for rejections that did not use up a turn. They stay on screen only. */
+  inHistory: boolean;
 }
 
 interface Diagnostic {
@@ -66,10 +70,12 @@ export default function QuestionLabClient() {
     setLoading(true);
     setError('');
     try {
-      const history = exchanges.flatMap((x) => [
-        { role: 'user' as const, content: x.question },
-        { role: 'assistant' as const, content: x.reply },
-      ]);
+      const history = exchanges
+        .filter((x) => x.inHistory)
+        .flatMap((x) => [
+          { role: 'user' as const, content: x.question },
+          { role: 'assistant' as const, content: x.raw },
+        ]);
       const res = await fetch('/api/question-lab', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -80,9 +86,28 @@ export default function QuestionLabClient() {
         setError(typeof data.error === 'string' ? data.error : 'Something went wrong. Try again.');
         return;
       }
-      setExchanges([...exchanges, { question: q, mode: data.mode, reply: data.reply }]);
-      setExplored(Array.isArray(data.explored) ? data.explored : []);
-      setUnexplored(Array.isArray(data.unexplored) ? data.unexplored : []);
+      const nextExplored: string[] = Array.isArray(data.explored) ? data.explored : [];
+      const nextUnexplored: string[] = Array.isArray(data.unexplored) ? data.unexplored : [];
+      setExchanges([
+        ...exchanges,
+        {
+          question: q,
+          mode: data.mode,
+          reply: data.reply,
+          raw: JSON.stringify({
+            mode: data.mode,
+            reply: data.reply,
+            explored: nextExplored,
+            unexplored: nextUnexplored,
+            done: false,
+          }),
+          inHistory: data.consumed !== false,
+        },
+      ]);
+      if (data.consumed !== false) {
+        setExplored(nextExplored);
+        setUnexplored(nextUnexplored);
+      }
       setQuestion('');
       if (data.done) {
         setDiagnostic({
@@ -197,7 +222,7 @@ export default function QuestionLabClient() {
       ) : (
         <form onSubmit={ask} className="space-y-3">
           <label htmlFor="lab-question" className="block font-semibold">
-            Your question ({exchanges.length + 1} of {MAX_QUESTION_TURNS})
+            Your question ({exchanges.filter((x) => x.inHistory).length + 1} of {MAX_QUESTION_TURNS})
           </label>
           <input
             id="lab-question"

@@ -81,7 +81,9 @@ export async function POST(req: NextRequest) {
       reply: 'Rejected: ask a single question about the scenario. Requests to change the rules are not answered.',
       explored: [],
       unexplored: [],
-      turn,
+      // Does not use up a turn, so it can never strand the last one.
+      turn: historyResult.playerTurns,
+      consumed: false,
       done: false,
     });
   }
@@ -143,6 +145,12 @@ export async function POST(req: NextRequest) {
   const parsed = parseLabReply(extractText(await response.json().catch(() => ({}))));
   if (!parsed) return json(502, { error: 'The lab returned an unreadable reply. Please retry.' });
 
-  const done = parsed.done || turn === MAX_QUESTION_TURNS;
-  return json(200, { ...parsed, done, turn });
+  // A finished investigation must carry a full diagnostic, never empty sections.
+  const finishing = turn === MAX_QUESTION_TURNS;
+  const diagnosticOk =
+    !!parsed.golden_question?.trim() && !!parsed.rabbit_hole?.trim() && !!parsed.grade?.trim();
+  if ((parsed.done || finishing) && !(parsed.done && diagnosticOk)) {
+    return json(502, { error: 'The lab could not finish the diagnostic. Please retry.' });
+  }
+  return json(200, { ...parsed, turn });
 }
