@@ -387,6 +387,7 @@ export default function Home() {
               ['/debate', 'Debate Arena'],
               ['/learn', 'Learn'],
               ['/question-lab', 'Question Lab'],
+              ['/coach', 'Socratic Coach'],
               ['/contact', 'Contact'],
               ['/privacy-policy', 'Privacy'],
             ].map(([href, label]) => (
