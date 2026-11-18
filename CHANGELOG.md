@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://github.com/forbiddenlink/contradict-me/compare/v1.1.5...v1.2.0) (2026-11-18)
+
+
+### Features
+
+* add question quality lab at /question-lab ([#161](https://github.com/forbiddenlink/contradict-me/issues/161)) ([a716e2f](https://github.com/forbiddenlink/contradict-me/commit/a716e2f9f0fddca3240a952bfc4c7b8988d78cb7))
+* add socratic coach at /coach ([#160](https://github.com/forbiddenlink/contradict-me/issues/160)) ([1bb20dd](https://github.com/forbiddenlink/contradict-me/commit/1bb20ddcdb0ebba116a40ac4dfb43b919e7930e4))
+
 ## [1.1.5](https://github.com/forbiddenlink/contradict-me/compare/v1.1.4...v1.1.5) (2026-11-15)
 
 
