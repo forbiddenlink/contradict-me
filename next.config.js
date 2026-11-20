@@ -1,3 +1,4 @@
+import { URL } from "node:url";
 import bundleAnalyzer from '@next/bundle-analyzer';
 import { withAxiom } from 'next-axiom';
 import { withSentryConfig } from '@sentry/nextjs';
