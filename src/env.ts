@@ -22,7 +22,7 @@ export const env = createEnv({
     OPENAI_API_KEY: z.string().min(1),
     POSTHOG_API_KEY: z.string().min(1),
     POSTHOG_HOST: z.string().url().optional(),
-    RESEND_API_KEY: z.string().min(1),
+    RESEND_API_KEY: z.string().min(1).optional(),
     STRIPE_PUBLISHABLE_KEY: z.string().min(1),
     STRIPE_SECRET_KEY: z.string().min(1),
     STRIPE_WEBHOOK_SECRET: z.string().min(1),
