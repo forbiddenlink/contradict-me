@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.1](https://github.com/forbiddenlink/contradict-me/compare/v1.2.0...v1.2.1) (2026-11-20)
+
+
+### Bug Fixes
+
+* allow browser errors to reach the configured Sentry project ([#167](https://github.com/forbiddenlink/contradict-me/issues/167)) ([ae1fe59](https://github.com/forbiddenlink/contradict-me/commit/ae1fe59479545ae322e363427302f4a50064722e))
+* allow startup without an unused email credential ([#166](https://github.com/forbiddenlink/contradict-me/issues/166)) ([f274297](https://github.com/forbiddenlink/contradict-me/commit/f274297756d38c8729ca07ab9e524f8dd7c9f906))
+* patch both Prisma tooling paths affected by the Effect advisory ([#164](https://github.com/forbiddenlink/contradict-me/issues/164)) ([6a4d3d2](https://github.com/forbiddenlink/contradict-me/commit/6a4d3d2cb4982c1aaa9dabc4d1d47dd7aaaa5e67))
+
 ## [1.2.0](https://github.com/forbiddenlink/contradict-me/compare/v1.1.5...v1.2.0) (2026-11-18)
 
 
