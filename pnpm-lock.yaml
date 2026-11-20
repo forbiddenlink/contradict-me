@@ -5,6 +5,8 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
+  '@prisma/config@6.19.3>effect': 3.22.4
+  '@prisma/config@7.10.1>effect': 3.22.4
   '@hono/node-server': '>=1.19.13 <2.0.0'
   '@opentelemetry/core': '>=2.8.0 <3'
   brace-expansion: '>=5.0.12 <6'
@@ -4402,11 +4404,8 @@ packages:
   duplexer@0.1.2:
     resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
 
-  effect@3.20.0:
-    resolution: {integrity: sha512-qMLfDJscrNG8p/aw+IkT9W7fgj50Z4wG5bLBy0Txsxz8iUHjDIkOgO3SV0WZfnQbNG2VJYb0b+rDLMrhM4+Krw==}
-
-  effect@3.21.0:
-    resolution: {integrity: sha512-PPN80qRokCd1f015IANNhrwOnLO7GrrMQfk4/lnZRE/8j7UPWrNNjPV0uBrZutI/nHzernbW+J0hdqQysHiSnQ==}
+  effect@3.22.4:
+    resolution: {integrity: sha512-RNshu7AXVxxDh6aS4lothhJ+QoZ4xSykbWNaaVdvDN72RMyVwhCGdALkyl1TbEydgAmRIdD1eTyJqBUGwSBGDA==}
 
   electron-to-chromium@1.5.465:
     resolution: {integrity: sha512-zg4iUpbeGw7YNZsswc2xKr2uiBex2d8dELAXo92Icw3but1ULbrvK8USe6wVLaWjgJnKBARv0pchx9Owktx6wQ==}
@@ -9028,7 +9027,7 @@ snapshots:
     dependencies:
       c12: 3.1.0
       deepmerge-ts: 8.0.2
-      effect: 3.21.0
+      effect: 3.22.4
       empathic: 2.0.0
     transitivePeerDependencies:
       - magicast
@@ -9037,7 +9036,7 @@ snapshots:
     dependencies:
       c12: 3.3.4
       deepmerge-ts: 8.0.2
-      effect: 3.20.0
+      effect: 3.22.4
       empathic: 2.0.0
     transitivePeerDependencies:
       - magicast
@@ -11734,12 +11733,7 @@ snapshots:
 
   duplexer@0.1.2: {}
 
-  effect@3.20.0:
-    dependencies:
-      '@standard-schema/spec': 1.1.0
-      fast-check: 3.23.2
-
-  effect@3.21.0:
+  effect@3.22.4:
     dependencies:
       '@standard-schema/spec': 1.1.0
       fast-check: 3.23.2
