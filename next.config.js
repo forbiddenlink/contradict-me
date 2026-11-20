@@ -1,3 +1,4 @@
+import { URL } from "node:url";
 import bundleAnalyzer from '@next/bundle-analyzer';
 import { withAxiom } from 'next-axiom';
 import { withSentryConfig } from '@sentry/nextjs';
@@ -29,9 +30,11 @@ const nextConfig = {
   // Security headers
   async headers() {
     const scriptSrc = ["'self'", "'unsafe-inline'", ...(isDev ? ["'unsafe-eval'"] : [])].join(' ');
+    const dsn = process.env.NEXT_PUBLIC_SENTRY_DSN;
     const connectSrc = [
       "'self'",
       ...(isDev ? ['ws:', 'wss:'] : []),
+      ...(dsn && URL.canParse(dsn) ? [new URL(dsn).origin] : []),
       'https://*.algolia.net',
       'https://*.algolianet.com',
       'https://ai-sdk-5.api.algolia.com',
@@ -72,7 +75,7 @@ export default withSentryConfig(withAxiom(withBundleAnalyzer(nextConfig)), {
   project: process.env.SENTRY_PROJECT,
   silent: !process.env.CI,
   widenClientFileUpload: true,
-  sourcemaps: { disable: true },
+  sourcemaps: { disable: !process.env.SENTRY_AUTH_TOKEN },
   useRunAfterProductionCompileHook: false,
   webpack: {
     treeshake: { removeDebugLogging: true },
