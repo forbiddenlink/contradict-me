@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.2](https://github.com/forbiddenlink/contradict-me/compare/v1.2.1...v1.2.2) (2026-11-24)
+
+
+### Bug Fixes
+
+* report root error boundary errors to Sentry ([#168](https://github.com/forbiddenlink/contradict-me/issues/168)) ([34aff77](https://github.com/forbiddenlink/contradict-me/commit/34aff77c69dfc72f3058c3c62185a720b510d4c3))
+* **sentry:** load the browser SDK from instrumentation-client ([#170](https://github.com/forbiddenlink/contradict-me/issues/170)) ([0bd5e08](https://github.com/forbiddenlink/contradict-me/commit/0bd5e0817b6e8545e45e0cfb44bba74492fa7baa))
+
 ## [1.2.1](https://github.com/forbiddenlink/contradict-me/compare/v1.2.0...v1.2.1) (2026-11-20)
 
 
