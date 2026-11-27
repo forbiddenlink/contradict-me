@@ -234,14 +234,18 @@ export default function ChatMessage({ message, isStreaming = false }: ChatMessag
         )}
 
         {/* Timestamp */}
-        <div
-          className={`text-xs text-gray-500 dark:text-slate-500 mt-2 ${isUser ? 'text-right' : 'text-left'}`}
+        {/* Server renders in UTC; the visitor's clock and timezone differ, so the text is
+            expected to change on hydration (React #418 otherwise). */}
+        <time
+          dateTime={new Date(message.timestamp).toISOString()}
+          suppressHydrationWarning
+          className={`block text-xs text-gray-500 dark:text-slate-500 mt-2 ${isUser ? 'text-right' : 'text-left'}`}
         >
           {new Date(message.timestamp).toLocaleTimeString([], {
             hour: '2-digit',
             minute: '2-digit',
           })}
-        </div>
+        </time>
       </div>
     </div>
   );
