@@ -272,6 +272,7 @@ export default function ChatInterface({ initialMessage }: Readonly<ChatInterface
       !isStreaming &&
       lastAssistantMessage &&
       lastAssistantMessage.content.length > 0 &&
+      !lastAssistantMessage.isError &&
       messages.at(-1)?.role === 'assistant'
     );
   }, [hasUserMessages, isLoading, isStreaming, lastAssistantMessage, messages]);
@@ -573,7 +574,9 @@ export default function ChatInterface({ initialMessage }: Readonly<ChatInterface
         // Update the placeholder message with error content
         setMessages((prev) =>
           prev.map((msg) =>
-            msg.id === assistantMessageId ? { ...msg, content: getRandomErrorMessage() } : msg
+            msg.id === assistantMessageId
+                ? { ...msg, content: getRandomErrorMessage(), isError: true }
+                : msg
           )
         );
       } finally {

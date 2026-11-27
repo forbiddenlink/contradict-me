@@ -91,8 +91,20 @@ describe('POST /api/chat', () => {
     vi.stubEnv('ALGOLIA_SEARCH_API_KEY', '');
     vi.stubEnv('NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY', 'public-key');
     const res = await POST(makeReq({ message: 'hi', stream: false }));
-    expect(res.status).toBe(500);
+    expect(res.status).toBe(503);
     expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it('shows a friendly message, not config details, when credentials are missing', async () => {
+    vi.stubEnv('ALGOLIA_SEARCH_API_KEY', '');
+    vi.stubEnv('ALGOLIA_AGENT_API_KEY', '');
+    const errSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const res = await POST(makeReq({ message: 'hi', stream: false }));
+    const body = await res.json();
+    expect(res.status).toBe(503);
+    expect(body.error).not.toMatch(/algolia|credential|configur/i);
+    expect(errSpy).toHaveBeenCalled();
+    errSpy.mockRestore();
   });
 
   it('prefers the dedicated server-only agent key', async () => {

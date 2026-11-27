@@ -240,7 +240,11 @@ export async function POST(req: NextRequest) {
     if (!agentEndpoint) {
       trace?.update({ output: { error: 'Agent endpoint not configured' } });
       await endTrace();
-      return errorResponse(500, "The Agent Studio endpoint isn't configured.");
+      console.error('Chat API misconfigured: ALGOLIA_AGENT_ENDPOINT is not set');
+      return errorResponse(
+        503,
+        'The debate partner is temporarily unavailable. Please try again in a little while.'
+      );
     }
 
     // Validate required environment variables
@@ -252,7 +256,16 @@ export async function POST(req: NextRequest) {
     if (!appId || !apiKey) {
       trace?.update({ output: { error: 'Missing Algolia credentials' } });
       await endTrace();
-      return errorResponse(500, 'Configuration error: Missing Algolia credentials.');
+      // Log which vars are absent (names only) so ops can fix it; never show this to users.
+      console.error('Chat API misconfigured: missing', {
+        appId: !appId,
+        apiKey: !apiKey,
+        expectedKeyVars: ['ALGOLIA_AGENT_API_KEY', 'ALGOLIA_SEARCH_API_KEY'],
+      });
+      return errorResponse(
+        503,
+        'The debate partner is temporarily unavailable. Please try again in a little while.'
+      );
     }
 
     // Build the endpoint URL with required query parameters
@@ -362,7 +375,8 @@ export async function POST(req: NextRequest) {
       });
       await endTrace();
 
-      return errorResponse(502, `Agent API returned ${response.status}.${detail}`);
+      console.error(`Chat API: agent returned HTTP ${response.status}${detail}`);
+      return errorResponse(502, 'The debate partner could not respond. Please try again.');
     }
 
     // Handle streaming response
@@ -487,12 +501,7 @@ export async function POST(req: NextRequest) {
     });
     await endTrace();
 
-    if (process.env.NODE_ENV === 'development') {
-      console.error('Chat API error:', error);
-    }
-    return errorResponse(
-      500,
-      `Sorry, I encountered an error: ${error instanceof Error ? error.message : 'Unknown error'}`
-    );
+    console.error('Chat API error:', error);
+    return errorResponse(500, 'Something went wrong on our side. Please try again.');
   }
 }
