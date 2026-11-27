@@ -48,4 +48,6 @@ export interface Message {
   content: string;
   arguments?: Argument[];
   timestamp: number;
+  /** True when this assistant reply is an error placeholder, not a real answer. */
+  isError?: boolean;
 }
