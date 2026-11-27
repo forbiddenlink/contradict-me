@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.3](https://github.com/forbiddenlink/contradict-me/compare/v1.2.2...v1.2.3) (2026-11-27)
+
+
+### Bug Fixes
+
+* **chat:** show friendly errors and hide follow-ups after a failed reply ([#171](https://github.com/forbiddenlink/contradict-me/issues/171)) ([dc12286](https://github.com/forbiddenlink/contradict-me/commit/dc122860fd71f2e3397ea46db7fb3bc8dbbf7434))
+* **chat:** stop timestamp hydration mismatch on /chat ([#173](https://github.com/forbiddenlink/contradict-me/issues/173)) ([2dd2ef5](https://github.com/forbiddenlink/contradict-me/commit/2dd2ef56e3830d3e63d8f1a7031fd8f6094abbc9))
+
 ## [1.2.2](https://github.com/forbiddenlink/contradict-me/compare/v1.2.1...v1.2.2) (2026-11-24)
 
 
